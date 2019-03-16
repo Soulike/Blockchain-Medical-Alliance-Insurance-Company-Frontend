@@ -39,6 +39,7 @@ class RootContainer extends React.Component
     render()
     {
         const {PAGE_ID, PAGE_ID_TO_ROUTE, ROUTE_TO_PAGE_ID} = ROUTER;
+        const {children} = this.props;
         const currentPageId = ROUTE_TO_PAGE_ID[this.props.location.pathname];
         return (
             <Root hasLoggedIn={true}
@@ -51,7 +52,7 @@ class RootContainer extends React.Component
                   insuranceLinkIsActive={this.shouldInsuranceLinkBeActive(currentPageId)}
                   insurancePurchasingLinkIsActive={this.shouldInsurancePurchasingLinkBeActive(currentPageId)}
                   directPaymentLinkIsActive={this.shouldDirectPaymentLinkBeActive(currentPageId)}
-                  personalCenterLinkIsActive={this.shouldPersonalCenterLinkBeActive(currentPageId)} />
+                  personalCenterLinkIsActive={this.shouldPersonalCenterLinkBeActive(currentPageId)}>{children}</Root>
         );
     }
 }
