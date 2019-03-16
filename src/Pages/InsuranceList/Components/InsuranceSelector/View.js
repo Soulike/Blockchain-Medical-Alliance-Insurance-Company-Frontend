@@ -22,9 +22,7 @@ class InsuranceSelector extends React.Component
             ]),
         ];
 
-        return (
-            <Selector seriesArray={seriesArray} className={Style.InsuranceSelector} />
-        );
+        return <Selector seriesArray={seriesArray} className={Style.InsuranceSelector} />;
     }
 }
 

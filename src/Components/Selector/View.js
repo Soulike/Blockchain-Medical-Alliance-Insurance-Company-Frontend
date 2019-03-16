@@ -40,7 +40,7 @@ class Selector extends React.Component
 }
 
 Selector.propTypes = {
-    seriesArray: PropTypes.arrayOf(Series).isRequired,
+    seriesArray: PropTypes.arrayOf(PropTypes.instanceOf(Series)).isRequired,
     className: PropTypes.string,
 };
 

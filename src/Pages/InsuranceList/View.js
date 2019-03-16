@@ -6,6 +6,8 @@ import {View as Insurance} from '../../Components/Insurance';
 import Function from '../../Function';
 import {Link} from 'react-router';
 import {ROUTER} from '../../Config';
+import Api from '../../Api';
+import NAMESPACE from '../../NAMESPACE';
 
 class InsuranceList extends React.Component
 {
@@ -20,19 +22,18 @@ class InsuranceList extends React.Component
 
     componentDidMount()
     {
-        const insuranceList = [];
-        for (let i = 0; i < 10; i++)
-        {
-            insuranceList.push({
-                insuranceId: i,
-                insuranceSource: '中国人寿',
-                insuranceDuration: '2 年',
-                insurancePrice: 20000,
+
+        Api.sendGetInsuranceListRequestAsync()
+            .then(insuranceListWrapper =>
+            {
+                if (insuranceListWrapper)
+                {
+                    const insuranceList = insuranceListWrapper[NAMESPACE.INSURANCE_LIST.LIST.INSURANCE];
+                    this.setState({
+                        insuranceList,
+                    });
+                }
             });
-        }
-        this.setState({
-            insuranceList,
-        });
     }
 
     render()

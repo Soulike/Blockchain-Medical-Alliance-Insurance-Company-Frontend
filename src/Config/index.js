@@ -1,5 +1,6 @@
 import REGEX from './REGEX';
 import ROUTER from './ROUTER';
 import CAROUSEL_IMAGE from './CAROUSEL_IMAGE';
+import STATUS_CODE from './STATUS_CODE';
 
-export {REGEX, ROUTER, CAROUSEL_IMAGE};
+export {REGEX, ROUTER, CAROUSEL_IMAGE, STATUS_CODE};
