@@ -1,0 +1,18 @@
+@import "../../ModuleConfig/Bootstrap/Bootstrap";
+
+.CarouselContainer {
+    position: relative;
+
+    .insurancePublicationButton {
+        @extend .btn, .btn-primary;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 10%;
+        z-index: 1;
+        font-size: (28rem/16);
+        width: (291rem/16);
+        height: (80rem/16);
+        box-sizing: border-box;
+    }
+}
