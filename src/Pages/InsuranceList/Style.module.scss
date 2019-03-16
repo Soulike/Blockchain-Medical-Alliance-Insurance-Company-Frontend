@@ -3,4 +3,30 @@
     .carousel {
         height: (660rem/16);
     }
+
+    .contentWrapper {
+        padding: (90rem/16) (81rem/16);
+        max-width: 1920px;
+        margin: 0 auto;
+
+        .listWrapper {
+            margin: (-48rem/16) (-45rem/16);
+            margin-top: (38rem/16-48rem/16);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+
+            .insuranceWrapper {
+                margin: (48rem/16) (45rem/16);
+                width: (409rem/16);
+                box-sizing: content-box;
+
+                a {
+                    text-decoration: none;
+                    color: inherit;
+                }
+            }
+        }
+    }
 }

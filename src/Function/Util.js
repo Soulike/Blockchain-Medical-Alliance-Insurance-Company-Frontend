@@ -1,5 +1,8 @@
+import React from 'react';
+
 export default {
     randomString,
+    repeatNode,
 };
 
 function randomString(length = 11)
@@ -24,4 +27,18 @@ function randomString(length = 11)
         charArray.push(...Math.random().toString(36).slice(2, 2 + restLength));
     }
     return charArray.join('');
+}
+
+function repeatNode(node, time)
+{
+    if (typeof time !== 'number')
+    {
+        throw TypeError('The parameter "time" should be a number');
+    }
+    const nodeArray = [];
+    for (let i = 0; i < time; i++)
+    {
+        nodeArray.push(<div key={randomString(5)}>{node}</div>);
+    }
+    return nodeArray;
 }
