@@ -6,9 +6,32 @@ import {browserHistory} from 'react-router';
 import {ROUTER} from '../../../../Config';
 import ToolTip from '../../../../Components/Tooltip/View';
 import {TOOLTIP_POSITION} from '../../../../Components/Tooltip';
+import Clipboard from 'clipboard';
+import {SuccessAlert, WarningAlert} from '../../../../Components/Alerts';
 
 class InsuranceInfo extends React.Component
 {
+    constructor(props)
+    {
+        super(props);
+        this.publicKeyRef = React.createRef();
+    }
+
+
+    componentDidMount()
+    {
+        const clipboard = new Clipboard(this.publicKeyRef.current);
+        clipboard.on('success', () =>
+        {
+            SuccessAlert.pop('复制成功');
+        });
+
+        clipboard.on('error', () =>
+        {
+            WarningAlert.pop('复制失败');
+        });
+    }
+
     onInsuranceInfoClick = () =>
     {
         const {insuranceId} = this.props;
@@ -37,7 +60,14 @@ class InsuranceInfo extends React.Component
                 <td>{age} 岁</td>
                 <td>{isMale ? '男' : '女'}</td>
                 <td>{healthState}</td>
-                <td>
+                <td data-clipboard-text={publicKey}
+                    ref={this.publicKeyRef}
+                    onClick={e =>
+                    {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        e.cancelBubble = true;
+                    }}>
                     <ToolTip placement={TOOLTIP_POSITION.TOP} title={'点击复制公钥'}>
                         <div className={Style.publicKey}>{publicKey}</div>
                     </ToolTip>
