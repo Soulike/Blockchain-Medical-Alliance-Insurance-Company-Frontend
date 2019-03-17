@@ -1,0 +1,68 @@
+@import "../../ModuleConfig/Bootstrap/Bootstrap";
+
+.InsurancePublication {
+
+    padding: (82rem/16) (329rem/16);
+
+    .contentWrapper {
+        padding: (58rem/16) (119rem/16);
+        margin: 0 auto;
+
+        .formWrapper {
+            margin-top: (64rem/16);
+
+            .inputWrapper {
+                width: 100%;
+                margin: (28rem/16) 0;
+
+                .label {
+                    font-size: (28rem/16);
+                    margin-bottom: (19rem/16);
+                    display: inline-block;
+                }
+
+                input, textarea {
+                    @extend .form-control;
+                    display: block;
+                    height: (57rem/16);
+                    font-size: (25rem/16);
+
+                    &, &:focus {
+                        background-color: #ECF0F7;
+                    }
+                }
+
+                .insuranceDetailTextArea {
+                    height: (200rem/16);
+                    resize: none;
+                }
+            }
+        }
+    }
+
+    .contentWrapper, .buttonGroup {
+        width: (1223rem/16);
+        box-sizing: border-box;
+    }
+
+    .buttonGroup {
+        display: block;
+        margin: 0 auto;
+        @extend .btn-group;
+
+        .cancelButton, .publishButton {
+            width: 50%;
+            height: (87rem/16);
+            font-size: (28rem/16);
+            line-height: 1em;
+        }
+
+        .cancelButton {
+            @extend .btn, .btn-secondary;
+        }
+
+        .publishButton {
+            @extend .btn, .btn-primary;
+        }
+    }
+}
