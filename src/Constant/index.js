@@ -1,6 +1,8 @@
 import {STAGE_ID, STATE_ID_TO_TEXT} from './INSURANCE_PURCHASING_STAGE';
+import STATUS_CODE from './STATUS_CODE';
 
 export {
     STAGE_ID,
     STATE_ID_TO_TEXT,
+    STATUS_CODE,
 };
