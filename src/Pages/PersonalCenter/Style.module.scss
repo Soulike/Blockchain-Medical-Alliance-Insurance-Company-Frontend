@@ -1,0 +1,88 @@
+@import "../../ModuleConfig/Bootstrap/Bootstrap";
+
+.PersonalCenter {
+    width: (1433rem/16);
+    margin: 0 auto;
+    padding: (70rem/16) 0;
+
+    .contentWrapper {
+        display: flex;
+        justify-content: space-between;
+
+        .leftPart {
+            .certificateWrapper {
+                height: (831rem/16);
+                width: (640rem/16);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                .certificate {
+                    width: 98%;
+                    height: 98%;
+                    background-repeat: no-repeat !important;
+                    background-size: contain !important;
+                    background-position: center !important;
+                }
+            }
+        }
+
+        .rightPart {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            .logoWrapper {
+                width: (541rem/16);
+                height: (404rem/16);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                box-shadow: #D2D0D0 (10rem/16) (10rem/16) (30rem/16);
+
+                .logo {
+                    width: (390rem/16);
+                    height: (280rem/16);
+                    background-repeat: no-repeat !important;
+                    background-size: contain !important;
+                    background-position: center !important;
+                }
+            }
+
+            .companyInfoWrapper {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                height: (388rem/4*3/16);
+
+                .infoWrapper {
+                    font-size: (28rem/16);
+                    padding: (14rem/16) (52rem/16);
+                    vertical-align: middle;
+                    box-shadow: #D2D0D0 (5rem/16) (0rem/16) (20rem/16);
+
+                    .label {
+                        display: inline-block;
+                        width: 5em;
+                    }
+
+                    .info {
+                        display: inline-block;
+                    }
+                }
+            }
+        }
+    }
+
+    .modifyButtonWrapper {
+        text-align: center;
+        margin-top: 2rem;
+
+        .modifyButton {
+            @extend .btn, .btn-primary;
+            width: (180rem/16);
+            height: (60rem/16);
+            font-size: (20rem/16);
+        }
+    }
+}
