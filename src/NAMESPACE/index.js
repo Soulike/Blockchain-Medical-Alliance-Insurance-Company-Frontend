@@ -1,3 +1,4 @@
 export default {
     INSURANCE_LIST: require('./INSURANCE_LIST'),
+    INSURANCE_PURCHASING_PROCESS: require('./INSURANCE_PURCHASING_PROCESS'),
 };

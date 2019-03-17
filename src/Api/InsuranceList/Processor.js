@@ -1,6 +1,6 @@
 import Function from '../../Function';
-import {GET_INSURANCE_LIST} from './Route';
-import {STATUS_CODE} from '../../Config';
+import {GET_INSURANCE_LIST} from './ROUTE';
+import {STATUS_CODE} from '../../Constant';
 
 export default {
     sendGetInsuranceListRequestAsync,

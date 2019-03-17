@@ -1,44 +1,43 @@
 import React from 'react';
 import {View as Root} from '../../Components/Root';
-import {ROUTER} from '../../Config';
+import {PAGE_ID, PAGE_ID_TO_ROUTE, ROUTE_TO_PAGE_ID} from '../../Config';
 
 class RootContainer extends React.Component
 {
     shouldInsuranceLinkBeActive = pageId =>
     {
         return (
-            pageId === ROUTER.PAGE_ID.INSURANCE_COMPANY_INSURANCE_LIST ||
-            pageId === ROUTER.PAGE_ID.INSURANCE_COMPANY_INSURANCE_PUBLICATION ||
-            pageId === ROUTER.PAGE_ID.INSURANCE_COMPANY_INSURANCE_DETAIL
+            pageId === PAGE_ID.INSURANCE_COMPANY_INSURANCE_LIST ||
+            pageId === PAGE_ID.INSURANCE_COMPANY_INSURANCE_PUBLICATION ||
+            pageId === PAGE_ID.INSURANCE_COMPANY_INSURANCE_DETAIL
         );
     };
 
     shouldInsurancePurchasingLinkBeActive = pageId =>
     {
         return (
-            pageId === ROUTER.PAGE_ID.INSURANCE_COMPANY_INSURANCE_PURCHASING_PROCESS ||
-            pageId === ROUTER.PAGE_ID.INSURANCE_COMPANY_INSURANCE_PURCHASING_DETAIL
+            pageId === PAGE_ID.INSURANCE_COMPANY_INSURANCE_PURCHASING_PROCESS ||
+            pageId === PAGE_ID.INSURANCE_COMPANY_INSURANCE_PURCHASING_DETAIL
         );
     };
 
     shouldDirectPaymentLinkBeActive = pageId =>
     {
         return (
-            pageId === ROUTER.PAGE_ID.INSURANCE_COMPANY_DIRECT_PAYMENT_DETAIL ||
-            pageId === ROUTER.PAGE_ID.INSURANCE_COMPANY_DIRECT_PAYMENT_PROCESS
+            pageId === PAGE_ID.INSURANCE_COMPANY_DIRECT_PAYMENT_DETAIL ||
+            pageId === PAGE_ID.INSURANCE_COMPANY_DIRECT_PAYMENT_PROCESS
         );
     };
 
     shouldPersonalCenterLinkBeActive = pageId =>
     {
         return (
-            pageId === ROUTER.PAGE_ID.INSURANCE_COMPANY_PERSONAL_CENTER
+            pageId === PAGE_ID.INSURANCE_COMPANY_PERSONAL_CENTER
         );
     };
 
     render()
     {
-        const {PAGE_ID, PAGE_ID_TO_ROUTE, ROUTE_TO_PAGE_ID} = ROUTER;
         const {children} = this.props;
         const currentPageId = ROUTE_TO_PAGE_ID[this.props.location.pathname];
         return (

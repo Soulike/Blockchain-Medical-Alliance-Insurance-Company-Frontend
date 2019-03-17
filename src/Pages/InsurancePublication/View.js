@@ -2,14 +2,14 @@ import React from 'react';
 import Style from './Style.module.scss';
 import {View as Title} from './Components/Title';
 import {View as Card} from '../../Components/Card';
-import {ROUTER} from '../../Config';
+import {PAGE_ID, PAGE_ID_TO_ROUTE} from '../../Config';
 import {browserHistory} from 'react-router';
 
 class InsurancePublication extends React.Component
 {
     onCancelButtonClick = () =>
     {
-        browserHistory.push(ROUTER.PAGE_ID_TO_ROUTE[ROUTER.PAGE_ID.INSURANCE_COMPANY_INSURANCE_LIST]);
+        browserHistory.push(PAGE_ID_TO_ROUTE[PAGE_ID.INSURANCE_COMPANY_INSURANCE_LIST]);
     };
 
     //TODO：项目未确定，后台待补充
