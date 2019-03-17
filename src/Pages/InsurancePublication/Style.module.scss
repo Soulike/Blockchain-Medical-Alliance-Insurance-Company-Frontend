@@ -1,31 +1,32 @@
 @import "../../ModuleConfig/Bootstrap/Bootstrap";
+@import "../../Constant/RESIZE";
 
 .InsurancePublication {
 
-    padding: (82rem/16) (329rem/16);
+    padding: (82rem/$RESIZE_FACTOR) (329rem/$RESIZE_FACTOR);
 
     .contentWrapper {
-        padding: (58rem/16) (119rem/16);
+        padding: (58rem/$RESIZE_FACTOR) (119rem/$RESIZE_FACTOR);
         margin: 0 auto;
 
         .formWrapper {
-            margin-top: (64rem/16);
+            margin-top: (64rem/$RESIZE_FACTOR);
 
             .inputWrapper {
                 width: 100%;
-                margin: (28rem/16) 0;
+                margin: (28rem/$RESIZE_FACTOR) 0;
 
                 .label {
-                    font-size: (28rem/16);
-                    margin-bottom: (19rem/16);
+                    font-size: (28rem/$RESIZE_FACTOR);
+                    margin-bottom: (19rem/$RESIZE_FACTOR);
                     display: inline-block;
                 }
 
                 input, textarea {
                     @extend .form-control;
                     display: block;
-                    height: (57rem/16);
-                    font-size: (25rem/16);
+                    height: (57rem/$RESIZE_FACTOR);
+                    font-size: (25rem/$RESIZE_FACTOR);
 
                     &, &:focus {
                         background-color: #ECF0F7;
@@ -33,7 +34,7 @@
                 }
 
                 .insuranceDetailTextArea {
-                    height: (200rem/16);
+                    height: (200rem/$RESIZE_FACTOR);
                     resize: none;
                 }
             }
@@ -41,7 +42,7 @@
     }
 
     .contentWrapper, .buttonGroup {
-        width: (1223rem/16);
+        width: (1223rem/$RESIZE_FACTOR);
         box-sizing: border-box;
     }
 
@@ -52,8 +53,8 @@
 
         .cancelButton, .publishButton {
             width: 50%;
-            height: (87rem/16);
-            font-size: (28rem/16);
+            height: (87rem/$RESIZE_FACTOR);
+            font-size: (28rem/$RESIZE_FACTOR);
             line-height: 1em;
         }
 

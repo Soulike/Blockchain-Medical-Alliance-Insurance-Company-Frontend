@@ -1,11 +1,12 @@
 @import "../../Constant/COLOR";
+@import "../../Constant/RESIZE";
 
 .Selector {
-    font-size: (28rem/16);
+    font-size: (28rem/$RESIZE_FACTOR);
     width: 100%;
 
     .series {
-        margin-bottom: (38rem/16);
+        margin-bottom: (38rem/$RESIZE_FACTOR);
 
         &:last-child {
             margin-bottom: 0;
@@ -14,7 +15,7 @@
         .caption {
             display: inline-block;
             font-weight: bold;
-            margin-right: (122rem/16);
+            margin-right: (122rem/$RESIZE_FACTOR);
         }
 
         .itemWrapper {
@@ -22,7 +23,7 @@
 
             .item {
                 display: inline-block;
-                width: 12rem;
+                width: (192rem/$RESIZE_FACTOR);
                 cursor: pointer;
 
                 &.active, &:hover {

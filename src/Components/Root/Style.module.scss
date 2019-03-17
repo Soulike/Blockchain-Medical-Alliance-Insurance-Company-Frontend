@@ -4,7 +4,7 @@
 .Root {
     position: relative;
     min-height: 100%;
-    background-color: $GRAY;
+    background-color: #ECF0F7;
 
     .headerWrapper {
         position: relative;
@@ -14,7 +14,6 @@
     .mainContent {
         padding-bottom: $FOOTER_HEIGHT;
         box-sizing: content-box;
-        background-color: #ECF0F7;
     }
 
     .footerWrapper {
