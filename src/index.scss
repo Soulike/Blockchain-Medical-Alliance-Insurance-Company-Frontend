@@ -1,4 +1,5 @@
 @import "./Constant/FONT";
+@import "./Constant/COLOR";
 
 html {
     font-size: 10px;
@@ -7,4 +8,5 @@ html {
 
 html, body, #root {
     height: 100%;
+    color: $BLACK;
 }
