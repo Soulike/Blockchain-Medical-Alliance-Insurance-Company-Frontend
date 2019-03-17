@@ -1,16 +1,17 @@
 import Function from '../../Function';
-import {GET_INSURANCE_LIST} from './ROUTE';
 import {STATUS_CODE} from '../../Constant';
+import {GET_INSURANCE_PURCHASING_INFO_LIST} from './ROUTE';
 
 export default {
-    sendGetInsuranceListRequestAsync,
+    sendGetInsurancePurchasingInfoListRequest,
 };
 
-async function sendGetInsuranceListRequestAsync()
+async function sendGetInsurancePurchasingInfoListRequest()
 {
     try
     {
-        const {code, data} = await Function.getAsync(GET_INSURANCE_LIST, false);
+        const {code, data} = await Function.getAsync(GET_INSURANCE_PURCHASING_INFO_LIST, false);
+
         switch (code)
         {
             case STATUS_CODE.SUCCESS:

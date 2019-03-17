@@ -33,8 +33,8 @@ class InsurancePurchasingInfo extends React.Component
 
     onInsuranceInfoClick = () =>
     {
-        const {insuranceId} = this.props;
-        browserHistory.push(`${PAGE_ID_TO_ROUTE[PAGE_ID.INSURANCE_COMPANY_INSURANCE_PURCHASING_DETAIL]}?insuranceId=${insuranceId}`);
+        const {insurancePurchasingInfoId} = this.props;
+        browserHistory.push(`${PAGE_ID_TO_ROUTE[PAGE_ID.INSURANCE_COMPANY_INSURANCE_PURCHASING_DETAIL]}?insurancePurchasingInfoId=${insurancePurchasingInfoId}`);
     };
 
     render()
@@ -83,7 +83,7 @@ class InsurancePurchasingInfo extends React.Component
 }
 
 InsurancePurchasingInfo.propTypes = {
-    insuranceId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+    insurancePurchasingInfoId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
     name: PropTypes.string.isRequired,
     age: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
     isMale: PropTypes.bool.isRequired,
@@ -94,6 +94,7 @@ InsurancePurchasingInfo.propTypes = {
     insurancePeriod: PropTypes.string.isRequired,
     insurancePrice: PropTypes.number.isRequired,
     insurancePurchasingStage: PropTypes.oneOf(Object.values(STAGE_ID)).isRequired,
+    responsiblePersonId: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
     responsiblePersonName: PropTypes.string.isRequired,
 };
 

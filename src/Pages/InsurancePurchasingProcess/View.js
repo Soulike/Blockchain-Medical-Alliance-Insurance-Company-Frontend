@@ -2,9 +2,11 @@ import React from 'react';
 import Style from './Style.module.scss';
 import {View as InsurancePurchasingProcessSelector} from './Components/InsurancePurchasingProcessSelector';
 import {View as InsurancePurchasingInfo} from './Components/InsurancePurchasingInfo';
-import Function from '../../Function';
+// import Function from '../../Function';
 import {connect} from 'react-redux';
 import {STAGE_ID} from '../../Constant';
+import Api from '../../Api';
+import NAMESPACE from '../../NAMESPACE';
 
 class InsurancePurchasingProcess extends React.Component
 {
@@ -18,7 +20,7 @@ class InsurancePurchasingProcess extends React.Component
 
     componentDidMount()
     {
-        const insurancePurchasingInfoList = [];
+        /*const insurancePurchasingInfoList = [];
         for (let i = 0; i < 30; i++)
         {
             insurancePurchasingInfoList.push({
@@ -33,13 +35,26 @@ class InsurancePurchasingProcess extends React.Component
                 insurancePeriod: `${Math.round(Math.random() * 10 + 1)} 年`,
                 insurancePrice: Math.round(Math.random() * 20000 + 1000),
                 insurancePurchasingStage: Math.round(Math.random() * 3),
+                responsiblePersonId: 1,
                 responsiblePersonName: '王子贤',
             });
         }
 
         this.setState({
             insurancePurchasingInfoList,
-        });
+        });*/
+
+        Api.sendGetInsurancePurchasingInfoListRequest()
+            .then(insurancePurchasingInfoListWrapper =>
+            {
+                if (insurancePurchasingInfoListWrapper)
+                {
+                    const insurancePurchasingInfoList = insurancePurchasingInfoListWrapper[NAMESPACE.INSURANCE_PURCHASING_PROCESS.LIST.INSURANCE_PURCHASING_INFO];
+                    this.setState({
+                        insurancePurchasingInfoList,
+                    });
+                }
+            });
     }
 
 
@@ -71,10 +86,36 @@ class InsurancePurchasingProcess extends React.Component
                         {
                             insurancePurchasingInfoList.map(insurancePurchasingInfo =>
                             {
-                                const {insuranceId, age, insurancePurchasingStage} = insurancePurchasingInfo;
+                                const {
+                                    [NAMESPACE.INSURANCE_PURCHASING_PROCESS.INSURANCE_PURCHASING_INFO.INSURANCE_PURCHASING_INFO_ID]: insurancePurchasingInfoId,
+                                    [NAMESPACE.INSURANCE_PURCHASING_PROCESS.INSURANCE_PURCHASING_INFO.NAME]: name,
+                                    [NAMESPACE.INSURANCE_PURCHASING_PROCESS.INSURANCE_PURCHASING_INFO.AGE]: age,
+                                    [NAMESPACE.INSURANCE_PURCHASING_PROCESS.INSURANCE_PURCHASING_INFO.IS_MALE]: isMale,
+                                    [NAMESPACE.INSURANCE_PURCHASING_PROCESS.INSURANCE_PURCHASING_INFO.HEALTH_STATE]: healthState,
+                                    [NAMESPACE.INSURANCE_PURCHASING_PROCESS.INSURANCE_PURCHASING_INFO.PUBLIC_KEY]: publicKey,
+                                    [NAMESPACE.INSURANCE_PURCHASING_PROCESS.INSURANCE_PURCHASING_INFO.INSURANCE_TYPE]: insuranceType,
+                                    [NAMESPACE.INSURANCE_PURCHASING_PROCESS.INSURANCE_PURCHASING_INFO.INSURANCE_PURCHASING_TIME]: insurancePurchasingTime,
+                                    [NAMESPACE.INSURANCE_PURCHASING_PROCESS.INSURANCE_PURCHASING_INFO.INSURANCE_PERIOD]: insurancePeriod,
+                                    [NAMESPACE.INSURANCE_PURCHASING_PROCESS.INSURANCE_PURCHASING_INFO.INSURANCE_PRICE]: insurancePrice,
+                                    [NAMESPACE.INSURANCE_PURCHASING_PROCESS.INSURANCE_PURCHASING_INFO.INSURANCE_PURCHASING_STAGE]: insurancePurchasingStage,
+                                    [NAMESPACE.INSURANCE_PURCHASING_PROCESS.INSURANCE_PURCHASING_INFO.RESPONSIBLE_PERSON_ID]: responsiblePersonId,
+                                    [NAMESPACE.INSURANCE_PURCHASING_PROCESS.INSURANCE_PURCHASING_INFO.RESPONSIBLE_PERSON_NAME]: responsiblePersonName,
+                                } = insurancePurchasingInfo;
                                 if (age >= minAge && age <= maxAge && (insurancePurchasingStage === stageId || stageId === STAGE_ID.ALL_STAGES))
                                 {
-                                    return <InsurancePurchasingInfo {...insurancePurchasingInfo} key={insuranceId} />;
+                                    return <InsurancePurchasingInfo name={name}
+                                                                    age={age}
+                                                                    publicKey={publicKey}
+                                                                    insurancePeriod={insurancePeriod}
+                                                                    responsiblePersonName={responsiblePersonName}
+                                                                    healthState={healthState}
+                                                                    insurancePurchasingInfoId={insurancePurchasingInfoId}
+                                                                    insurancePrice={insurancePrice}
+                                                                    insurancePurchasingStage={insurancePurchasingStage}
+                                                                    insurancePurchasingTime={insurancePurchasingTime}
+                                                                    insuranceType={insuranceType}
+                                                                    isMale={isMale}
+                                                                    responsiblePersonId={responsiblePersonId} />;
                                 }
                                 else
                                 {
