@@ -1,16 +1,17 @@
 @import "../../../../Constant/COLOR";
 @import "../../../../Constant/ROOT";
+@import "../../../../Constant/RESIZE";
 
 .Header {
     width: 100%;
-    height: (80rem/16);
+    height: (80rem/$RESIZE_FACTOR);
     background-color: $WHITE;
     color: $BLACK;
-    font-size: (28rem/16);
+    font-size: (28rem/$RESIZE_FACTOR);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 10rem;
+    padding: 0 (160rem/$RESIZE_FACTOR);
 
     a {
         color: $BLACK;
@@ -25,18 +26,18 @@
     .logoWrapper {
 
         .logo {
-            width: 3.5rem;
+            width: (56rem/$RESIZE_FACTOR);
         }
     }
 
     .rightWrapper {
         display: flex;
         justify-content: space-between;
-        width: (743rem/16);
+        width: (743rem/$RESIZE_FACTOR);
 
 
         .navWrapper {
-            width: (516rem/16);
+            width: (516rem/$RESIZE_FACTOR);
             display: flex;
             justify-content: space-between;
 
@@ -46,7 +47,7 @@
         }
 
         .authControllerWrapper {
-            width: 5*1.75rem;
+            width: (140rem/$RESIZE_FACTOR);
             text-align: center;
 
             .link {

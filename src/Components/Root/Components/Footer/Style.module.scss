@@ -1,5 +1,6 @@
 @import "../../../../Constant/COLOR";
 @import "../../../../Constant/ROOT";
+@import "../../../../Constant/RESIZE";
 
 .Footer {
     height: $FOOTER_HEIGHT;
@@ -14,11 +15,11 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
-        width: 30rem;
-        font-size: (20rem/16);
+        width: (480rem/$RESIZE_FACTOR);
+        font-size: (20rem/$RESIZE_FACTOR);
 
         .info {
-            line-height: (50rem/16);
+            line-height: (50rem/$RESIZE_FACTOR);
         }
     }
 }
