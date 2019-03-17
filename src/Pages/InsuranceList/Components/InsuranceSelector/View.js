@@ -8,12 +8,6 @@ class InsuranceSelector extends React.Component
     {
         const {Series, Item} = SelectorObject;
         const seriesArray = [
-            new Series('来源', [
-                new Item('全部', () => null, true),
-                new Item('中国人寿', () => null),
-                new Item('泰康人寿', () => null),
-                new Item('太平洋保险', () => null),
-            ]),
             new Series('分类', [
                 new Item('全部', () => null, true),
                 new Item('少年', () => null),
