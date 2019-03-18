@@ -1,9 +1,9 @@
 @import "../../../../Constant/RESIZE";
+@import "../../../../ModuleConfig/Bootstrap/Bootstrap";
 
-.InsuranceInfo {
+.DirectPaymentInfo {
     cursor: pointer;
     user-select: none;
-
 
     .publicKey {
         max-width: (192rem/$RESIZE_FACTOR);
@@ -14,8 +14,7 @@
         text-decoration: underline dotted;
     }
 
-    &.active, &.active:hover {
-        background-color: #F00 !important;
-        color: #FFF !important;
+    button {
+        @extend .btn, .btn-primary;
     }
 }

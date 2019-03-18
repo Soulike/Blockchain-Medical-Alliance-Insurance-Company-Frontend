@@ -4,9 +4,9 @@ import {View as InsurancePurchasingProcessSelector} from './Components/Insurance
 import {View as InsurancePurchasingInfo} from './Components/InsurancePurchasingInfo';
 // import Function from '../../Function';
 import {connect} from 'react-redux';
-import {STAGE_ID} from '../../Constant';
-import Api from '../../Api';
+import {INSURANCE_PURCHASING_STAGE_ID} from '../../Constant';
 import NAMESPACE from '../../NAMESPACE';
+import Api from '../../Api';
 
 class InsurancePurchasingProcess extends React.Component
 {
@@ -24,7 +24,7 @@ class InsurancePurchasingProcess extends React.Component
         for (let i = 0; i < 30; i++)
         {
             insurancePurchasingInfoList.push({
-                insuranceId: i + 1,
+                insurancePurchasingInfoId: i + 1,
                 name: '罗小黑',
                 age: Math.round(Math.random() * 80 + 1),
                 isMale: false,
@@ -101,7 +101,7 @@ class InsurancePurchasingProcess extends React.Component
                                     [NAMESPACE.INSURANCE_PURCHASING_PROCESS.INSURANCE_PURCHASING_INFO.RESPONSIBLE_PERSON_ID]: responsiblePersonId,
                                     [NAMESPACE.INSURANCE_PURCHASING_PROCESS.INSURANCE_PURCHASING_INFO.RESPONSIBLE_PERSON_NAME]: responsiblePersonName,
                                 } = insurancePurchasingInfo;
-                                if (age >= minAge && age <= maxAge && (insurancePurchasingStage === stageId || stageId === STAGE_ID.ALL_STAGES))
+                                if (age >= minAge && age <= maxAge && (insurancePurchasingStage === stageId || stageId === INSURANCE_PURCHASING_STAGE_ID.ALL_STAGES))
                                 {
                                     return <InsurancePurchasingInfo name={name}
                                                                     age={age}

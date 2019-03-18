@@ -1,9 +1,9 @@
 @import "../../ModuleConfig/Bootstrap/Bootstrap";
 @import "../../Constant/RESIZE";
 
-.InsurancePurchasingProcess {
+.DirectPaymentProcess {
     padding: (41rem/$RESIZE_FACTOR) (58rem/$RESIZE_FACTOR);
-    width: (2060rem/$RESIZE_FACTOR);
+    width: (2000rem/$RESIZE_FACTOR);
     margin: 0 auto;
 
     .tableWrapper {

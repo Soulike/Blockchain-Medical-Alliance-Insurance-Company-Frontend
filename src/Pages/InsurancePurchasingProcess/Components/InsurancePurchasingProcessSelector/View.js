@@ -2,7 +2,7 @@ import React from 'react';
 import Style from './Style.module.scss';
 import {Object as SelectorObject, View as Selector} from '../../../../Components/Selector';
 import {changeFilterAgeRange, changeFilterInsurancePurchasingStage} from '../../Function';
-import {STAGE_ID} from '../../../../Constant';
+import {INSURANCE_PURCHASING_STAGE_ID, INSURANCE_PURCHASING_STAGE_ID_TO_TEXT} from '../../../../Constant';
 import {connect} from 'react-redux';
 
 class InsurancePurchasingProcessSelector extends React.Component
@@ -10,7 +10,7 @@ class InsurancePurchasingProcessSelector extends React.Component
 
     render()
     {
-        const {ageRange: [minAge, maxAge], stageId} = this.props;
+        const {ageRange: [minAge, maxAge], stageId: currentActiveStageId} = this.props;
         const {Series, Item} = SelectorObject;
         const seriesArray = [
             new Series('年龄', [
@@ -35,28 +35,34 @@ class InsurancePurchasingProcessSelector extends React.Component
                     changeFilterAgeRange(81);
                 }, minAge === 81 && maxAge === Number.MAX_VALUE),
             ]),
-            new Series('状态', [
+            new Series('状态', /*[
                 new Item('全部', () =>
                 {
                     changeFilterInsurancePurchasingStage();
-                }, stageId === STAGE_ID.ALL_STAGES),
+                }, stageId === INSURANCE_PURCHASING_STAGE_ID.ALL_STAGES),
                 new Item('申请', () =>
                 {
-                    changeFilterInsurancePurchasingStage(STAGE_ID.APPLICATION);
-                }, stageId === STAGE_ID.APPLICATION),
+                    changeFilterInsurancePurchasingStage(INSURANCE_PURCHASING_STAGE_ID.APPLICATION);
+                }, stageId === INSURANCE_PURCHASING_STAGE_ID.APPLICATION),
                 new Item('审核', () =>
                 {
-                    changeFilterInsurancePurchasingStage(STAGE_ID.VERIFY);
-                }, stageId === STAGE_ID.VERIFY),
+                    changeFilterInsurancePurchasingStage(INSURANCE_PURCHASING_STAGE_ID.INSURANCE_COMPANY_VERIFY);
+                }, stageId === INSURANCE_PURCHASING_STAGE_ID.INSURANCE_COMPANY_VERIFY),
                 new Item('缴费', () =>
                 {
-                    changeFilterInsurancePurchasingStage(STAGE_ID.PAY);
-                }, stageId === STAGE_ID.PAY),
+                    changeFilterInsurancePurchasingStage(INSURANCE_PURCHASING_STAGE_ID.PAY);
+                }, stageId === INSURANCE_PURCHASING_STAGE_ID.PAY),
                 new Item('完成', () =>
                 {
-                    changeFilterInsurancePurchasingStage(STAGE_ID.COMPLETE);
-                }, stageId === STAGE_ID.COMPLETE),
-            ]),
+                    changeFilterInsurancePurchasingStage(INSURANCE_PURCHASING_STAGE_ID.COMPLETE);
+                }, stageId === INSURANCE_PURCHASING_STAGE_ID.COMPLETE),
+            ]*/
+                Object.values(INSURANCE_PURCHASING_STAGE_ID).map(stageId => new Item(INSURANCE_PURCHASING_STAGE_ID_TO_TEXT[stageId],
+                    () =>
+                    {
+                        changeFilterInsurancePurchasingStage(stageId);
+                    }, currentActiveStageId === stageId),
+                )),
         ];
         return <Selector className={Style.InsurancePurchasingProcessSelector} seriesArray={seriesArray} />;
     }
