@@ -13,4 +13,9 @@
         font-family: monospace;
         text-decoration: underline dotted;
     }
+
+    &.active, &.active:hover {
+        background-color: #F00 !important;
+        color: #FFF !important;
+    }
 }

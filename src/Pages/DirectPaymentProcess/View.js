@@ -37,6 +37,7 @@ class DirectPaymentProcess extends React.Component
                 directPaymentStage: Math.round(Math.random() * 4),
                 responsiblePersonId: 1,
                 responsiblePersonName: '王子贤',
+                insurancePurchasingInfoId: i + 1,
             });
         }
 

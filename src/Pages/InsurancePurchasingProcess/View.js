@@ -2,10 +2,9 @@ import React from 'react';
 import Style from './Style.module.scss';
 import {View as InsurancePurchasingProcessSelector} from './Components/InsurancePurchasingProcessSelector';
 import {View as InsurancePurchasingInfo} from './Components/InsurancePurchasingInfo';
-// import Function from '../../Function';
+import Function from '../../Function';
 import {connect} from 'react-redux';
 import {INSURANCE_PURCHASING_STAGE_ID} from '../../Constant';
-import Api from '../../Api';
 import NAMESPACE from '../../NAMESPACE';
 
 class InsurancePurchasingProcess extends React.Component
@@ -20,7 +19,7 @@ class InsurancePurchasingProcess extends React.Component
 
     componentDidMount()
     {
-        /*const insurancePurchasingInfoList = [];
+        const insurancePurchasingInfoList = [];
         for (let i = 0; i < 30; i++)
         {
             insurancePurchasingInfoList.push({
@@ -42,19 +41,19 @@ class InsurancePurchasingProcess extends React.Component
 
         this.setState({
             insurancePurchasingInfoList,
-        });*/
+        });
 
-        Api.sendGetInsurancePurchasingInfoListRequest()
-            .then(insurancePurchasingInfoListWrapper =>
-            {
-                if (insurancePurchasingInfoListWrapper)
-                {
-                    const insurancePurchasingInfoList = insurancePurchasingInfoListWrapper[NAMESPACE.INSURANCE_PURCHASING_PROCESS.LIST.INSURANCE_PURCHASING_INFO];
-                    this.setState({
-                        insurancePurchasingInfoList,
-                    });
-                }
-            });
+        /* Api.sendGetInsurancePurchasingInfoListRequest()
+             .then(insurancePurchasingInfoListWrapper =>
+             {
+                 if (insurancePurchasingInfoListWrapper)
+                 {
+                     const insurancePurchasingInfoList = insurancePurchasingInfoListWrapper[NAMESPACE.INSURANCE_PURCHASING_PROCESS.LIST.INSURANCE_PURCHASING_INFO];
+                     this.setState({
+                         insurancePurchasingInfoList,
+                     });
+                 }
+             });*/
     }
 
 

@@ -5,18 +5,16 @@ import {DIRECT_PAYMENT_STAGE_ID, DIRECT_PAYMENT_STAGE_ID_TO_TEXT} from '../../..
 import {browserHistory} from 'react-router';
 import {PAGE_ID, PAGE_ID_TO_ROUTE} from '../../../../Config';
 import {TOOLTIP_POSITION, View as ToolTip} from '../../../../Components/Tooltip';
-import ClickCopy from '../../../../Components/ClickCopy/View';
+import {View as ClickCopy} from '../../../../Components/ClickCopy';
 import {SuccessAlert, WarningAlert} from '../../../../Components/Alerts';
 
 class DirectPaymentInfo extends React.Component
 {
-
     stopPropagation = e =>
     {
         e.stopPropagation();
         e.cancelBubble = true;
     };
-
 
     onDiagnosticResultButtonClick = e =>
     {
@@ -31,6 +29,8 @@ class DirectPaymentInfo extends React.Component
     onInsurancePurchasingInfoButtonClick = e =>
     {
         this.stopPropagation(e);
+        const {insurancePurchasingInfoId} = this.props;
+        browserHistory.push(`${PAGE_ID_TO_ROUTE[PAGE_ID.INSURANCE_COMPANY_INSURANCE_PURCHASING_PROCESS]}?insurancePurchasingInfoId=${insurancePurchasingInfoId}`);
     };
 
     onDirectPaymentInfoClick = () =>
