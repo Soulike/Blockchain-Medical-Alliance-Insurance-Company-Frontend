@@ -19,11 +19,13 @@ class DirectPaymentInfo extends React.Component
     onDiagnosticResultButtonClick = e =>
     {
         this.stopPropagation(e);
+        this.props.onDiagnosticResultButtonClick(e);
     };
 
     onMedicalDescriptionButtonClick = e =>
     {
         this.stopPropagation(e);
+        this.props.onMedicalDescriptionButtonClick(e);
     };
 
     onInsurancePurchasingInfoButtonClick = e =>
@@ -98,6 +100,8 @@ DirectPaymentInfo.propTypes = {
     directPaymentMoneyAmount: PropTypes.number.isRequired,
     insurancePurchasingInfoId: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
     directPaymentStage: PropTypes.oneOf(Object.values(DIRECT_PAYMENT_STAGE_ID)).isRequired,
+    onDiagnosticResultButtonClick: PropTypes.func.isRequired,
+    onMedicalDescriptionButtonClick: PropTypes.func.isRequired,
 };
 
 export default DirectPaymentInfo;

@@ -5,7 +5,10 @@ import DirectPaymentInfo from './Components/DirectPaymentInfo/View';
 import Function from '../../Function';
 import {connect} from 'react-redux';
 import NAMESPACE from '../../NAMESPACE';
-import {DIRECT_PAYMENT_STAGE_ID} from '../../Constant';
+import {DIRECT_PAYMENT_STAGE_ID, MODAL_ID} from '../../Constant';
+import {View as DiagnosticResultModal} from './Components/DiagnosticResultModal';
+import {Function as ModalFunction} from '../../Components/Modal';
+import {View as MedicalDescriptionModal} from './Components/MedicalDescriptionModal';
 
 class DirectPaymentProcess extends React.Component
 {
@@ -14,6 +17,8 @@ class DirectPaymentProcess extends React.Component
         super(props);
         this.state = {
             directPaymentInfoList: [],
+            currentActiveDiagnosticResultInModal: '',
+            currentActiveMedicalDescriptionInModal: '',
         };
     }
 
@@ -30,6 +35,8 @@ class DirectPaymentProcess extends React.Component
                 healthState: '健康',
                 publicKey: Function.randomString(52),
                 directPaymentMoneyAmount: Math.round(Math.random() * 20000 + 1000),
+                diagnosticResult: Function.randomString(20),
+                medicalDescription: Function.randomString(20),
                 insuranceType: '少年英才保险',
                 insurancePurchasingTime: '2019年03月17日',
                 insurancePeriod: `${Math.round(Math.random() * 10 + 1)} 年`,
@@ -46,9 +53,35 @@ class DirectPaymentProcess extends React.Component
         });
     }
 
+    onDiagnosticResultButtonClick = (diagnosticResult) =>
+    {
+        return () =>
+        {
+            this.setState({
+                currentActiveDiagnosticResultInModal: diagnosticResult,
+            }, () =>
+            {
+                ModalFunction.showModal(MODAL_ID.DIAGNOSTIC_RESULT_MODAL);
+            });
+        };
+    };
+
+    onMedicalDescriptionButtonClick = (medicalDescription) =>
+    {
+        return () =>
+        {
+            this.setState({
+                currentActiveMedicalDescriptionInModal: medicalDescription,
+            }, () =>
+            {
+                ModalFunction.showModal(MODAL_ID.MEDICAL_DESCRIPTION_MODAL);
+            });
+        };
+    };
+
     render()
     {
-        const {directPaymentInfoList} = this.state;
+        const {directPaymentInfoList, currentActiveDiagnosticResultInModal, currentActiveMedicalDescriptionInModal} = this.state;
         const {ageRange: [minAge, maxAge], stageId} = this.props;
         return (
             <div className={Style.DirectPaymentProcess}>
@@ -81,8 +114,8 @@ class DirectPaymentProcess extends React.Component
                                     [NAMESPACE.DIRECT_PAYMENT_PROCESS.DIRECT_PAYMENT_INFO.HEALTH_STATE]: healthState,
                                     [NAMESPACE.DIRECT_PAYMENT_PROCESS.DIRECT_PAYMENT_INFO.PUBLIC_KEY]: publicKey,
                                     [NAMESPACE.DIRECT_PAYMENT_PROCESS.DIRECT_PAYMENT_INFO.DIRECT_PAYMENT_MONEY_AMOUNT]: directPaymentMoneyAmount,
-                                    /*[NAMESPACE.DIRECT_PAYMENT_PROCESS.DIRECT_PAYMENT_INFO.DIAGNOSTIC_RESULT]: diagnosticResult,
-                                    [NAMESPACE.DIRECT_PAYMENT_PROCESS.DIRECT_PAYMENT_INFO.MEDICAL_DESCRIPTION]: medicalDescription,*/
+                                    [NAMESPACE.DIRECT_PAYMENT_PROCESS.DIRECT_PAYMENT_INFO.DIAGNOSTIC_RESULT]: diagnosticResult,
+                                    [NAMESPACE.DIRECT_PAYMENT_PROCESS.DIRECT_PAYMENT_INFO.MEDICAL_DESCRIPTION]: medicalDescription,
                                     [NAMESPACE.DIRECT_PAYMENT_PROCESS.DIRECT_PAYMENT_INFO.DIRECT_PAYMENT_STAGE]: directPaymentStage,
                                     [NAMESPACE.DIRECT_PAYMENT_PROCESS.DIRECT_PAYMENT_INFO.INSURANCE_PURCHASING_INFO_ID]: insurancePurchasingInfoId,
                                 } = directPaymentInfo;
@@ -97,7 +130,9 @@ class DirectPaymentProcess extends React.Component
                                                               directPaymentMoneyAmount={directPaymentMoneyAmount}
                                                               insurancePurchasingInfoId={insurancePurchasingInfoId}
                                                               directPaymentStage={directPaymentStage}
-                                                              key={directPaymentInfoId} />;
+                                                              key={directPaymentInfoId}
+                                                              onDiagnosticResultButtonClick={this.onDiagnosticResultButtonClick(diagnosticResult)}
+                                                              onMedicalDescriptionButtonClick={this.onMedicalDescriptionButtonClick(medicalDescription)} />;
                                 }
                                 else
                                 {
@@ -108,6 +143,8 @@ class DirectPaymentProcess extends React.Component
                         </tbody>
                     </table>
                 </div>
+                <DiagnosticResultModal diagnosticResult={currentActiveDiagnosticResultInModal} />
+                <MedicalDescriptionModal medicalDescription={currentActiveMedicalDescriptionInModal} />
             </div>
         );
     }
