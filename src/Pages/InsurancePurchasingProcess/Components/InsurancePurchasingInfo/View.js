@@ -1,7 +1,7 @@
 import React from 'react';
 import Style from './Style.module.scss';
 import PropTypes from 'prop-types';
-import {STAGE_ID, STATE_ID_TO_TEXT} from '../../../../Constant';
+import {INSURANCE_PURCHASING_STATE_ID, INSURANCE_PURCHASING_STATE_ID_TO_TEXT} from '../../../../Constant';
 import {browserHistory} from 'react-router';
 import {PAGE_ID, PAGE_ID_TO_ROUTE} from '../../../../Config';
 import {TOOLTIP_POSITION, View as ToolTip} from '../../../../Components/Tooltip';
@@ -75,7 +75,7 @@ class InsurancePurchasingInfo extends React.Component
                 <td>{insurancePurchasingTime}</td>
                 <td>{insurancePeriod}</td>
                 <td>{insurancePrice} 元</td>
-                <td>{STATE_ID_TO_TEXT[insurancePurchasingStage]}</td>
+                <td>{INSURANCE_PURCHASING_STATE_ID_TO_TEXT[insurancePurchasingStage]}</td>
                 <td>{responsiblePersonName}</td>
             </tr>
         );
@@ -93,7 +93,7 @@ InsurancePurchasingInfo.propTypes = {
     insurancePurchasingTime: PropTypes.string.isRequired,
     insurancePeriod: PropTypes.string.isRequired,
     insurancePrice: PropTypes.number.isRequired,
-    insurancePurchasingStage: PropTypes.oneOf(Object.values(STAGE_ID)).isRequired,
+    insurancePurchasingStage: PropTypes.oneOf(Object.values(INSURANCE_PURCHASING_STATE_ID)).isRequired,
     responsiblePersonId: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
     responsiblePersonName: PropTypes.string.isRequired,
 };

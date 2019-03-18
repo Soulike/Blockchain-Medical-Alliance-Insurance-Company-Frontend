@@ -4,7 +4,7 @@ import {View as InsurancePurchasingProcessSelector} from './Components/Insurance
 import {View as InsurancePurchasingInfo} from './Components/InsurancePurchasingInfo';
 // import Function from '../../Function';
 import {connect} from 'react-redux';
-import {STAGE_ID} from '../../Constant';
+import {INSURANCE_PURCHASING_STATE_ID} from '../../Constant';
 import Api from '../../Api';
 import NAMESPACE from '../../NAMESPACE';
 
@@ -101,7 +101,7 @@ class InsurancePurchasingProcess extends React.Component
                                     [NAMESPACE.INSURANCE_PURCHASING_PROCESS.INSURANCE_PURCHASING_INFO.RESPONSIBLE_PERSON_ID]: responsiblePersonId,
                                     [NAMESPACE.INSURANCE_PURCHASING_PROCESS.INSURANCE_PURCHASING_INFO.RESPONSIBLE_PERSON_NAME]: responsiblePersonName,
                                 } = insurancePurchasingInfo;
-                                if (age >= minAge && age <= maxAge && (insurancePurchasingStage === stageId || stageId === STAGE_ID.ALL_STAGES))
+                                if (age >= minAge && age <= maxAge && (insurancePurchasingStage === stageId || stageId === INSURANCE_PURCHASING_STATE_ID.ALL_STAGES))
                                 {
                                     return <InsurancePurchasingInfo name={name}
                                                                     age={age}
