@@ -5,32 +5,11 @@ import {INSURANCE_PURCHASING_STAGE_ID, INSURANCE_PURCHASING_STAGE_ID_TO_TEXT} fr
 import {browserHistory} from 'react-router';
 import {PAGE_ID, PAGE_ID_TO_ROUTE} from '../../../../Config';
 import {TOOLTIP_POSITION, View as ToolTip} from '../../../../Components/Tooltip';
-import Clipboard from 'clipboard';
 import {SuccessAlert, WarningAlert} from '../../../../Components/Alerts';
+import {View as ClickCopy} from '../../../../Components/ClickCopy';
 
 class InsurancePurchasingInfo extends React.Component
 {
-    constructor(props)
-    {
-        super(props);
-        this.publicKeyRef = React.createRef();
-    }
-
-
-    componentDidMount()
-    {
-        const clipboard = new Clipboard(this.publicKeyRef.current);
-        clipboard.on('success', () =>
-        {
-            SuccessAlert.pop('复制成功');
-        });
-
-        clipboard.on('error', () =>
-        {
-            WarningAlert.pop('复制失败');
-        });
-    }
-
     onInsuranceInfoClick = () =>
     {
         const {insurancePurchasingInfoId} = this.props;
@@ -59,17 +38,20 @@ class InsurancePurchasingInfo extends React.Component
                 <td>{age} 岁</td>
                 <td>{isMale ? '男' : '女'}</td>
                 <td>{healthState}</td>
-                <td data-clipboard-text={publicKey}
-                    ref={this.publicKeyRef}
-                    onClick={e =>
-                    {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        e.cancelBubble = true;
-                    }}>
-                    <ToolTip placement={TOOLTIP_POSITION.TOP} title={'点击复制公钥'}>
-                        <div className={Style.publicKey}>{publicKey}</div>
-                    </ToolTip>
+                <td>
+                    <ClickCopy copyText={publicKey} onCopySuccess={
+                        () =>
+                        {
+                            SuccessAlert.pop('公钥复制成功');
+                        }} onCopyError={
+                        () =>
+                        {
+                            WarningAlert.pop('公钥复制失败');
+                        }}>
+                        <ToolTip placement={TOOLTIP_POSITION.TOP} title={'点击复制公钥'}>
+                            <div className={Style.publicKey}>{publicKey}</div>
+                        </ToolTip>
+                    </ClickCopy>
                 </td>
                 <td>{insuranceType}</td>
                 <td>{insurancePurchasingTime}</td>

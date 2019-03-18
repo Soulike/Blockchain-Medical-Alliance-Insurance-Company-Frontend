@@ -1,0 +1,103 @@
+import React from 'react';
+import Style from './Style.module.scss';
+import PropTypes from 'prop-types';
+import {DIRECT_PAYMENT_STAGE_ID, DIRECT_PAYMENT_STAGE_ID_TO_TEXT} from '../../../../Constant';
+import {browserHistory} from 'react-router';
+import {PAGE_ID, PAGE_ID_TO_ROUTE} from '../../../../Config';
+import {TOOLTIP_POSITION, View as ToolTip} from '../../../../Components/Tooltip';
+import ClickCopy from '../../../../Components/ClickCopy/View';
+import {SuccessAlert, WarningAlert} from '../../../../Components/Alerts';
+
+class DirectPaymentInfo extends React.Component
+{
+
+    stopPropagation = e =>
+    {
+        e.stopPropagation();
+        e.cancelBubble = true;
+    };
+
+
+    onDiagnosticResultButtonClick = e =>
+    {
+        this.stopPropagation(e);
+    };
+
+    onMedicalDescriptionButtonClick = e =>
+    {
+        this.stopPropagation(e);
+    };
+
+    onInsurancePurchasingInfoButtonClick = e =>
+    {
+        this.stopPropagation(e);
+    };
+
+    onDirectPaymentInfoClick = () =>
+    {
+        const {directPaymentInfoId} = this.props;
+        browserHistory.push(`${PAGE_ID_TO_ROUTE[PAGE_ID.INSURANCE_COMPANY_DIRECT_PAYMENT_DETAIL]}?directPaymentInfoId=${directPaymentInfoId}`);
+    };
+
+    render()
+    {
+        const {
+            name,
+            age,
+            isMale,
+            healthState,
+            directPaymentMoneyAmount,
+            publicKey,
+            directPaymentStage,
+        } = this.props;
+        return (
+            <tr className={`${Style.DirectPaymentInfo}`}
+                onClick={this.onDirectPaymentInfoClick}>
+                <th scope="row">{name}</th>
+                <td>{age} 岁</td>
+                <td>{isMale ? '男' : '女'}</td>
+                <td>{healthState}</td>
+                <td>
+                    <ClickCopy copyText={publicKey} onCopySuccess={
+                        () =>
+                        {
+                            SuccessAlert.pop('公钥复制成功');
+                        }} onCopyError={
+                        () =>
+                        {
+                            WarningAlert.pop('公钥复制失败');
+                        }}>
+                        <ToolTip placement={TOOLTIP_POSITION.TOP} title={'点击复制公钥'}>
+                            <div className={Style.publicKey}>{publicKey}</div>
+                        </ToolTip>
+                    </ClickCopy>
+                </td>
+                <td>{directPaymentMoneyAmount} 元</td>
+                <td>
+                    <button onClick={this.onDiagnosticResultButtonClick}>查看</button>
+                </td>
+                <td>
+                    <button onClick={this.onMedicalDescriptionButtonClick}>查看</button>
+                </td>
+                <td>
+                    <button onClick={this.onInsurancePurchasingInfoButtonClick}>查看</button>
+                </td>
+                <td>{DIRECT_PAYMENT_STAGE_ID_TO_TEXT[directPaymentStage]}</td>
+            </tr>
+        );
+    }
+}
+
+DirectPaymentInfo.propTypes = {
+    directPaymentInfoId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+    name: PropTypes.string.isRequired,
+    age: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+    isMale: PropTypes.bool.isRequired,
+    healthState: PropTypes.string.isRequired,
+    publicKey: PropTypes.string.isRequired,
+    directPaymentMoneyAmount: PropTypes.number.isRequired,
+    insurancePurchasingInfoId: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+    directPaymentStage: PropTypes.oneOf(Object.values(DIRECT_PAYMENT_STAGE_ID)).isRequired,
+};
+
+export default DirectPaymentInfo;

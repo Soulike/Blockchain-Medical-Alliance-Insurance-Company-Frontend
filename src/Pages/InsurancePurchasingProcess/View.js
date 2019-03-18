@@ -24,7 +24,7 @@ class InsurancePurchasingProcess extends React.Component
         for (let i = 0; i < 30; i++)
         {
             insurancePurchasingInfoList.push({
-                insuranceId: i + 1,
+                insurancePurchasingInfoId: i + 1,
                 name: '罗小黑',
                 age: Math.round(Math.random() * 80 + 1),
                 isMale: false,
