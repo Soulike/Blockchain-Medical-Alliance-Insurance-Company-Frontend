@@ -45,7 +45,7 @@
 {
     insuranceList: [                    // 数组，内含多个保险
         {
-            insuranceId: Number,        // 保险唯一标识 ID
+            insuranceId: String,        // 保险唯一标识 ID
             insuranceSource: String,    // 保险来源，如 "人寿保险"
             insuranceDuration: String,  // 保期，如 "2 年"
             insurancePrice: Number,     // 保金，单位是人民币元
@@ -67,7 +67,7 @@
 {
     insurancePurchasingInfoList: [                  // 数组，内含多条投保信息
         {
-            insurancePurchasingInfoId: Number,      // 这条信息的唯一识别 ID
+            insurancePurchasingInfoId: String,      // 这条信息的唯一识别 ID
             name: String,                           // 投保人姓名
             age: Number,                            // 投保人年龄
             isMale: Boolean,                        // 投保人是不是男性
@@ -88,9 +88,52 @@
   - 投保阶段枚举值
 ```js
 {
+    ALL_STAGES: -1, // 所有状态，开发用
     APPLICATION: 0, // 投保人申请
-    VERIFY: 1,      // 保险公司审核
+    INSURANCE_COMPANY_VERIFY: 1,      // 保险公司审核
     PAY: 2,         // 投保人缴费，保险公司确认并发布保单
     COMPLETE: 3,    // 完成
+};
+```
+
+---
+
+### 直付处理列表部分（请求前缀为 `/directPaymentProcess`）
+
+#### `/getDirectPaymentInfoList`
+
+- 功能说明：获取直付处理信息列表
+- 请求方法：GET
+- 请求体：无
+- 响应体：
+```js
+{
+    directPaymentInfoList: [        // 数组，内含多条直付信息
+        {
+            directPaymentInfoId: String,            // 这条直付信息的唯一识别 ID
+            name: String,                           // 投保人姓名
+            age: Number,                            // 投保人年龄
+            isMale: Boolean,                        // 投保人是不是男性
+            healthState: String,                    // 投保人健康状况
+            publicKey: String,                      // 投保人公钥
+            directPaymentMoneyAmount: Number,       // 直付金额，单位是人民币元
+            diagnosticResult: String,               // 诊断结果
+            medicalDescription: String,             // 医疗说明
+            insurancePurchasingInfoId: String,      // 对应保险投保信息的 ID
+            directPaymentStage: ENUM_NUMBER,        // 枚举值，直付阶段
+        },
+    ]
+}
+```
+- 其他说明
+  - 直付阶段枚举值
+```js
+{
+    ALL_STAGES: -1,                         // 所有状态，开发用
+    APPLICATION: 0,                         // 投保人申请
+    HOSPITAL_CONFIRM_PAYABLE: 1,            // 待医院确认是否可以直付
+    INSURANCE_COMPANY_VERIFY_AND_PAY: 2,    // 待保险公司审核及支付
+    HOSPITAL_CONFIRM_PAYMENT: 3,            // 医院已确认收款
+    COMPLETE: 4,                            // 完成
 };
 ```
