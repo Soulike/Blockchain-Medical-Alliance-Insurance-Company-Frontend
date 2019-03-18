@@ -2,13 +2,14 @@ import React from 'react';
 import Style from './Style.module.scss';
 import {View as DirectPaymentProcessSelector} from './Components/DirectPaymentProcessSelector';
 import DirectPaymentInfo from './Components/DirectPaymentInfo/View';
-import Function from '../../Function';
+// import Function from '../../Function';
 import {connect} from 'react-redux';
 import NAMESPACE from '../../NAMESPACE';
 import {DIRECT_PAYMENT_STAGE_ID, MODAL_ID} from '../../Constant';
 import {View as DiagnosticResultModal} from './Components/DiagnosticResultModal';
 import {Function as ModalFunction} from '../../Components/Modal';
 import {View as MedicalDescriptionModal} from './Components/MedicalDescriptionModal';
+import Api from '../../Api';
 
 class DirectPaymentProcess extends React.Component
 {
@@ -24,7 +25,7 @@ class DirectPaymentProcess extends React.Component
 
     componentDidMount()
     {
-        const directPaymentInfoList = [];
+        /*const directPaymentInfoList = [];
         for (let i = 0; i < 30; i++)
         {
             directPaymentInfoList.push({
@@ -50,7 +51,18 @@ class DirectPaymentProcess extends React.Component
 
         this.setState({
             directPaymentInfoList,
-        });
+        });*/
+
+        Api.sendGetDirectPaymentInfoListRequestAsync()
+            .then(directPaymentInfoListWrapper =>
+            {
+                if (directPaymentInfoListWrapper)
+                {
+                    this.setState({
+                        directPaymentInfoList: directPaymentInfoListWrapper[NAMESPACE.DIRECT_PAYMENT_PROCESS.LIST.DIRECT_PAYMENT_INFO],
+                    });
+                }
+            });
     }
 
     onDiagnosticResultButtonClick = (diagnosticResult) =>
