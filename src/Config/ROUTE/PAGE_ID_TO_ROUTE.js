@@ -10,4 +10,6 @@ export default {
     [PAGE_ID.INSURANCE_COMPANY_INSURANCE_PURCHASING_DETAIL]: '/insurancePurchasingDetail',
     [PAGE_ID.INSURANCE_COMPANY_PERSONAL_CENTER]: '/personalCenter',
     [PAGE_ID.INSURANCE_COMPANY_INSURANCE_DETAIL]: '/insuranceDetail',
+    [PAGE_ID.INSURANCE_COMPANY_LOGIN]: '/login',
+    [PAGE_ID.INSURANCE_COMPANY_SIGN_UP]: '/signUp',
 };
