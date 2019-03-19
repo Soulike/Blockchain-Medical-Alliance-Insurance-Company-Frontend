@@ -5,6 +5,7 @@ import {View as InsurancePublication} from '../Pages/InsurancePublication';
 import {View as PersonalCenter} from '../Pages/PersonalCenter';
 import {View as InsurancePurchasingProcess} from '../Pages/InsurancePurchasingProcess';
 import {View as DirectPaymentProcess} from '../Pages/DirectPaymentProcess';
+import {View as Login} from '../Pages/Login';
 
 // 页面对应的组件
 export default {
@@ -16,6 +17,6 @@ export default {
     [PAGE_ID.INSURANCE_COMPANY_INSURANCE_PURCHASING_DETAIL]: null,
     [PAGE_ID.INSURANCE_COMPANY_PERSONAL_CENTER]: PersonalCenter,
     [PAGE_ID.INSURANCE_COMPANY_INSURANCE_DETAIL]: null,
-    [PAGE_ID.INSURANCE_COMPANY_LOGIN]: null,
+    [PAGE_ID.INSURANCE_COMPANY_LOGIN]: Login,
     [PAGE_ID.INSURANCE_COMPANY_SIGN_UP]: null,
 };

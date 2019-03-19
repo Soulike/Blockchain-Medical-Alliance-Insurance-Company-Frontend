@@ -11,6 +11,7 @@ class AccountPageCard extends React.Component
         const {children} = this.props;
         return (
             <div className={Style.AccountPageCard}>
+                <div className={Style.background} />
                 <Card className={Style.contentWrapper}>
                     <div className={Style.imageWrapper}>
                         <div className={Style.image} />

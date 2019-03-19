@@ -4,11 +4,21 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: url("../../Static/Account/background.png") no-repeat center;
-    background-size: cover;
-    padding: (100rem/$RESIZE_FACTOR) (285rem/$RESIZE_FACTOR);
+    padding: (90rem/$RESIZE_FACTOR) (285rem/$RESIZE_FACTOR);
+
+    .background {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        top: 0;
+        z-index: 0;
+        background: url("../../Static/Account/background.png") no-repeat center;
+        background-size: cover;
+    }
 
     .contentWrapper {
+        z-index: 1;
         border: (1rem/$RESIZE_FACTOR) solid #BBB;
         width: (1350rem/$RESIZE_FACTOR);
         height: (810rem/$RESIZE_FACTOR);
