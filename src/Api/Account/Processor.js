@@ -55,6 +55,7 @@ async function sendPostLoginRequestAsync(username, password)
     }
     catch (e)
     {
+        console.error(e);
         WarningAlert.pop('登录失败');
         return null;
     }
