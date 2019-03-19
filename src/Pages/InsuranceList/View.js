@@ -5,7 +5,7 @@ import {View as InsuranceSelector} from './Components/InsuranceSelector';
 import {View as Insurance} from '../../Components/Insurance';
 import Function from '../../Function';
 import {Link} from 'react-router';
-import {PAGE_ID, PAGE_ID_TO_ROUTE} from '../../Config';
+import {PAGE_ID_TO_ROUTE, REQUIRE_LOGIN_PAGE_ID} from '../../Config';
 import Api from '../../Api';
 import NAMESPACE from '../../NAMESPACE';
 
@@ -52,7 +52,7 @@ class InsuranceList extends React.Component
                                 return (
                                     <div className={Style.insuranceWrapper} key={i}>
                                         <Link onlyActiveOnIndex={false}
-                                              to={`${PAGE_ID_TO_ROUTE[PAGE_ID.INSURANCE_COMPANY_INSURANCE_DETAIL]}?insuranceId=${insuranceId}`}>
+                                              to={`${PAGE_ID_TO_ROUTE[REQUIRE_LOGIN_PAGE_ID.INSURANCE_COMPANY_INSURANCE_DETAIL]}?insuranceId=${insuranceId}`}>
                                             <Insurance {...{
                                                 insuranceSource,
                                                 insuranceDuration,

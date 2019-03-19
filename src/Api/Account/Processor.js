@@ -1,46 +1,54 @@
 import Function from '../../Function';
-import {GET_INSURANCE_LIST} from './ROUTE';
+import {LOGIN} from './ROUTE';
+import NAMESPACE from '../../NAMESPACE';
 import {STATUS_CODE} from '../../Constant';
-import {Function as AuthProcessorFunction} from '../../Components/AuthProcessor';
+import {DangerAlert, WarningAlert} from '../../Components/Alerts';
 
 export default {
-    sendGetInsuranceListRequestAsync,
+    sendPostLoginRequestAsync,
 };
 
-async function sendGetInsuranceListRequestAsync()
+async function sendPostLoginRequestAsync(username, password)
 {
     try
     {
-        const {code, data} = await Function.getAsync(GET_INSURANCE_LIST, false);
+        const {code} = await Function.postAsync(LOGIN, {
+            [NAMESPACE.ACCOUNT.ACCOUNT.USERNAME]: username,
+            [NAMESPACE.ACCOUNT.ACCOUNT.PASSWORD]: password,
+        });
         switch (code)
         {
             case STATUS_CODE.SUCCESS:
             {
-                return data;
+                return true;
             }
             case STATUS_CODE.CONTENT_NOT_FOUND:
             {
+                WarningAlert.pop('用户名或密码错误');
                 return null;
             }
             case STATUS_CODE.WRONG_PARAMETER:
             {
+                WarningAlert.pop('参数错误');
                 return null;
             }
             case STATUS_CODE.REJECTION:
             {
+                WarningAlert.pop('用户名或密码错误');
                 return null;
             }
             case STATUS_CODE.INVALID_SESSION:
             {
-                AuthProcessorFunction.setLoggedOut();
                 return null;
             }
             case STATUS_CODE.INTERNAL_SERVER_ERROR:
             {
+                DangerAlert.pop('服务器错误');
                 return null;
             }
             default:
             {
+                WarningAlert.pop('登录失败');
                 return null;
             }
         }
@@ -48,6 +56,7 @@ async function sendGetInsuranceListRequestAsync()
     catch (e)
     {
         console.error(e);
+        WarningAlert.pop('登录失败');
         return null;
     }
 }
