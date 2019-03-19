@@ -1,7 +1,7 @@
-import banner1 from '../Static/banner1.jpg';
-import banner2 from '../Static/banner2.jpg';
-import banner3 from '../Static/banner3.jpg';
-import banner4 from '../Static/banner4.jpg';
+import banner1 from '../Static/InsuranceList/banner1.jpg';
+import banner2 from '../Static/InsuranceList/banner2.jpg';
+import banner3 from '../Static/InsuranceList/banner3.jpg';
+import banner4 from '../Static/InsuranceList/banner4.jpg';
 
 export default [
     banner1,

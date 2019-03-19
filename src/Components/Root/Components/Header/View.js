@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import Style from './Style.module.scss';
 import {Link} from 'react-router';
 import PropTypes from 'prop-types';
-import logo from '../../../../Static/logo.svg';
+import logo from '../../../../Static/Root/logo.svg';
 
 class Header extends Component
 {

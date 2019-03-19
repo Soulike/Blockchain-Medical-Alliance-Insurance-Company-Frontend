@@ -1,8 +1,8 @@
 import React from 'react';
 import Style from './Style.module.scss';
 import {View as Card} from '../../Components/Card';
-import companyLogo from '../../Static/companyLogo.jpg';
-import certificate from '../../Static/certificate.jpg';
+import companyLogo from '../../Static/PersonalCenter/companyLogo.jpg';
+import certificate from '../../Static/PersonalCenter/certificate.jpg';
 
 class PersonalCenter extends React.Component
 {

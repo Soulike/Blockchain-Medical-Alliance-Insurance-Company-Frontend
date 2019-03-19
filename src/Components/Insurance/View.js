@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Style from './Style.module.scss';
 import PropTypes from 'prop-types';
-import '../../Static/insurance.jpg';
+import '../../Static/InsuranceList/insurance.jpg';
 
 class Insurance extends Component
 {
