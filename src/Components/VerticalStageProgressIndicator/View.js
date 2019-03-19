@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import {View as StageIndicator} from './Components/StageIndicator';
 import {View as StagePoint} from './Components/StagePoint';
 
-class StageProgressIndicator extends React.Component
+class VerticalStageProgressIndicator extends React.Component
 {
     render()
     {
@@ -14,7 +14,7 @@ class StageProgressIndicator extends React.Component
             maxStageNumber = currentStageNumber;
         }
         return (
-            <div className={Style.StageProgressIndicator}>
+            <div className={Style.VerticalStageProgressIndicator}>
                 {
                     (() =>
                     {
@@ -49,14 +49,14 @@ class StageProgressIndicator extends React.Component
     }
 }
 
-StageProgressIndicator.propTypes = {
+VerticalStageProgressIndicator.propTypes = {
     currentStageNumber: PropTypes.number.isRequired,        // 从 0 开始数，当前状态的编号
     maxStageNumber: PropTypes.number.isRequired,            // 从 0 开始数，最后状态的编号
     stageLabelArray: PropTypes.arrayOf(PropTypes.string),   // 数组，存放每个状态对应的文字
 };
 
-StageProgressIndicator.defaultProps = {
+VerticalStageProgressIndicator.defaultProps = {
     stageLabelArray: [],
 };
 
-export default StageProgressIndicator;
+export default VerticalStageProgressIndicator;
