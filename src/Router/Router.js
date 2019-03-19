@@ -6,8 +6,6 @@ import PAGE_ID_TO_COMPONENT from './PAGE_ID_TO_COMPONENT';
 import {View as RootContainer} from '../ComponentContainers/RootContainer';
 import {Function as AuthProcessorFunction} from '../Components/AuthProcessor';
 
-const {requireLogin} = AuthProcessorFunction;
-
 const Routes = () => (
     <Router history={browserHistory}>
         <Route path='/' component={RootContainer}>
@@ -21,7 +19,7 @@ const Routes = () => (
                 Object.values(REQUIRE_LOGIN_PAGE_ID).map(PAGE_ID => <Route path={PAGE_ID_TO_ROUTE[PAGE_ID]}
                                                                            component={PAGE_ID_TO_COMPONENT[PAGE_ID]}
                                                                            key={PAGE_ID_TO_ROUTE[PAGE_ID]}
-                                                                           onEnter={requireLogin} />)
+                                                                           onEnter={AuthProcessorFunction.requireLogin} />)
             }
         </Route>
     </Router>

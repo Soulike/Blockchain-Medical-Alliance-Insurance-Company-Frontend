@@ -1,6 +1,7 @@
 import React from 'react';
 import {View as Root} from '../../Components/Root';
-import {PAGE_ID_TO_ROUTE, REQUIRE_LOGIN_PAGE_ID, ROUTE_TO_PAGE_ID} from '../../Config';
+import {NOT_REQUIRE_LOGIN_PAGE_ID, PAGE_ID_TO_ROUTE, REQUIRE_LOGIN_PAGE_ID, ROUTE_TO_PAGE_ID} from '../../Config';
+import {connect} from 'react-redux';
 
 class RootContainer extends React.Component
 {
@@ -38,15 +39,15 @@ class RootContainer extends React.Component
 
     render()
     {
-        const {children} = this.props;
+        const {children, hasLoggedIn} = this.props;
         const currentPageId = ROUTE_TO_PAGE_ID[this.props.location.pathname];
         return (
-            <Root hasLoggedIn={true}
+            <Root hasLoggedIn={hasLoggedIn}
                   insuranceUrl={PAGE_ID_TO_ROUTE[REQUIRE_LOGIN_PAGE_ID.INSURANCE_COMPANY_INSURANCE_LIST]}
                   directPaymentUrl={PAGE_ID_TO_ROUTE[REQUIRE_LOGIN_PAGE_ID.INSURANCE_COMPANY_DIRECT_PAYMENT_PROCESS]}
                   insurancePurchasingUrl={PAGE_ID_TO_ROUTE[REQUIRE_LOGIN_PAGE_ID.INSURANCE_COMPANY_INSURANCE_PURCHASING_PROCESS]}
-                  loginUrl={'#'}
-                  signUpUrl={'#'}
+                  loginUrl={PAGE_ID_TO_ROUTE[NOT_REQUIRE_LOGIN_PAGE_ID.INSURANCE_COMPANY_LOGIN]}
+                  signUpUrl={PAGE_ID_TO_ROUTE[NOT_REQUIRE_LOGIN_PAGE_ID.INSURANCE_COMPANY_SIGN_UP]}
                   personalCenterUrl={PAGE_ID_TO_ROUTE[REQUIRE_LOGIN_PAGE_ID.INSURANCE_COMPANY_PERSONAL_CENTER]}
                   insuranceLinkIsActive={this.shouldInsuranceLinkBeActive(currentPageId)}
                   insurancePurchasingLinkIsActive={this.shouldInsurancePurchasingLinkBeActive(currentPageId)}
@@ -56,4 +57,12 @@ class RootContainer extends React.Component
     }
 }
 
-export default RootContainer;
+const mapStateToProps = state =>
+{
+    const {AuthProcessor: {hasLoggedIn}} = state;
+    return {
+        hasLoggedIn,
+    };
+};
+
+export default connect(mapStateToProps)(RootContainer);

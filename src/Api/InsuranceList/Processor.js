@@ -1,6 +1,7 @@
 import Function from '../../Function';
 import {GET_INSURANCE_LIST} from './ROUTE';
 import {STATUS_CODE} from '../../Constant';
+import {Function as AuthProcessorFunction} from '../../Components/AuthProcessor';
 
 export default {
     sendGetInsuranceListRequestAsync,
@@ -31,6 +32,7 @@ async function sendGetInsuranceListRequestAsync()
             }
             case STATUS_CODE.INVALID_SESSION:
             {
+                AuthProcessorFunction.setLoggedOut();
                 return null;
             }
             case STATUS_CODE.INTERNAL_SERVER_ERROR:

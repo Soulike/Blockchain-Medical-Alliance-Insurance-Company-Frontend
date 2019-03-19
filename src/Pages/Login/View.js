@@ -31,9 +31,11 @@ class Login extends React.Component
         e.preventDefault();
         const username = this.usernameInputRef.current.value;
         const password = this.passwordInputRef.current.value;
+        const {setLoggedIn} = this.props;
         const requestIsSuccessful = await Api.sendPostLoginRequestAsync(username, password);
         if (requestIsSuccessful)
         {
+            setLoggedIn();
             browserHistory.push(PAGE_ID_TO_ROUTE[REQUIRE_LOGIN_PAGE_ID.INSURANCE_COMPANY_INSURANCE_LIST]);
         }
     };
