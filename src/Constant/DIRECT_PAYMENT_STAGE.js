@@ -14,4 +14,13 @@ export const DIRECT_PAYMENT_STAGE_ID_TO_TEXT = {
     [DIRECT_PAYMENT_STAGE_ID.INSURANCE_COMPANY_VERIFY_AND_PAY]: '公司审核付款',
     [DIRECT_PAYMENT_STAGE_ID.HOSPITAL_CONFIRM_PAYMENT]: '医院确认收款',
     [DIRECT_PAYMENT_STAGE_ID.COMPLETE]: '已完成',
+
+    // 为了进度组件取 Label 方便，增加迭代器跳过 -1
+    [Symbol.iterator]: function* ()
+    {
+        for (let i = 0; i < Object.keys(DIRECT_PAYMENT_STAGE_ID).length - 1; i++)
+        {
+            yield this[i];
+        }
+    },
 };
