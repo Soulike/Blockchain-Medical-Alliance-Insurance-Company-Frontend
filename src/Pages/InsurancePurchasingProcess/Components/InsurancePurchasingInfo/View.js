@@ -3,7 +3,7 @@ import Style from './Style.module.scss';
 import PropTypes from 'prop-types';
 import {INSURANCE_PURCHASING_STAGE_ID, INSURANCE_PURCHASING_STAGE_ID_TO_TEXT} from '../../../../Constant';
 import {browserHistory, withRouter} from 'react-router';
-import {PAGE_ID, PAGE_ID_TO_ROUTE} from '../../../../Config';
+import {PAGE_ID_TO_ROUTE, REQUIRE_LOGIN_PAGE_ID} from '../../../../Config';
 import {TOOLTIP_POSITION, View as ToolTip} from '../../../../Components/Tooltip';
 import {SuccessAlert, WarningAlert} from '../../../../Components/Alerts';
 import {View as ClickCopy} from '../../../../Components/ClickCopy';
@@ -31,7 +31,7 @@ class InsurancePurchasingInfo extends React.Component
     onInsuranceInfoClick = () =>
     {
         const {insurancePurchasingInfoId} = this.props;
-        browserHistory.push(`${PAGE_ID_TO_ROUTE[PAGE_ID.INSURANCE_COMPANY_INSURANCE_PURCHASING_DETAIL]}?insurancePurchasingInfoId=${insurancePurchasingInfoId}`);
+        browserHistory.push(`${PAGE_ID_TO_ROUTE[REQUIRE_LOGIN_PAGE_ID.INSURANCE_COMPANY_INSURANCE_PURCHASING_DETAIL]}?insurancePurchasingInfoId=${insurancePurchasingInfoId}`);
     };
 
     render()

@@ -1,20 +1,53 @@
 import React from 'react';
 import Style from './Style.module.scss';
 import {View as AccountPageCard} from '../../Components/AccountPageCard';
-import {Link} from 'react-router';
+import {browserHistory, Link} from 'react-router';
+import {Actions as AuthProcessorActions} from '../../Components/AuthProcessor';
+import {connect} from 'react-redux';
+import {PAGE_ID_TO_ROUTE, REQUIRE_LOGIN_PAGE_ID} from '../../Config';
+import Api from '../../Api';
 
 class Login extends React.Component
 {
+    constructor(props)
+    {
+        super(props);
+        this.usernameInputRef = React.createRef();
+        this.passwordInputRef = React.createRef();
+    }
+
+
+    componentDidMount()
+    {
+        const {hasLoggedIn} = this.props;
+        if (hasLoggedIn)
+        {
+            browserHistory.push(PAGE_ID_TO_ROUTE[REQUIRE_LOGIN_PAGE_ID.INSURANCE_COMPANY_INSURANCE_LIST]);
+        }
+    }
+
+    onFormSubmit = async e =>
+    {
+        e.preventDefault();
+        const username = this.usernameInputRef.current.value;
+        const password = this.passwordInputRef.current.value;
+        const requestIsSuccessful = await Api.sendPostLoginRequestAsync(username, password);
+        if (requestIsSuccessful)
+        {
+            browserHistory.push(PAGE_ID_TO_ROUTE[REQUIRE_LOGIN_PAGE_ID.INSURANCE_COMPANY_INSURANCE_LIST]);
+        }
+    };
+
     render()
     {
         return (
             <AccountPageCard>
                 <div className={Style.Login}>
                     <div className={Style.title}>登录</div>
-                    <form className={Style.loginForm}>
+                    <form className={Style.loginForm} onSubmit={this.onFormSubmit}>
                         <div className={Style.inputWrapper}>
-                            <input type="text" placeholder={'用户名'} autoFocus={true} />
-                            <input type="text" placeholder={'密码'} />
+                            <input type="text" placeholder={'用户名'} autoFocus={true} ref={this.usernameInputRef} />
+                            <input type="text" placeholder={'密码'} ref={this.passwordInputRef} />
                         </div>
                         <div className={Style.linkWrapper}>
                             <Link onlyActiveOnIndex={false} to={'#'}>忘记密码？</Link>
@@ -29,4 +62,16 @@ class Login extends React.Component
     }
 }
 
-export default Login;
+const mapStateToProps = state =>
+{
+    const {AuthProcessor: {hasLoggedIn}} = state;
+    return {
+        hasLoggedIn,
+    };
+};
+
+const mapDispatchToProps = {
+    setLoggedIn: AuthProcessorActions.setLoggedInAction,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
