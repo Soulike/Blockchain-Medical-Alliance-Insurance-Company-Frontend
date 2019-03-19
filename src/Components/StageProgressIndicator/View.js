@@ -8,7 +8,7 @@ class StageProgressIndicator extends React.Component
 {
     render()
     {
-        let {currentStageNumber, maxStageNumber} = this.props;
+        let {currentStageNumber, maxStageNumber, stageLabelArray} = this.props;
         if (maxStageNumber < currentStageNumber)
         {
             maxStageNumber = currentStageNumber;
@@ -23,21 +23,23 @@ class StageProgressIndicator extends React.Component
                         {
                             for (let i = 0; i <= maxStageNumber - 1; i++)
                             {
-                                nodeArray.push(<StageIndicator hasReached={true} />);
+                                nodeArray.push(<StageIndicator hasReached={true} stageLabel={stageLabelArray[i]} />);
                             }
-                            nodeArray.push(<StagePoint hasReached={true} />);
+                            nodeArray.push(<StagePoint hasReached={true}
+                                                       stageLabel={stageLabelArray[maxStageNumber]} />);
                         }
                         else
                         {
                             for (let i = 0; i <= currentStageNumber; i++)
                             {
-                                nodeArray.push(<StageIndicator hasReached={true} />);
+                                nodeArray.push(<StageIndicator hasReached={true} stageLabel={stageLabelArray[i]} />);
                             }
                             for (let i = currentStageNumber + 1; i <= maxStageNumber - 1; i++)
                             {
-                                nodeArray.push(<StageIndicator hasReached={false} />);
+                                nodeArray.push(<StageIndicator hasReached={false} stageLabel={stageLabelArray[i]} />);
                             }
-                            nodeArray.push(<StagePoint hasReached={false} />);
+                            nodeArray.push(<StagePoint hasReached={false}
+                                                       stageLabel={stageLabelArray[maxStageNumber]} />);
                         }
                         return nodeArray;
                     })()
@@ -50,6 +52,11 @@ class StageProgressIndicator extends React.Component
 StageProgressIndicator.propTypes = {
     currentStageNumber: PropTypes.number.isRequired,        // 从 0 开始数，当前状态的编号
     maxStageNumber: PropTypes.number.isRequired,            // 从 0 开始数，最后状态的编号
+    stageLabelArray: PropTypes.arrayOf(PropTypes.string),   // 数组，存放每个状态对应的文字
+};
+
+StageProgressIndicator.defaultProps = {
+    stageLabelArray: [],
 };
 
 export default StageProgressIndicator;

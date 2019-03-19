@@ -7,9 +7,9 @@ class StageIndicator extends React.Component
 {
     render()
     {
-        const {hasReached} = this.props;
+        const {hasReached, stageLabel} = this.props;
         return [
-            <StagePoint hasReached={hasReached} key={'stagePoint'} />,
+            <StagePoint hasReached={hasReached} key={'stagePoint'} stageLabel={stageLabel} />,
             <div className={Style.connectLineWrapper} key={'connectLineWrapper'}>
                 <div className={`${Style.connectLine} ${hasReached ? Style.reached : null}`} />
             </div>,
@@ -19,6 +19,7 @@ class StageIndicator extends React.Component
 
 StageIndicator.propTypes = {
     hasReached: PropTypes.bool.isRequired,
+    stageLabel: PropTypes.string,
 };
 
 export default StageIndicator;
