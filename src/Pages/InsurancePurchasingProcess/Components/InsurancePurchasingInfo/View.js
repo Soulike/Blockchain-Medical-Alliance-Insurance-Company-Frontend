@@ -87,7 +87,7 @@ InsurancePurchasingInfo.propTypes = {
     insurancePurchasingInfoId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
     name: PropTypes.string.isRequired,
     age: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
-    isMale: PropTypes.bool.isRequired,
+    isMale: PropTypes.oneOf([0, 1]).isRequired,
     healthState: PropTypes.string.isRequired,
     publicKey: PropTypes.string.isRequired,
     insuranceType: PropTypes.string.isRequired,

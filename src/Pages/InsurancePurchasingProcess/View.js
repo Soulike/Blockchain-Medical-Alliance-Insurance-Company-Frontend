@@ -27,7 +27,7 @@ class InsurancePurchasingProcess extends React.Component
                 insurancePurchasingInfoId: i + 1,
                 name: '罗小黑',
                 age: Math.round(Math.random() * 80 + 1),
-                isMale: false,
+                isMale: 0,
                 healthState: '健康',
                 publicKey: Function.randomString(52),
                 insuranceType: '少年英才保险',

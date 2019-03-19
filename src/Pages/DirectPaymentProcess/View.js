@@ -32,7 +32,7 @@ class DirectPaymentProcess extends React.Component
                 directPaymentInfoId: i + 1,
                 name: '罗小黑',
                 age: Math.round(Math.random() * 80 + 1),
-                isMale: false,
+                isMale: 0,
                 healthState: '健康',
                 publicKey: Function.randomString(52),
                 directPaymentMoneyAmount: Math.round(Math.random() * 20000 + 1000),

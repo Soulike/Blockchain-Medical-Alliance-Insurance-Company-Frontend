@@ -70,7 +70,7 @@
             insurancePurchasingInfoId: String,      // 这条信息的唯一识别 ID
             name: String,                           // 投保人姓名
             age: Number,                            // 投保人年龄
-            isMale: Boolean,                        // 投保人是不是男性
+            isMale: Number,                         // 投保人是不是男性，0为女，1为男
             healthState: String,                    // 投保人健康状况
             publicKey: String,                      // 投保人公钥
             insuranceType: String,                  // 保险类型
@@ -113,7 +113,7 @@
             directPaymentInfoId: String,            // 这条直付信息的唯一识别 ID
             name: String,                           // 投保人姓名
             age: Number,                            // 投保人年龄
-            isMale: Boolean,                        // 投保人是不是男性
+            isMale: Number,                         // 投保人是不是男性，0为女，1为男
             healthState: String,                    // 投保人健康状况
             publicKey: String,                      // 投保人公钥
             directPaymentMoneyAmount: Number,       // 直付金额，单位是人民币元
