@@ -1,6 +1,8 @@
 export const REGEX = {
     USERNAME: /^\w{5,20}$/,
     PASSWORD: /^\w{10,}$/,
+    AGE: /^\d+$/,
+    EMAIL: /^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/,
 };
 
 export const REGEX_TEXT = {
