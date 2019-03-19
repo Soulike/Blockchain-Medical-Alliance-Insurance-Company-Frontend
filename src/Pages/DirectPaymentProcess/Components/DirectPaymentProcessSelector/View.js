@@ -2,15 +2,15 @@ import React from 'react';
 import Style from './Style.module.scss';
 import {Object as SelectorObject, View as Selector} from '../../../../Components/Selector';
 import {DIRECT_PAYMENT_STAGE_ID, DIRECT_PAYMENT_STAGE_ID_TO_TEXT} from '../../../../Constant';
-import {changeFilterAgeRange, changeFilterInsurancePurchasingStage} from '../../Function';
 import {connect} from 'react-redux';
+import {changeFilterAgeRangeAction, changeFilterInsurancePurchasingStageAction} from '../../Actions/Actions';
 
 class DirectPaymentProcessSelector extends React.Component
 {
     render()
     {
         const {Series, Item} = SelectorObject;
-        const {ageRange: [minAge, maxAge], stageId: currentSelectedStageId} = this.props;
+        const {ageRange: [minAge, maxAge], stageId: currentSelectedStageId, changeFilterAgeRange, changeFilterInsurancePurchasingStage} = this.props;
         const seriesArray = [
             new Series('年龄', [
                 new Item('全部', () =>
@@ -53,4 +53,9 @@ const mapStateToProps = state =>
     };
 };
 
-export default connect(mapStateToProps)(DirectPaymentProcessSelector);
+const mapDispatchToProps = {
+    changeFilterAgeRange: changeFilterAgeRangeAction,
+    changeFilterInsurancePurchasingStage: changeFilterInsurancePurchasingStageAction,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(DirectPaymentProcessSelector);
