@@ -4,8 +4,9 @@ import {View as AccountPageCard} from '../../Components/AccountPageCard';
 import {browserHistory, Link} from 'react-router';
 import {Actions as AuthProcessorActions} from '../../Components/AuthProcessor';
 import {connect} from 'react-redux';
-import {PAGE_ID_TO_ROUTE, REQUIRE_LOGIN_PAGE_ID} from '../../Config';
+import {PAGE_ID_TO_ROUTE, REGEX, REQUIRE_LOGIN_PAGE_ID} from '../../Config';
 import Api from '../../Api';
+import {WarningAlert} from '../../Components/Alerts';
 
 class Login extends React.Component
 {
@@ -31,12 +32,23 @@ class Login extends React.Component
         e.preventDefault();
         const username = this.usernameInputRef.current.value;
         const password = this.passwordInputRef.current.value;
-        const {setLoggedIn} = this.props;
-        const requestIsSuccessful = await Api.sendPostLoginRequestAsync(username, password);
-        if (requestIsSuccessful)
+        if (!REGEX.USERNAME.test(username))
         {
-            setLoggedIn();
-            browserHistory.push(PAGE_ID_TO_ROUTE[REQUIRE_LOGIN_PAGE_ID.INSURANCE_COMPANY_INSURANCE_LIST]);
+            WarningAlert.pop('用户名或密码不正确');
+        }
+        else if (!REGEX.PASSWORD.test(password))
+        {
+            WarningAlert.pop('用户名或密码不正确');
+        }
+        else
+        {
+            const {setLoggedIn} = this.props;
+            const requestIsSuccessful = await Api.sendPostLoginRequestAsync(username, password);
+            if (requestIsSuccessful)
+            {
+                setLoggedIn();
+                browserHistory.push(PAGE_ID_TO_ROUTE[REQUIRE_LOGIN_PAGE_ID.INSURANCE_COMPANY_INSURANCE_LIST]);
+            }
         }
     };
 
