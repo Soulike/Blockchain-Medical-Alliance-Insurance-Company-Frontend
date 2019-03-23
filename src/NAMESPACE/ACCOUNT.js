@@ -5,6 +5,13 @@ module.exports = {
     },
 
     SIGN_UP: {
+        VERIFICATION_CODE: 'verificationCode',
+    },
+
+    PERSONAL_INFO: {
+        NAME: 'name',
+        AGE: 'age',
+        ADDRESS: 'address',
         EMAIL: 'email',
     },
 };

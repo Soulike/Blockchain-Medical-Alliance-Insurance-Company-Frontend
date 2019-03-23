@@ -1,7 +1,7 @@
 import React from 'react';
 import Style from './Style.module.scss';
 import {View as AccountPageCard} from '../../Components/AccountPageCard';
-import {Link} from 'react-router';
+import {browserHistory, Link} from 'react-router';
 import {NOT_REQUIRE_LOGIN_PAGE_ID, PAGE_ID_TO_ROUTE, REGEX, REGEX_TEXT} from '../../Config';
 import Api from '../../Api';
 import {WarningAlert} from '../../Components/Alerts';
@@ -35,7 +35,7 @@ class SignUp extends React.Component
             const email = this.emailInputRef.current.value;
             if (!REGEX.EMAIL.test(email))
             {
-                WarningAlert.pop('请输入正确的邮箱');
+                WarningAlert.pop('请输入有效的邮箱');
             }
             else
             {
@@ -71,8 +71,56 @@ class SignUp extends React.Component
     onFormSubmit = async e =>
     {
         e.preventDefault();
-    };
+        const username = this.usernameInputRef.current.value;
+        const password = this.passwordInputRef.current.value;
+        const repeatPassword = this.repeatPasswordInputRef.current.value;
+        const name = this.nameInputRef.current.value;
+        const age = this.ageInputRef.current.value;
+        const address = this.addressInputRef.current.value;
+        const email = this.emailInputRef.current.value;
+        const verificationCode = this.verificationCodeInputRef.current.value;
 
+        if (!REGEX.USERNAME.test(username))
+        {
+            WarningAlert.pop('请输入有效的用户名');
+        }
+        else if (!REGEX.PASSWORD.test(password))
+        {
+            WarningAlert.pop('请输入有效的密码');
+        }
+        else if (password !== repeatPassword)
+        {
+            WarningAlert.pop('两次输入密码不一致');
+        }
+        else if (!REGEX.NAME.test(name))
+        {
+            WarningAlert.pop('请输入有效的姓名');
+        }
+        else if (!REGEX.AGE.test(age))
+        {
+            WarningAlert.pop('请输入有效的年龄');
+        }
+        else if (!REGEX.ADDRESS.test(address))
+        {
+            WarningAlert.pop('请输入有效的家庭住址');
+        }
+        else if (!REGEX.EMAIL.test(email))
+        {
+            WarningAlert.pop('请输入有效的邮箱');
+        }
+        else if (!REGEX.VERIFICATION_CODE.test(verificationCode))
+        {
+            WarningAlert.pop('请输入有效的验证码');
+        }
+        else
+        {
+            const requestIsSuccessful = await Api.sendPostSignUpRequestAsync(username, password, name, age, address, email, verificationCode);
+            if (requestIsSuccessful)
+            {
+                browserHistory.push(PAGE_ID_TO_ROUTE[NOT_REQUIRE_LOGIN_PAGE_ID.INSURANCE_COMPANY_LOGIN]);
+            }
+        }
+    };
 
     render()
     {

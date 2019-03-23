@@ -18,6 +18,7 @@
 - 401 当前请求 Session 无效
 - 403 请求被拒绝，用于处理不合理的请求，例如登录密码错误或删除别人的东西
 - 404 请求的内容不存在
+- 409 请求存在冲突，例如注册已存在的用户名
 - 500 服务器发生错误
 
 `data` 的具体格式根据情况决定。
@@ -178,3 +179,22 @@
 ```
 - 响应体：无
 - 其他说明：无
+
+#### `/signUp`
+
+- 功能说明：注册
+- 请求方法：POST
+- 请求体：
+```js
+{
+    username: String,
+    password: String,
+    name: String,
+    age: Number,
+    address: String,
+    email: String,
+    verificationCode: String
+}
+```
+- 响应体：无
+- 其他说明：验证码错误返回 403，用户名重复返回 409
