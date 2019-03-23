@@ -2,7 +2,9 @@ import React from 'react';
 import Style from './Style.module.scss';
 import {View as AccountPageCard} from '../../Components/AccountPageCard';
 import {Link} from 'react-router';
-import {NOT_REQUIRE_LOGIN_PAGE_ID, PAGE_ID_TO_ROUTE, REGEX_TEXT} from '../../Config';
+import {NOT_REQUIRE_LOGIN_PAGE_ID, PAGE_ID_TO_ROUTE, REGEX, REGEX_TEXT} from '../../Config';
+import Api from '../../Api';
+import {WarningAlert} from '../../Components/Alerts';
 
 class SignUp extends React.Component
 {
@@ -17,11 +19,53 @@ class SignUp extends React.Component
         this.addressInputRef = React.createRef();
         this.emailInputRef = React.createRef();
         this.verificationCodeInputRef = React.createRef();
+
+        this.state = {
+            hasSendVerificationCode: false,
+            timeToNextSend: 0,
+        };
+
     }
 
     onGetVerificationCodeButtonClick = async () =>
     {
+        const {hasSendVerificationCode} = this.state;
+        if (!hasSendVerificationCode)
+        {
+            const email = this.emailInputRef.current.value;
+            if (!REGEX.EMAIL.test(email))
+            {
+                WarningAlert.pop('请输入正确的邮箱');
+            }
+            else
+            {
+                const requestIsSuccessful = await Api.sendGetVerificationCodeRequestAsync(email);
+                if (requestIsSuccessful)
+                {
+                    this.setState({
+                        hasSendVerificationCode: true,
+                        timeToNextSend: 30,
+                    }, () =>
+                    {
+                        const interval = setInterval(() =>
+                        {
+                            const {timeToNextSend} = this.state;
+                            this.setState({
+                                timeToNextSend: timeToNextSend - 1,
+                            });
+                        }, 1000);
 
+                        setTimeout(() =>
+                        {
+                            clearInterval(interval);
+                            this.setState({
+                                hasSendVerificationCode: false,
+                            });
+                        }, 30 * 1000);
+                    });
+                }
+            }
+        }
     };
 
     onFormSubmit = async e =>
@@ -32,6 +76,7 @@ class SignUp extends React.Component
 
     render()
     {
+        const {hasSendVerificationCode, timeToNextSend} = this.state;
         return (
             <AccountPageCard>
                 <div className={Style.SignUp}>
@@ -57,7 +102,11 @@ class SignUp extends React.Component
                                        ref={this.verificationCodeInputRef} />
                                 <div className={`input-group-append ${Style.verificationCodeInputLabelWrapper}`}
                                      onClick={this.onGetVerificationCodeButtonClick}>
-                                    <span className={`input-group-text ${Style.verificationCodeInputLabel}`}>发送</span>
+                                    <span className={`input-group-text ${Style.verificationCodeInputLabel}`}>
+                                        {
+                                            hasSendVerificationCode ? timeToNextSend : '发送'
+                                        }
+                                    </span>
                                 </div>
                             </div>
                         </div>

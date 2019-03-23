@@ -3,4 +3,8 @@ module.exports = {
         USERNAME: 'username',
         PASSWORD: 'password',
     },
+
+    SIGN_UP: {
+        EMAIL: 'email',
+    },
 };
