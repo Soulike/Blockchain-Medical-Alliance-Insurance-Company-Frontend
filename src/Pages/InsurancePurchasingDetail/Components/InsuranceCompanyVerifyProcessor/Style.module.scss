@@ -1,0 +1,34 @@
+@import "../../../../Constant/RESIZE";
+
+.InsuranceCompanyVerifyProcessor {
+    text-align: center;
+
+    .viewMedicalRecordsButtonWrapper {
+
+        .viewMedicalRecordsButton {
+
+        }
+    }
+
+    .selectorWrapper {
+        margin: (50rem/$RESIZE_FACTOR);
+        display: inline-block;
+        text-align: left;
+
+        .selectorLabel {
+
+        }
+
+        .radioWrapper {
+            display: flex;
+            justify-content: space-between;
+        }
+    }
+
+    .confirmButtonWrapper {
+
+        .confirmButton {
+
+        }
+    }
+}

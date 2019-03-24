@@ -2,11 +2,12 @@ import React from 'react';
 import Style from './Style.module.scss';
 import {View as HorizontalStageProgressIndicator} from '../../Components/HorizontalStageProgressIndicator';
 import {View as StageTextIndicator} from '../../Components/StageTextIndicator';
-import {INSURANCE_PURCHASING_STAGE_ID_TO_TEXT} from '../../Constant';
+import {INSURANCE_PURCHASING_STAGE_ID, INSURANCE_PURCHASING_STAGE_ID_TO_TEXT} from '../../Constant';
 import {browserHistory, withRouter} from 'react-router';
 import {PAGE_ID_TO_ROUTE, REQUIRE_LOGIN_PAGE_ID} from '../../Config';
 import Api from '../../Api';
 import NAMESPACE from '../../NAMESPACE';
+import InsuranceCompanyVerifyProcessor from './Components/InsuranceCompanyVerifyProcessor/View';
 
 class InsurancePurchasingDetail extends React.Component
 {
@@ -57,6 +58,28 @@ class InsurancePurchasingDetail extends React.Component
                 <div className={Style.stageTextIndicatorWrapper}>
                     <StageTextIndicator currentStageNumber={stageNumber}
                                         stageTextArray={stageTextArray} />
+                </div>
+                <div className={Style.stageProcessorWrapper}>
+                    {
+                        (() =>
+                        {
+                            switch (stageNumber)
+                            {
+                                case INSURANCE_PURCHASING_STAGE_ID.INSURANCE_COMPANY_VERIFY:
+                                {
+                                    return <InsuranceCompanyVerifyProcessor />;
+                                }
+                                case INSURANCE_PURCHASING_STAGE_ID.PAY:
+                                {
+                                    return null;
+                                }
+                                default:
+                                {
+                                    return null;
+                                }
+                            }
+                        })()
+                    }
                 </div>
             </div>
         );
