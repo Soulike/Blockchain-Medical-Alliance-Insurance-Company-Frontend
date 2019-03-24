@@ -11,52 +11,87 @@
         text-align: center;
     }
 
-    .signUpForm {
-        margin-top: (9rem/$RESIZE_FACTOR);
+    .signUpPart {
+        .signUpForm {
+            margin-top: (9rem/$RESIZE_FACTOR);
 
-        .inputWrapper {
+            .inputWrapper {
 
-            input:not(.verificationCodeInput) {
-                @extend .form-control;
-                font-size: (20rem/$RESIZE_FACTOR);
-                margin: (14rem/$RESIZE_FACTOR) 0;
+                input:not(.verificationCodeInput) {
+                    @extend .form-control;
+                    font-size: (20rem/$RESIZE_FACTOR);
+                    margin: (14rem/$RESIZE_FACTOR) 0;
 
-                &:first-child {
-                    margin-top: 0;
+                    &:first-child {
+                        margin-top: 0;
+                    }
+
+                    &:last-child {
+                        margin-bottom: 0;
+                    }
+
+                    &:invalid {
+                        @extend .is-invalid;
+                    }
                 }
 
-                &:last-child {
-                    margin-bottom: 0;
-                }
+                .verificationCodeInputWrapper {
+                    margin: (14rem/$RESIZE_FACTOR) 0;
 
-                &:invalid {
-                    @extend .is-invalid;
+                    .verificationCodeInput, .verificationCodeInputLabel {
+                        font-size: (20rem/$RESIZE_FACTOR);
+                    }
+
+                    .verificationCodeInputLabelWrapper {
+                        cursor: pointer;
+                    }
                 }
             }
 
-            .verificationCodeInputWrapper {
-                margin: (14rem/$RESIZE_FACTOR) 0;
+            .linkWrapper {
+                margin-top: (17rem/$RESIZE_FACTOR);
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+                font-size: (28rem/$RESIZE_FACTOR);
 
-                .verificationCodeInput, .verificationCodeInputLabel {
-                    font-size: (20rem/$RESIZE_FACTOR);
+
+                a {
+                    color: $BLUE;
                 }
+            }
 
-                .verificationCodeInputLabelWrapper {
-                    cursor: pointer;
+            .buttonWrapper {
+                display: flex;
+                justify-content: center;
+                margin-top: (19rem/$RESIZE_FACTOR);
+
+                .submitButton {
+                    @extend .btn;
+                    color: $WHITE;
+                    width: (254rem/$RESIZE_FACTOR);
+                    height: (80rem/$RESIZE_FACTOR);
+                    border-radius: (40rem/$RESIZE_FACTOR);
+                    font-size: (36rem/$RESIZE_FACTOR);
+                    background-color: $BLUE;
+
+                    &:hover {
+                        color: $WHITE;
+                    }
                 }
             }
         }
+    }
 
-        .linkWrapper {
-            margin-top: (17rem/$RESIZE_FACTOR);
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            font-size: (28rem/$RESIZE_FACTOR);
+    .signUpSuccessPart {
+        .publicKeyWrapper {
+            width: 100%;
+            margin: (99rem/$RESIZE_FACTOR) 0;
 
-
-            a {
-                color: $BLUE;
+            .publicKey {
+                word-break: break-all;
+                cursor: pointer;
+                text-decoration: underline dotted;
             }
         }
 
@@ -65,7 +100,7 @@
             justify-content: center;
             margin-top: (19rem/$RESIZE_FACTOR);
 
-            .submitButton {
+            .toLoginButton {
                 @extend .btn;
                 color: $WHITE;
                 width: (254rem/$RESIZE_FACTOR);

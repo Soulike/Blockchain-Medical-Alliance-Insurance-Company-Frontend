@@ -187,14 +187,19 @@
 - 请求体：
 ```js
 {
-    username: String,
-    password: String,
-    name: String,
-    age: Number,
-    address: String,
-    email: String,
-    verificationCode: String
+    username: String,           // 用户名
+    password: String,           // 密码
+    name: String,               // 姓名
+    age: Number,                // 年龄
+    address: String,            // 家庭住址
+    email: String,              // 邮箱
+    verificationCode: String    // 验证码
 }
 ```
-- 响应体：无
+- 响应体：
+```js
+{
+    publicKey: String,      // 该用户的公钥
+}
+```
 - 其他说明：验证码错误返回 403，用户名重复返回 409

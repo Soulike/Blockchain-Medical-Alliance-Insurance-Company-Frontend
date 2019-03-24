@@ -2,7 +2,7 @@ import Function from '../../Function';
 import {GET_VERIFICATION_CODE, LOGIN, SIGN_UP} from './ROUTE';
 import NAMESPACE from '../../NAMESPACE';
 import {STATUS_CODE} from '../../Constant';
-import {DangerAlert, SuccessAlert, WarningAlert} from '../../Components/Alerts';
+import {DangerAlert, WarningAlert} from '../../Components/Alerts';
 
 export default {
     sendPostLoginRequestAsync,
@@ -105,7 +105,7 @@ async function sendPostSignUpRequestAsync(username, password, name, age, address
 {
     try
     {
-        const {code} = await Function.postAsync(SIGN_UP, {
+        const {code, data} = await Function.postAsync(SIGN_UP, {
             [NAMESPACE.ACCOUNT.ACCOUNT.USERNAME]: username,
             [NAMESPACE.ACCOUNT.ACCOUNT.PASSWORD]: password,
             [NAMESPACE.ACCOUNT.PERSONAL_INFO.NAME]: name,
@@ -119,8 +119,7 @@ async function sendPostSignUpRequestAsync(username, password, name, age, address
         {
             case STATUS_CODE.SUCCESS:
             {
-                SuccessAlert.pop('注册成功');
-                return true;
+                return data;
             }
             case STATUS_CODE.WRONG_PARAMETER:
             {
