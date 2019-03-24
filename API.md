@@ -203,3 +203,35 @@
 }
 ```
 - 其他说明：验证码错误返回 403，用户名重复返回 409
+
+### 投保详情部分（请求前缀为 `/insurancePurchasingDetail`
+
+#### `/getInsurancePurchasingInfo`
+
+- 功能说明：获取投保详细信息
+- 请求方法：GET
+- 请求体：
+```js
+{
+    insurancePurchasingInfoId: String,  // 投保信息 ID
+}
+```
+- 响应体：
+```js
+{
+    insurancePurchasingInfoId: String,      // 这条信息的唯一识别 ID
+    name: String,                           // 投保人姓名
+    age: Number,                            // 投保人年龄
+    isMale: Number,                         // 投保人是不是男性，0为女，1为男
+    healthState: String,                    // 投保人健康状况
+    publicKey: String,                      // 投保人公钥
+    insuranceType: String,                  // 保险类型
+    insurancePurchasingTime: String,        // 投保时间
+    insurancePeriod: String,                // 保险时长
+    insurancePrice: Number,                 // 保金，单位人民币元
+    insurancePurchasingStage: ENUM_NUMBER,  // 投保阶段，枚举值
+    responsiblePersonId: Number,            // 负责人 ID，用于获取负责人信息
+    responsiblePersonName: String,          // 负责人姓名
+}
+```
+- 其他说明：无
