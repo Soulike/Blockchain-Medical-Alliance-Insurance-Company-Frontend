@@ -13,5 +13,6 @@ module.exports = {
         AGE: 'age',
         ADDRESS: 'address',
         EMAIL: 'email',
+        PUBLIC_KEY: 'publicKey',
     },
 };
