@@ -84,16 +84,6 @@
     }
 
     .signUpSuccessPart {
-        .publicKeyWrapper {
-            width: 100%;
-            margin: (99rem/$RESIZE_FACTOR) 0;
-
-            .publicKey {
-                word-break: break-all;
-                cursor: pointer;
-                text-decoration: underline dotted;
-            }
-        }
 
         .buttonWrapper {
             display: flex;

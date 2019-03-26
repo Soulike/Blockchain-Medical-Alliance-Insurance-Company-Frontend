@@ -2,13 +2,9 @@ import React from 'react';
 import Style from './Style.module.scss';
 import {View as AccountPageCard} from '../../Components/AccountPageCard';
 import {browserHistory, Link} from 'react-router';
-import NAMESPACE from '../../NAMESPACE';
 import {NOT_REQUIRE_LOGIN_PAGE_ID, PAGE_ID_TO_ROUTE, REGEX, REGEX_TEXT} from '../../Config';
 import Api from '../../Api';
-import {SuccessAlert, WarningAlert} from '../../Components/Alerts';
-import {View as ClickCopy} from '../../Components/ClickCopy';
-import ToolTip from '../../Components/Tooltip/View';
-import {TOOLTIP_POSITION} from '../../Components/Tooltip';
+import {WarningAlert} from '../../Components/Alerts';
 
 class SignUp extends React.Component
 {
@@ -28,7 +24,6 @@ class SignUp extends React.Component
             hasSendVerificationCode: false,
             timeToNextSend: 0,
             signUpSucceed: false,
-            publicKey: '',
         };
 
     }
@@ -120,13 +115,11 @@ class SignUp extends React.Component
         }
         else
         {
-            const publicKeyWrapper = await Api.sendPostSignUpRequestAsync(username, password, name, age, address, email, verificationCode);
-            if (publicKeyWrapper)
+            const requestIsSuccessful = await Api.sendPostSignUpRequestAsync(username, password, name, age, address, email, verificationCode);
+            if (requestIsSuccessful)
             {
-                const {[NAMESPACE.ACCOUNT.PERSONAL_INFO.PUBLIC_KEY]: publicKey} = publicKeyWrapper;
                 this.setState({
                     signUpSucceed: true,
-                    publicKey,
                 });
             }
         }
@@ -134,33 +127,13 @@ class SignUp extends React.Component
 
     render()
     {
-        const {hasSendVerificationCode, timeToNextSend, signUpSucceed, publicKey} = this.state;
+        const {hasSendVerificationCode, timeToNextSend, signUpSucceed} = this.state;
         return (
             <AccountPageCard>
                 <div className={Style.SignUp}>
                     {signUpSucceed ?
                         <div className={Style.signUpSuccessPart}>
                             <div className={Style.title}>注册成功</div>
-                            <div className={Style.publicKeyWrapper}>
-                                您的密钥是：
-                                <ToolTip placement={TOOLTIP_POSITION.TOP} title={'点击复制密钥'}>
-                                    <ClickCopy copyText={publicKey}
-                                               className={Style.publicKey}
-                                               onCopySuccess={() =>
-                                               {
-                                                   SuccessAlert.pop('密钥复制成功');
-                                               }
-                                               }
-                                               onCopyError={() =>
-                                               {
-                                                   WarningAlert.pop('密钥复制失败');
-                                               }
-                                               }>
-                                        {publicKey}
-                                    </ClickCopy>
-                                </ToolTip>
-                                请妥善保管。
-                            </div>
                             <div className={Style.buttonWrapper}>
                                 <button className={Style.toLoginButton} onClick={() =>
                                 {
