@@ -235,3 +235,66 @@
 }
 ```
 - 其他说明：无
+
+#### `/getElectronicInsurancePolicy`
+
+- 功能说明：获取电子保单
+- 请求方法：GET
+- 请求体：
+```js
+{
+    insurancePurchasingInfoId: String,
+}
+```
+- 响应体：
+```js
+{
+    electronicInsurancePolicy: String,  // 电子保单内容
+}
+```
+- 其他说明：无
+
+#### `/getMedicalRecord`
+
+- 功能说明：获取病历
+- 请求方法：GET
+- 请求体：
+```js
+{
+    insurancePurchasingInfoId: String,
+}
+```
+- 响应体：
+```js
+{
+    medicalRecord: String,  // 病历内容
+}
+```
+- 其他说明：无
+
+#### `/submitInsuranceCompanyVerifyResult`
+
+- 功能说明：提交保险公司审核结果
+- 请求方法：POST
+- 请求体：
+```js
+{
+    insurancePurchasingInfoId: String,  // 被审核投保信息
+    verifyResult: Boolean,  // 是否审核通过
+}
+```
+- 响应体：无
+- 其他说明：无
+
+#### `/submitPayConfirmation`
+
+- 功能说明：提交确认投保人已缴费信息
+- 请求方法：POST
+- 请求体：
+```js
+{
+    insurancePurchasingInfoId: String,
+}
+```
+- 响应体：无
+- 其他说明：无

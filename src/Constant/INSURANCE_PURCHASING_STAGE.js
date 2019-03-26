@@ -1,5 +1,5 @@
 export const INSURANCE_PURCHASING_STAGE_ID = {
-    ALL_STAGES: -1, // 所有状态，开发用
+    ALL_STAGES: Symbol('allStages'), // 所有状态，开发用
     APPLICATION: 0, // 投保人申请
     INSURANCE_COMPANY_VERIFY: 1,      // 保险公司审核
     PAY: 2,         // 投保人缴费，保险公司确认并发布保单

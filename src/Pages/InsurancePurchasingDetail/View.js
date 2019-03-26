@@ -5,20 +5,14 @@ import {View as StageTextIndicator} from '../../Components/StageTextIndicator';
 import {INSURANCE_PURCHASING_STAGE_ID, INSURANCE_PURCHASING_STAGE_ID_TO_TEXT} from '../../Constant';
 import {browserHistory, withRouter} from 'react-router';
 import {PAGE_ID_TO_ROUTE, REQUIRE_LOGIN_PAGE_ID} from '../../Config';
-import Api from '../../Api';
+import {View as InsuranceCompanyVerifyProcessor} from './Components/InsuranceCompanyVerifyProcessor';
+import {getInsurancePurchasingInfoAction} from './Actions/Actions';
+import {connect} from 'react-redux';
 import NAMESPACE from '../../NAMESPACE';
-import InsuranceCompanyVerifyProcessor from './Components/InsuranceCompanyVerifyProcessor/View';
+import {View as PayConfirmProcessor} from './Components/PayConfirmProcessor';
 
 class InsurancePurchasingDetail extends React.Component
 {
-    constructor(props)
-    {
-        super(props);
-        this.state = {
-            stageNumber: -1,
-        };
-    }
-
     componentDidMount()
     {
         const {insurancePurchasingInfoId} = this.props.location.query;
@@ -28,18 +22,8 @@ class InsurancePurchasingDetail extends React.Component
         }
         else
         {
-            Api.sendGetInsurancePurchasingInfoRequestAsync(insurancePurchasingInfoId)
-                .then(insurancePurchasingInfo =>
-                {
-                    if (insurancePurchasingInfo)
-                    {
-                        const {[NAMESPACE.INSURANCE_PURCHASING_PROCESS.INSURANCE_PURCHASING_INFO.INSURANCE_PURCHASING_STAGE]: stageNumber} = insurancePurchasingInfo;
-                        this.setState({
-                                stageNumber: parseInt(stageNumber, 10),
-                            },
-                        );
-                    }
-                });
+            const {getInsurancePurchasingInfo} = this.props;
+            getInsurancePurchasingInfo(insurancePurchasingInfoId);
         }
     }
 
@@ -47,7 +31,11 @@ class InsurancePurchasingDetail extends React.Component
     render()
     {
         const stageTextArray = [...INSURANCE_PURCHASING_STAGE_ID_TO_TEXT];
-        const {stageNumber} = this.state;
+        const {insurancePurchasingInfo} = this.props;
+        const {
+            [NAMESPACE.INSURANCE_PURCHASING_PROCESS.INSURANCE_PURCHASING_INFO.INSURANCE_PURCHASING_INFO_ID]: insurancePurchasingInfoId,
+            [NAMESPACE.INSURANCE_PURCHASING_PROCESS.INSURANCE_PURCHASING_INFO.INSURANCE_PURCHASING_STAGE]: stageNumber,
+        } = insurancePurchasingInfo;
         return (
             <div className={Style.InsurancePurchasingDetail}>
                 <div className={Style.stageProgressIndicatorWrapper}>
@@ -67,11 +55,11 @@ class InsurancePurchasingDetail extends React.Component
                             {
                                 case INSURANCE_PURCHASING_STAGE_ID.INSURANCE_COMPANY_VERIFY:
                                 {
-                                    return <InsuranceCompanyVerifyProcessor />;
+                                    return <InsuranceCompanyVerifyProcessor insurancePurchasingInfoId={insurancePurchasingInfoId} />;
                                 }
                                 case INSURANCE_PURCHASING_STAGE_ID.PAY:
                                 {
-                                    return null;
+                                    return <PayConfirmProcessor insurancePurchasingInfo={insurancePurchasingInfo} />;
                                 }
                                 default:
                                 {
@@ -86,4 +74,16 @@ class InsurancePurchasingDetail extends React.Component
     }
 }
 
-export default withRouter(InsurancePurchasingDetail);
+const mapStateToProps = state =>
+{
+    const {InsurancePurchasingDetail: {insurancePurchasingInfo}} = state;
+    return {
+        insurancePurchasingInfo,
+    };
+};
+
+const mapDispatchToProps = {
+    getInsurancePurchasingInfo: getInsurancePurchasingInfoAction,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(InsurancePurchasingDetail));

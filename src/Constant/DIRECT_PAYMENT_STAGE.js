@@ -1,5 +1,5 @@
 export const DIRECT_PAYMENT_STAGE_ID = {
-    ALL_STAGES: -1,                         // 所有状态，开发用
+    ALL_STAGES: Symbol('allStages'),                         // 所有状态，开发用
     APPLICATION: 0,                         // 投保人申请
     HOSPITAL_CONFIRM_PAYABLE: 1,            // 待医院确认是否可以直付
     INSURANCE_COMPANY_VERIFY_AND_PAY: 2,    // 待保险公司审核及支付
