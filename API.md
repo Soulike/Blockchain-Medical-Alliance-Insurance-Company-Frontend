@@ -196,12 +196,7 @@
     verificationCode: String    // 验证码
 }
 ```
-- 响应体：
-```js
-{
-    publicKey: String,      // 该用户的公钥
-}
-```
+- 响应体：无
 - 其他说明：验证码错误返回 403，用户名重复返回 409
 
 ### 投保详情部分（请求前缀为 `/insurancePurchasingDetail`
