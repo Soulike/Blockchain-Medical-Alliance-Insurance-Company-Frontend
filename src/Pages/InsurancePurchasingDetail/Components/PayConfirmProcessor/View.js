@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import {Function as ModalFunction, SmallModal} from '../../../../Components/Modal';
 import NAMESPACE from '../../../../NAMESPACE';
 import {MODAL_ID} from '../../../../Constant';
-import {View as ModalTriggeringButton} from '../../../../Components/ModalTriggeringButton';
+import ModalTriggeringButton from '../../../../Components/ModalTriggeringButton';
 import Api from '../../../../Api';
 import {getInsurancePurchasingInfoAction} from '../../Actions/Actions';
 import {connect} from 'react-redux';

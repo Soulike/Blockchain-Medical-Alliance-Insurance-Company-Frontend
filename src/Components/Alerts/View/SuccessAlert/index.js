@@ -1,3 +1,3 @@
-import View from './View';
+import SuccessAlert from './View';
 
-export {View};
+export default SuccessAlert;

@@ -1,3 +1,3 @@
-import View from './View';
+import AccountPageCard from './View';
 
-export {View};
+export default AccountPageCard;

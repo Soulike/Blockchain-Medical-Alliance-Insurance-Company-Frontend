@@ -1,6 +1,6 @@
 import React from 'react';
 import Style from './Style.module.scss';
-import {Object as SelectorObject, View as Selector} from '../../../../Components/Selector';
+import Selector, {Object as SelectorObject} from '../../../../Components/Selector';
 import {INSURANCE_PURCHASING_STAGE_ID, INSURANCE_PURCHASING_STAGE_ID_TO_TEXT} from '../../../../Constant';
 import {connect} from 'react-redux';
 import {changeFilterAgeRangeAction, changeFilterInsurancePurchasingStageAction} from '../../Actions/Actions';

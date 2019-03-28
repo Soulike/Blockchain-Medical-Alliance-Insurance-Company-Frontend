@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Style from './Style.module.scss';
-import {View as Header} from './Components/Header';
-import {View as Footer} from './Components/Footer';
+import Header from './Components/Header';
+import Footer from './Components/Footer';
 import PropTypes from 'prop-types';
 
 class Root extends Component

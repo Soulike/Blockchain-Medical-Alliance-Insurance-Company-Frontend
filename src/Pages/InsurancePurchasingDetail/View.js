@@ -1,15 +1,15 @@
 import React from 'react';
 import Style from './Style.module.scss';
-import {View as HorizontalStageProgressIndicator} from '../../Components/HorizontalStageProgressIndicator';
-import {View as StageTextIndicator} from '../../Components/StageTextIndicator';
+import HorizontalStageProgressIndicator from '../../Components/HorizontalStageProgressIndicator';
+import StageTextIndicator from '../../Components/StageTextIndicator';
 import {INSURANCE_PURCHASING_STAGE_ID, INSURANCE_PURCHASING_STAGE_ID_TO_TEXT} from '../../Constant';
 import {browserHistory, withRouter} from 'react-router';
 import {PAGE_ID_TO_ROUTE, REQUIRE_LOGIN_PAGE_ID} from '../../Config';
-import {View as InsuranceCompanyVerifyProcessor} from './Components/InsuranceCompanyVerifyProcessor';
+import InsuranceCompanyVerifyProcessor from './Components/InsuranceCompanyVerifyProcessor';
 import {getInsurancePurchasingInfoAction} from './Actions/Actions';
 import {connect} from 'react-redux';
 import NAMESPACE from '../../NAMESPACE';
-import {View as PayConfirmProcessor} from './Components/PayConfirmProcessor';
+import PayConfirmProcessor from './Components/PayConfirmProcessor';
 
 class InsurancePurchasingDetail extends React.Component
 {

@@ -1,7 +1,7 @@
-import {View as Modal} from './View/Modal';
-import {View as ExtraLargeModal} from './View/ExtraLargeModal';
-import {View as LargeModal} from './View/LargeModal';
-import {View as SmallModal} from './View/SmallModal';
+import Modal from './View/Modal';
+import ExtraLargeModal from './View/ExtraLargeModal';
+import LargeModal from './View/LargeModal';
+import SmallModal from './View/SmallModal';
 import * as Function from './Function';
 
 export {

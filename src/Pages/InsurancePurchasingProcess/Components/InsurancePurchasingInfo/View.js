@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 import {INSURANCE_PURCHASING_STAGE_ID, INSURANCE_PURCHASING_STAGE_ID_TO_TEXT} from '../../../../Constant';
 import {browserHistory, withRouter} from 'react-router';
 import {PAGE_ID_TO_ROUTE, REQUIRE_LOGIN_PAGE_ID} from '../../../../Config';
-import {TOOLTIP_POSITION, View as ToolTip} from '../../../../Components/Tooltip';
+import ToolTip, {TOOLTIP_POSITION} from '../../../../Components/Tooltip';
 import {SuccessAlert, WarningAlert} from '../../../../Components/Alerts';
-import {View as ClickCopy} from '../../../../Components/ClickCopy';
+import ClickCopy from '../../../../Components/ClickCopy';
 
 class InsurancePurchasingInfo extends React.Component
 {

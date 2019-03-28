@@ -1,14 +1,14 @@
 import React from 'react';
 import Style from './Style.module.scss';
-import {View as DirectPaymentProcessSelector} from './Components/DirectPaymentProcessSelector';
+import DirectPaymentProcessSelector from './Components/DirectPaymentProcessSelector';
 import DirectPaymentInfo from './Components/DirectPaymentInfo/View';
 // import Function from '../../Function';
 import {connect} from 'react-redux';
 import NAMESPACE from '../../NAMESPACE';
 import {DIRECT_PAYMENT_STAGE_ID, MODAL_ID} from '../../Constant';
-import {View as DiagnosticResultModal} from './Components/DiagnosticResultModal';
+import DiagnosticResultModal from './Components/DiagnosticResultModal';
 import {Function as ModalFunction} from '../../Components/Modal';
-import {View as MedicalDescriptionModal} from './Components/MedicalDescriptionModal';
+import MedicalDescriptionModal from './Components/MedicalDescriptionModal';
 import Api from '../../Api';
 
 class DirectPaymentProcess extends React.Component

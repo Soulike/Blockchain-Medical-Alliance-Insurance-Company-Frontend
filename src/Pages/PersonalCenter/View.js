@@ -1,6 +1,6 @@
 import React from 'react';
 import Style from './Style.module.scss';
-import {View as Card} from '../../Components/Card';
+import Card from '../../Components/Card';
 import companyLogo from '../../Static/PersonalCenter/companyLogo.jpg';
 import certificate from '../../Static/PersonalCenter/certificate.jpg';
 

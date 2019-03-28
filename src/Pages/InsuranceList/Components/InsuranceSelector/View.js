@@ -1,6 +1,6 @@
 import React from 'react';
 import Style from './Style.module.scss';
-import {Object as SelectorObject, View as Selector} from '../../../../Components/Selector';
+import Selector, {Object as SelectorObject} from '../../../../Components/Selector';
 
 class InsuranceSelector extends React.Component
 {

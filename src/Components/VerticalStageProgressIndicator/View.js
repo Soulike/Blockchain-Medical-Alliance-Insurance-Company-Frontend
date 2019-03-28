@@ -1,8 +1,8 @@
 import React from 'react';
 import Style from './Style.module.scss';
 import PropTypes from 'prop-types';
-import {View as StageIndicator} from './Components/StageIndicator';
-import {View as StagePoint} from './Components/StagePoint';
+import StageIndicator from './Components/StageIndicator';
+import StagePoint from './Components/StagePoint';
 
 class VerticalStageProgressIndicator extends React.Component
 {

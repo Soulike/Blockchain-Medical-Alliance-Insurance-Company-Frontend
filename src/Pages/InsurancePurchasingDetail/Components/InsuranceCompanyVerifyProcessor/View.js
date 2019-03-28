@@ -1,7 +1,7 @@
 import React from 'react';
 import Style from './Style.module.scss';
 import PropTypes from 'prop-types';
-import {View as Radio} from '../../../../Components/Radio';
+import Radio from '../../../../Components/Radio';
 import {Function as ModalFunction, Modal} from '../../../../Components/Modal';
 import {MODAL_ID} from '../../../../Constant';
 import Api from '../../../../Api';

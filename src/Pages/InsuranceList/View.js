@@ -1,8 +1,8 @@
 import React from 'react';
 import Style from './Style.module.scss';
-import {View as CarouselContainer} from '../../ComponentContainers/CarouselContainer';
-import {View as InsuranceSelector} from './Components/InsuranceSelector';
-import {View as Insurance} from '../../Components/Insurance';
+import CarouselContainer from '../../ComponentContainers/CarouselContainer';
+import InsuranceSelector from './Components/InsuranceSelector';
+import Insurance from '../../Components/Insurance';
 import Function from '../../Function';
 import {Link} from 'react-router';
 import {PAGE_ID_TO_ROUTE, REQUIRE_LOGIN_PAGE_ID} from '../../Config';

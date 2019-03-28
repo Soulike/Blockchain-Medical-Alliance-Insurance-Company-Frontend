@@ -1,7 +1,7 @@
 import React from 'react';
 import Style from './Style.module.scss';
-import {View as Title} from './Components/Title';
-import {View as Card} from '../../Components/Card';
+import Title from './Components/Title';
+import Card from '../../Components/Card';
 import {PAGE_ID_TO_ROUTE, REQUIRE_LOGIN_PAGE_ID} from '../../Config';
 import {browserHistory} from 'react-router';
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import Style from './Style.module.scss';
-import {View as AccountPageCard} from '../../Components/AccountPageCard';
+import AccountPageCard from '../../Components/AccountPageCard';
 import {browserHistory, Link} from 'react-router';
 import {Actions as AuthProcessorActions} from '../../Components/AuthProcessor';
 import {connect} from 'react-redux';

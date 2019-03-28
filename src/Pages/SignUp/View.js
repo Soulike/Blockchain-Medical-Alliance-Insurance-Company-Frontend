@@ -1,6 +1,6 @@
 import React from 'react';
 import Style from './Style.module.scss';
-import {View as AccountPageCard} from '../../Components/AccountPageCard';
+import AccountPageCard from '../../Components/AccountPageCard';
 import {browserHistory, Link} from 'react-router';
 import {NOT_REQUIRE_LOGIN_PAGE_ID, PAGE_ID_TO_ROUTE, REGEX, REGEX_TEXT} from '../../Config';
 import Api from '../../Api';

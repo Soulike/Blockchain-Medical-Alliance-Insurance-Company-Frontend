@@ -1,7 +1,7 @@
 import React from 'react';
 import Style from './Style.module.scss';
-import {View as InsurancePurchasingProcessSelector} from './Components/InsurancePurchasingProcessSelector';
-import {View as InsurancePurchasingInfo} from './Components/InsurancePurchasingInfo';
+import InsurancePurchasingProcessSelector from './Components/InsurancePurchasingProcessSelector';
+import InsurancePurchasingInfo from './Components/InsurancePurchasingInfo';
 // import Function from '../../Function';
 import {connect} from 'react-redux';
 import {INSURANCE_PURCHASING_STAGE_ID} from '../../Constant';
