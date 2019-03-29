@@ -1,7 +1,7 @@
-import View from './View';
+import InsurancePurchasingDetailContainer from './Container';
 import Reducer from './Reducer';
 import * as Actions from './Actions/Actions';
 
-export default View;
+export default InsurancePurchasingDetailContainer;
 
 export {Reducer, Actions};

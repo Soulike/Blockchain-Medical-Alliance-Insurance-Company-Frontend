@@ -1,3 +1,3 @@
-import View from './View';
+import PayConfirmProcessorContainer from './Container';
 
-export default View;
+export default PayConfirmProcessorContainer;
