@@ -1,3 +1,3 @@
-import View from './View';
+import PersonalCenter from './View';
 
-export default View;
+export default PersonalCenter;
