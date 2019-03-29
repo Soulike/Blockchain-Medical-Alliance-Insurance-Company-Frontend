@@ -11,15 +11,7 @@ import {STATUS_CODE} from '../../Constant';
 import {Function as AuthProcessorFunction} from '../../Components/AuthProcessor';
 import {DangerAlert, SuccessAlert, WarningAlert} from '../../Components/Alerts';
 
-export default {
-    sendGetInsurancePurchasingInfoRequestAsync,
-    sendGetElectronicInsurancePolicyRequestAsync,
-    sendGetMedicalRecordRequestAsync,
-    sendPostSubmitInsuranceCompanyVerifyResultRequestAsync,
-    sendPostSubmitPayConfirmationRequestAsync,
-};
-
-async function sendGetInsurancePurchasingInfoRequestAsync(insurancePurchasingInfoId)
+export async function sendGetInsurancePurchasingInfoRequestAsync(insurancePurchasingInfoId)
 {
     try
     {
@@ -72,7 +64,7 @@ async function sendGetInsurancePurchasingInfoRequestAsync(insurancePurchasingInf
     }
 }
 
-async function sendGetElectronicInsurancePolicyRequestAsync(insurancePurchasingInfoId)
+export async function sendGetElectronicInsurancePolicyRequestAsync(insurancePurchasingInfoId)
 {
     try
     {
@@ -124,7 +116,7 @@ async function sendGetElectronicInsurancePolicyRequestAsync(insurancePurchasingI
     }
 }
 
-async function sendGetMedicalRecordRequestAsync(insurancePurchasingInfoId)
+export async function sendGetMedicalRecordRequestAsync(insurancePurchasingInfoId)
 {
     try
     {
@@ -176,7 +168,7 @@ async function sendGetMedicalRecordRequestAsync(insurancePurchasingInfoId)
     }
 }
 
-async function sendPostSubmitInsuranceCompanyVerifyResultRequestAsync(insurancePurchasingInfoId, verifyResult)
+export async function sendPostSubmitInsuranceCompanyVerifyResultRequestAsync(insurancePurchasingInfoId, verifyResult)
 {
     try
     {
@@ -231,7 +223,7 @@ async function sendPostSubmitInsuranceCompanyVerifyResultRequestAsync(insuranceP
     }
 }
 
-async function sendPostSubmitPayConfirmationRequestAsync(insurancePurchasingInfoId)
+export async function sendPostSubmitPayConfirmationRequestAsync(insurancePurchasingInfoId)
 {
     try
     {

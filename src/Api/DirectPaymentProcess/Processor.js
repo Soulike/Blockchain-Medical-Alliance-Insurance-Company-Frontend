@@ -3,11 +3,7 @@ import {GET_DIRECT_PAYMENT_INFO_LIST} from './ROUTE';
 import {STATUS_CODE} from '../../Constant';
 import {Function as AuthProcessorFunction} from '../../Components/AuthProcessor';
 
-export default {
-    sendGetDirectPaymentInfoListRequestAsync,
-};
-
-async function sendGetDirectPaymentInfoListRequestAsync()
+export async function sendGetDirectPaymentInfoListRequestAsync()
 {
     try
     {

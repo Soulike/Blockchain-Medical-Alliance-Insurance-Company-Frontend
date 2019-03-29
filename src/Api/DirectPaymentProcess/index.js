@@ -1,4 +1,4 @@
-import Processor from './Processor';
+import * as Processor from './Processor';
 
 export default {
     ...Processor,
