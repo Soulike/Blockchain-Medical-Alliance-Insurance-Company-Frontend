@@ -21,25 +21,25 @@ export async function sendGetInsurancePurchasingInfoRequestAsync(insurancePurcha
 
         switch (code)
         {
-            case STATUS_CODE.SUCCESS:
+            case STATUS_CODE.OK:
             {
                 return data;
             }
-            case STATUS_CODE.CONTENT_NOT_FOUND:
+            case STATUS_CODE.NOT_FOUND:
             {
                 WarningAlert.pop('投保信息不存在');
                 return null;
             }
-            case STATUS_CODE.WRONG_PARAMETER:
+            case STATUS_CODE.BAD_REQUEST:
             {
                 WarningAlert.pop('参数错误');
                 return null;
             }
-            case STATUS_CODE.REJECTION:
+            case STATUS_CODE.FORBIDDEN:
             {
                 return null;
             }
-            case STATUS_CODE.INVALID_SESSION:
+            case STATUS_CODE.UNAUTHORIZED:
             {
                 AuthProcessorFunction.setLoggedOut();
                 return null;
@@ -73,25 +73,25 @@ export async function sendGetElectronicInsurancePolicyRequestAsync(insurancePurc
         });
         switch (code)
         {
-            case STATUS_CODE.SUCCESS:
+            case STATUS_CODE.OK:
             {
                 return data;
             }
-            case STATUS_CODE.CONTENT_NOT_FOUND:
+            case STATUS_CODE.NOT_FOUND:
             {
                 WarningAlert.pop('电子保单不存在');
                 return null;
             }
-            case STATUS_CODE.WRONG_PARAMETER:
+            case STATUS_CODE.BAD_REQUEST:
             {
                 WarningAlert.pop('参数错误');
                 return null;
             }
-            case STATUS_CODE.REJECTION:
+            case STATUS_CODE.FORBIDDEN:
             {
                 return null;
             }
-            case STATUS_CODE.INVALID_SESSION:
+            case STATUS_CODE.UNAUTHORIZED:
             {
                 AuthProcessorFunction.setLoggedOut();
                 return null;
@@ -125,25 +125,25 @@ export async function sendGetMedicalRecordRequestAsync(insurancePurchasingInfoId
         });
         switch (code)
         {
-            case STATUS_CODE.SUCCESS:
+            case STATUS_CODE.OK:
             {
                 return data;
             }
-            case STATUS_CODE.CONTENT_NOT_FOUND:
+            case STATUS_CODE.NOT_FOUND:
             {
                 WarningAlert.pop('病历不存在');
                 return null;
             }
-            case STATUS_CODE.WRONG_PARAMETER:
+            case STATUS_CODE.BAD_REQUEST:
             {
                 WarningAlert.pop('参数错误');
                 return null;
             }
-            case STATUS_CODE.REJECTION:
+            case STATUS_CODE.FORBIDDEN:
             {
                 return null;
             }
-            case STATUS_CODE.INVALID_SESSION:
+            case STATUS_CODE.UNAUTHORIZED:
             {
                 AuthProcessorFunction.setLoggedOut();
                 return null;
@@ -179,26 +179,26 @@ export async function sendPostSubmitInsuranceCompanyVerifyResultRequestAsync(ins
 
         switch (code)
         {
-            case STATUS_CODE.SUCCESS:
+            case STATUS_CODE.OK:
             {
                 SuccessAlert.pop('审核结果提交成功');
                 return true;
             }
-            case STATUS_CODE.CONTENT_NOT_FOUND:
+            case STATUS_CODE.NOT_FOUND:
             {
                 WarningAlert.pop('投保信息不存在');
                 return null;
             }
-            case STATUS_CODE.WRONG_PARAMETER:
+            case STATUS_CODE.BAD_REQUEST:
             {
                 WarningAlert.pop('参数错误');
                 return null;
             }
-            case STATUS_CODE.REJECTION:
+            case STATUS_CODE.FORBIDDEN:
             {
                 return null;
             }
-            case STATUS_CODE.INVALID_SESSION:
+            case STATUS_CODE.UNAUTHORIZED:
             {
                 AuthProcessorFunction.setLoggedOut();
                 return null;
@@ -232,26 +232,26 @@ export async function sendPostSubmitPayConfirmationRequestAsync(insurancePurchas
         });
         switch (code)
         {
-            case STATUS_CODE.SUCCESS:
+            case STATUS_CODE.OK:
             {
                 SuccessAlert.pop('投保人缴费确认成功');
                 return true;
             }
-            case STATUS_CODE.CONTENT_NOT_FOUND:
+            case STATUS_CODE.NOT_FOUND:
             {
                 WarningAlert.pop('投保信息不存在');
                 return null;
             }
-            case STATUS_CODE.WRONG_PARAMETER:
+            case STATUS_CODE.BAD_REQUEST:
             {
                 WarningAlert.pop('参数错误');
                 return null;
             }
-            case STATUS_CODE.REJECTION:
+            case STATUS_CODE.FORBIDDEN:
             {
                 return null;
             }
-            case STATUS_CODE.INVALID_SESSION:
+            case STATUS_CODE.UNAUTHORIZED:
             {
                 AuthProcessorFunction.setLoggedOut();
                 return null;
