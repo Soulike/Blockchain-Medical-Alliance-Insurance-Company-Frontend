@@ -1,3 +1,3 @@
-import View from './View';
+import SignUpContainer from './Container';
 
-export default View;
+export default SignUpContainer;
