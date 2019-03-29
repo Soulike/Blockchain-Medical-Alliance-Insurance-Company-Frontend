@@ -1,3 +1,3 @@
-import View from './View';
+import InsurancePurchasingInfoContainer from './Container';
 
-export default View;
+export default InsurancePurchasingInfoContainer;

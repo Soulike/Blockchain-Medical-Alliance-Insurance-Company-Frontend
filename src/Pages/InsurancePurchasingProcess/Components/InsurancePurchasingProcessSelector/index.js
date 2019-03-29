@@ -1,3 +1,3 @@
-import View from './View';
+import View from './Container';
 
 export default View;
