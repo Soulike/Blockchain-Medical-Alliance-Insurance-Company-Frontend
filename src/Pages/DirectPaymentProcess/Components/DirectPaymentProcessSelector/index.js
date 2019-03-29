@@ -1,3 +1,3 @@
-import View from './View';
+import DirectPaymentProcessSelectorContainer from './Container';
 
-export default View;
+export default DirectPaymentProcessSelectorContainer;
