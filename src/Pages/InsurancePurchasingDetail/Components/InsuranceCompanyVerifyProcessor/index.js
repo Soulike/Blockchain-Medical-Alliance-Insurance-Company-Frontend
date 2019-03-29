@@ -1,3 +1,3 @@
-import View from './View';
+import InsuranceCompanyVerifyProcessorContainer from './Container';
 
-export {View};
+export default InsuranceCompanyVerifyProcessorContainer;

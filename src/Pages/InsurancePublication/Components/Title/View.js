@@ -1,17 +1,14 @@
 import React from 'react';
 import Style from './Style.module.scss';
 
-class Title extends React.Component
+function Title(props)
 {
-    render()
-    {
-        const {children} = this.props;
-        return (
-            <div className={Style.Title}>
-                {children}
-            </div>
-        );
-    }
+    const {children} = props;
+    return (
+        <div className={Style.Title}>
+            {children}
+        </div>
+    );
 }
 
 export default Title;

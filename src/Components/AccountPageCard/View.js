@@ -1,6 +1,6 @@
 import React from 'react';
 import Style from './Style.module.scss';
-import {View as Card} from '../Card';
+import Card from '../Card';
 import '../../Static/Account/background.png';
 import '../../Static/Account/sideImage.png';
 

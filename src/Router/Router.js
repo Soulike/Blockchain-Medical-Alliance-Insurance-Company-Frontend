@@ -3,7 +3,7 @@ import {browserHistory, IndexRedirect, Route, Router} from 'react-router';
 import {NOT_REQUIRE_LOGIN_PAGE_ID, PAGE_ID_TO_ROUTE, REQUIRE_LOGIN_PAGE_ID} from '../Config';
 import PAGE_ID_TO_COMPONENT from './PAGE_ID_TO_COMPONENT';
 // 所有页面的 View 在此处导入
-import {View as RootContainer} from '../ComponentContainers/RootContainer';
+import RootContainer from '../ComponentContainers/RootContainer';
 import {Function as AuthProcessorFunction} from '../Components/AuthProcessor';
 
 const Routes = () => (

@@ -1,5 +1,7 @@
-import View from './View';
+import InsurancePurchasingProcessContainer from './Container';
 import Reducer from './Reducer';
 import * as Actions from './Actions/Actions';
 
-export {View, Reducer, Actions};
+export default InsurancePurchasingProcessContainer;
+
+export {Reducer, Actions};

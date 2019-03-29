@@ -1,7 +1,7 @@
 import React from 'react';
 import Style from './Style.module.scss';
 import PropTypes from 'prop-types';
-import {View as StagePoint} from '../StagePoint';
+import StagePoint from '../StagePoint';
 
 class StageIndicator extends React.Component
 {

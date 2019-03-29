@@ -1,3 +1,3 @@
-import View from './View';
+import CarouselContainer from './View';
 
-export {View};
+export default CarouselContainer;
