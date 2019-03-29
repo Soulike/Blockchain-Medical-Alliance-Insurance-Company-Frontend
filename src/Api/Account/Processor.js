@@ -4,13 +4,7 @@ import NAMESPACE from '../../NAMESPACE';
 import {STATUS_CODE} from '../../Constant';
 import {DangerAlert, WarningAlert} from '../../Components/Alerts';
 
-export default {
-    sendPostLoginRequestAsync,
-    sendGetVerificationCodeRequestAsync,
-    sendPostSignUpRequestAsync,
-};
-
-async function sendPostLoginRequestAsync(username, password)
+export async function sendPostLoginRequestAsync(username, password)
 {
     try
     {
@@ -63,7 +57,7 @@ async function sendPostLoginRequestAsync(username, password)
     }
 }
 
-async function sendGetVerificationCodeRequestAsync(email)
+export async function sendGetVerificationCodeRequestAsync(email)
 {
     try
     {
@@ -101,11 +95,11 @@ async function sendGetVerificationCodeRequestAsync(email)
     }
 }
 
-async function sendPostSignUpRequestAsync(username, password, name, age, address, email, verificationCode)
+export async function sendPostSignUpRequestAsync(username, password, name, age, address, email, verificationCode)
 {
     try
     {
-        const {code, data} = await Function.postAsync(SIGN_UP, {
+        const {code} = await Function.postAsync(SIGN_UP, {
             [NAMESPACE.ACCOUNT.ACCOUNT.USERNAME]: username,
             [NAMESPACE.ACCOUNT.ACCOUNT.PASSWORD]: password,
             [NAMESPACE.ACCOUNT.PERSONAL_INFO.NAME]: name,
@@ -119,7 +113,7 @@ async function sendPostSignUpRequestAsync(username, password, name, age, address
         {
             case STATUS_CODE.SUCCESS:
             {
-                return data;
+                return true;
             }
             case STATUS_CODE.WRONG_PARAMETER:
             {

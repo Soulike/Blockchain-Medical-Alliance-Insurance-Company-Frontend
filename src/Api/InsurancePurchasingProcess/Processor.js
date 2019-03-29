@@ -3,11 +3,7 @@ import {STATUS_CODE} from '../../Constant';
 import {GET_INSURANCE_PURCHASING_INFO_LIST} from './ROUTE';
 import {Function as AuthProcessorFunction} from '../../Components/AuthProcessor';
 
-export default {
-    sendGetInsurancePurchasingInfoListRequest,
-};
-
-async function sendGetInsurancePurchasingInfoListRequest()
+export async function sendGetInsurancePurchasingInfoListRequest()
 {
     try
     {
