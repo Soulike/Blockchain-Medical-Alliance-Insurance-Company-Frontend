@@ -14,26 +14,26 @@ export async function sendPostLoginRequestAsync(username, password)
         });
         switch (code)
         {
-            case STATUS_CODE.SUCCESS:
+            case STATUS_CODE.OK:
             {
                 return true;
             }
-            case STATUS_CODE.CONTENT_NOT_FOUND:
+            case STATUS_CODE.NOT_FOUND:
             {
                 WarningAlert.pop('用户名或密码错误');
                 return null;
             }
-            case STATUS_CODE.WRONG_PARAMETER:
+            case STATUS_CODE.BAD_REQUEST:
             {
                 WarningAlert.pop('参数错误');
                 return null;
             }
-            case STATUS_CODE.REJECTION:
+            case STATUS_CODE.FORBIDDEN:
             {
                 WarningAlert.pop('用户名或密码错误');
                 return null;
             }
-            case STATUS_CODE.INVALID_SESSION:
+            case STATUS_CODE.UNAUTHORIZED:
             {
                 return null;
             }
@@ -66,11 +66,11 @@ export async function sendGetVerificationCodeRequestAsync(email)
         });
         switch (code)
         {
-            case STATUS_CODE.SUCCESS:
+            case STATUS_CODE.OK:
             {
                 return true;
             }
-            case STATUS_CODE.WRONG_PARAMETER:
+            case STATUS_CODE.BAD_REQUEST:
             {
                 WarningAlert.pop('参数错误');
                 return null;
@@ -111,16 +111,16 @@ export async function sendPostSignUpRequestAsync(username, password, name, age, 
 
         switch (code)
         {
-            case STATUS_CODE.SUCCESS:
+            case STATUS_CODE.OK:
             {
                 return true;
             }
-            case STATUS_CODE.WRONG_PARAMETER:
+            case STATUS_CODE.BAD_REQUEST:
             {
                 WarningAlert.pop('参数错误');
                 return null;
             }
-            case STATUS_CODE.REJECTION:
+            case STATUS_CODE.FORBIDDEN:
             {
                 WarningAlert.pop('验证码错误');
                 return null;
