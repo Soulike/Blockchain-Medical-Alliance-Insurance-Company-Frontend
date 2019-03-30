@@ -16,4 +16,8 @@
         height: (80rem/$RESIZE_FACTOR);
         box-sizing: border-box;
     }
+
+    .slide {
+        background-size: cover;
+    }
 }

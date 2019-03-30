@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Carousel from '../../Components/Carousel';
+import Carousel from 'antd/lib/carousel';
 import Style from './Style.module.scss';
 import {Link} from 'react-router';
 import {CAROUSEL_IMAGE, PAGE_ID_TO_ROUTE, REQUIRE_LOGIN_PAGE_ID} from '../../Config';
@@ -12,7 +12,20 @@ class CarouselContainer extends React.Component
         const {className, shouldShowInsurancePublicationButton} = this.props;
         return (
             <div className={Style.CarouselContainer}>
-                <Carousel interval={10 * 1000} imageSrcArray={CAROUSEL_IMAGE} className={className} />
+                <Carousel className={className}
+                          autoplay={true}
+                          dots={false}
+                          effect={'fade'}
+                          autoplaySpeed={10 * 1000}
+                          speed={3 * 1000}>
+                    {
+                        CAROUSEL_IMAGE.map(imageSrc => (
+                            <div>
+                                <div className={`${className} ${Style.slide}`}
+                                     style={{background: `url("${imageSrc}") no-repeat center`}} />
+                            </div>))
+                    }
+                </Carousel>
                 {
                     shouldShowInsurancePublicationButton ?
                         <Link onlyActiveOnIndex={false}
