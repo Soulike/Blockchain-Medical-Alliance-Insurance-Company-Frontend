@@ -1,7 +1,6 @@
 import React from 'react';
 import Style from './Style.module.scss';
 import PropTypes from 'prop-types';
-import NAMESPACE from '../../../../NAMESPACE';
 import ModalTriggeringButton from '../../../../Components/ModalTriggeringButton';
 import {MODAL_ID} from '../../../../Constant';
 import {SmallModal} from '../../../../Components/Modal';
@@ -10,9 +9,9 @@ function PayConfirmProcessor(props)
 {
     const {insurancePurchasingInfo} = props;
     const {
-        [NAMESPACE.INSURANCE_PURCHASING_PROCESS.INSURANCE_PURCHASING_INFO.NAME]: name,
-        [NAMESPACE.INSURANCE_PURCHASING_PROCESS.INSURANCE_PURCHASING_INFO.INSURANCE_TYPE]: insuranceType,
-        [NAMESPACE.INSURANCE_PURCHASING_PROCESS.INSURANCE_PURCHASING_INFO.INSURANCE_PRICE]: insurancePrice,
+        name,
+        insuranceType,
+        insurancePrice,
     } = insurancePurchasingInfo;
     return [
         <div className={Style.PayConfirmProcessor} key={Style.PayConfirmProcessor}>

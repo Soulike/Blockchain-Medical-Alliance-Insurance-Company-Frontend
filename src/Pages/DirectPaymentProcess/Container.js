@@ -1,7 +1,6 @@
 import React from 'react';
 // import Function from '../../Function';
 import {connect} from 'react-redux';
-import NAMESPACE from '../../NAMESPACE';
 import {MODAL_ID} from '../../Constant';
 import {Function as ModalFunction} from '../../Components/Modal';
 import Api from '../../Api';
@@ -56,8 +55,9 @@ class DirectPaymentProcessContainer extends React.Component
             {
                 if (directPaymentInfoListWrapper)
                 {
+                    const {directPaymentInfoList} = directPaymentInfoListWrapper;
                     this.setState({
-                        directPaymentInfoList: directPaymentInfoListWrapper[NAMESPACE.DIRECT_PAYMENT_PROCESS.LIST.DIRECT_PAYMENT_INFO],
+                        directPaymentInfoList,
                     });
                 }
             });

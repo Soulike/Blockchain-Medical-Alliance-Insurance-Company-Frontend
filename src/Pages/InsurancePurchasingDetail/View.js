@@ -2,7 +2,6 @@ import React from 'react';
 import Style from './Style.module.scss';
 import PropTypes from 'prop-types';
 import {INSURANCE_PURCHASING_STAGE_ID, INSURANCE_PURCHASING_STAGE_ID_TO_TEXT} from '../../Constant';
-import NAMESPACE from '../../NAMESPACE';
 import HorizontalStageProgressIndicator from '../../Components/HorizontalStageProgressIndicator';
 import StageTextIndicator from '../../Components/StageTextIndicator';
 import InsuranceCompanyVerifyProcessor from './Components/InsuranceCompanyVerifyProcessor';
@@ -13,8 +12,8 @@ function InsurancePurchasingDetail(props)
     const stageTextArray = [...INSURANCE_PURCHASING_STAGE_ID_TO_TEXT];
     const {insurancePurchasingInfo} = props;
     const {
-        [NAMESPACE.INSURANCE_PURCHASING_PROCESS.INSURANCE_PURCHASING_INFO.INSURANCE_PURCHASING_INFO_ID]: insurancePurchasingInfoId,
-        [NAMESPACE.INSURANCE_PURCHASING_PROCESS.INSURANCE_PURCHASING_INFO.INSURANCE_PURCHASING_STAGE]: stageNumber,
+        insurancePurchasingInfoId,
+        stageNumber,
     } = insurancePurchasingInfo;
     return (
         <div className={Style.InsurancePurchasingDetail}>

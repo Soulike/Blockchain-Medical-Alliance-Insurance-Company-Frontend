@@ -2,7 +2,6 @@ import React from 'react';
 import Style from './Style.module.scss';
 import PropTypes from 'prop-types';
 import InsurancePurchasingProcessSelector from './Components/InsurancePurchasingProcessSelector';
-import NAMESPACE from '../../NAMESPACE';
 import {INSURANCE_PURCHASING_STAGE_ID} from '../../Constant';
 import InsurancePurchasingInfo from './Components/InsurancePurchasingInfo';
 
@@ -34,19 +33,19 @@ function InsurancePurchasingProcess(props)
                         insurancePurchasingInfoList.map(insurancePurchasingInfo =>
                         {
                             const {
-                                [NAMESPACE.INSURANCE_PURCHASING_PROCESS.INSURANCE_PURCHASING_INFO.INSURANCE_PURCHASING_INFO_ID]: insurancePurchasingInfoId,
-                                [NAMESPACE.INSURANCE_PURCHASING_PROCESS.INSURANCE_PURCHASING_INFO.NAME]: name,
-                                [NAMESPACE.INSURANCE_PURCHASING_PROCESS.INSURANCE_PURCHASING_INFO.AGE]: age,
-                                [NAMESPACE.INSURANCE_PURCHASING_PROCESS.INSURANCE_PURCHASING_INFO.IS_MALE]: isMale,
-                                [NAMESPACE.INSURANCE_PURCHASING_PROCESS.INSURANCE_PURCHASING_INFO.HEALTH_STATE]: healthState,
-                                [NAMESPACE.INSURANCE_PURCHASING_PROCESS.INSURANCE_PURCHASING_INFO.PUBLIC_KEY]: publicKey,
-                                [NAMESPACE.INSURANCE_PURCHASING_PROCESS.INSURANCE_PURCHASING_INFO.INSURANCE_TYPE]: insuranceType,
-                                [NAMESPACE.INSURANCE_PURCHASING_PROCESS.INSURANCE_PURCHASING_INFO.INSURANCE_PURCHASING_TIME]: insurancePurchasingTime,
-                                [NAMESPACE.INSURANCE_PURCHASING_PROCESS.INSURANCE_PURCHASING_INFO.INSURANCE_PERIOD]: insurancePeriod,
-                                [NAMESPACE.INSURANCE_PURCHASING_PROCESS.INSURANCE_PURCHASING_INFO.INSURANCE_PRICE]: insurancePrice,
-                                [NAMESPACE.INSURANCE_PURCHASING_PROCESS.INSURANCE_PURCHASING_INFO.INSURANCE_PURCHASING_STAGE]: insurancePurchasingStage,
-                                [NAMESPACE.INSURANCE_PURCHASING_PROCESS.INSURANCE_PURCHASING_INFO.RESPONSIBLE_PERSON_ID]: responsiblePersonId,
-                                [NAMESPACE.INSURANCE_PURCHASING_PROCESS.INSURANCE_PURCHASING_INFO.RESPONSIBLE_PERSON_NAME]: responsiblePersonName,
+                                insurancePurchasingInfoId,
+                                name,
+                                age,
+                                isMale,
+                                healthState,
+                                publicKey,
+                                insuranceType,
+                                insurancePurchasingTime,
+                                insurancePeriod,
+                                insurancePrice,
+                                insurancePurchasingStage,
+                                responsiblePersonId,
+                                responsiblePersonName,
                             } = insurancePurchasingInfo;
                             if (age >= minAge && age <= maxAge && (insurancePurchasingStage === stageId || stageId === INSURANCE_PURCHASING_STAGE_ID.ALL_STAGES))
                             {

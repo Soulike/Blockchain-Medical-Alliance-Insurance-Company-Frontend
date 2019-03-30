@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Function as ModalFunction} from '../../../../Components/Modal';
-import NAMESPACE from '../../../../NAMESPACE';
 import {MODAL_ID} from '../../../../Constant';
 import Api from '../../../../Api';
 import {getInsurancePurchasingInfoAction} from '../../Actions/Actions';
@@ -14,7 +13,7 @@ class PayConfirmProcessorContainer extends React.Component
     {
         const {insurancePurchasingInfo, getInsurancePurchasingInfo} = this.props;
         const {
-            [NAMESPACE.INSURANCE_PURCHASING_PROCESS.INSURANCE_PURCHASING_INFO.INSURANCE_PURCHASING_INFO_ID]: insurancePurchasingInfoId,
+            insurancePurchasingInfoId,
         } = insurancePurchasingInfo;
         const requestIsSuccessful = await Api.sendPostSubmitPayConfirmationRequestAsync(insurancePurchasingInfoId);
         if (requestIsSuccessful)

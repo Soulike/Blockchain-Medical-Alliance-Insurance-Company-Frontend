@@ -1,7 +1,6 @@
 import React from 'react';
 import Style from './Style.module.scss';
 import DirectPaymentProcessSelector from './Components/DirectPaymentProcessSelector';
-import NAMESPACE from '../../NAMESPACE';
 import {DIRECT_PAYMENT_STAGE_ID} from '../../Constant';
 import DirectPaymentInfo from './Components/DirectPaymentInfo';
 import DiagnosticResultModal from './Components/DiagnosticResultModal';
@@ -45,17 +44,17 @@ function DirectPaymentProcess(props)
                         directPaymentInfoList.map(directPaymentInfo =>
                         {
                             const {
-                                [NAMESPACE.DIRECT_PAYMENT_PROCESS.DIRECT_PAYMENT_INFO.DIRECT_PAYMENT_INFO_ID]: directPaymentInfoId,
-                                [NAMESPACE.DIRECT_PAYMENT_PROCESS.DIRECT_PAYMENT_INFO.NAME]: name,
-                                [NAMESPACE.DIRECT_PAYMENT_PROCESS.DIRECT_PAYMENT_INFO.AGE]: age,
-                                [NAMESPACE.DIRECT_PAYMENT_PROCESS.DIRECT_PAYMENT_INFO.IS_MALE]: isMale,
-                                [NAMESPACE.DIRECT_PAYMENT_PROCESS.DIRECT_PAYMENT_INFO.HEALTH_STATE]: healthState,
-                                [NAMESPACE.DIRECT_PAYMENT_PROCESS.DIRECT_PAYMENT_INFO.PUBLIC_KEY]: publicKey,
-                                [NAMESPACE.DIRECT_PAYMENT_PROCESS.DIRECT_PAYMENT_INFO.DIRECT_PAYMENT_MONEY_AMOUNT]: directPaymentMoneyAmount,
-                                [NAMESPACE.DIRECT_PAYMENT_PROCESS.DIRECT_PAYMENT_INFO.DIAGNOSTIC_RESULT]: diagnosticResult,
-                                [NAMESPACE.DIRECT_PAYMENT_PROCESS.DIRECT_PAYMENT_INFO.MEDICAL_DESCRIPTION]: medicalDescription,
-                                [NAMESPACE.DIRECT_PAYMENT_PROCESS.DIRECT_PAYMENT_INFO.DIRECT_PAYMENT_STAGE]: directPaymentStage,
-                                [NAMESPACE.DIRECT_PAYMENT_PROCESS.DIRECT_PAYMENT_INFO.INSURANCE_PURCHASING_INFO_ID]: insurancePurchasingInfoId,
+                                directPaymentInfoId,
+                                name,
+                                age,
+                                isMale,
+                                healthState,
+                                publicKey,
+                                directPaymentMoneyAmount,
+                                diagnosticResult,
+                                medicalDescription,
+                                directPaymentStage,
+                                insurancePurchasingInfoId,
                             } = directPaymentInfo;
                             if (age >= minAge && age <= maxAge && (directPaymentStage === stageId || stageId === DIRECT_PAYMENT_STAGE_ID.ALL_STAGES))
                             {

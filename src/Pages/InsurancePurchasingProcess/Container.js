@@ -1,7 +1,6 @@
 import React from 'react';
 // import Function from '../../Function';
 import {connect} from 'react-redux';
-import NAMESPACE from '../../NAMESPACE';
 import Api from '../../Api';
 import InsurancePurchasingProcess from './View';
 
@@ -46,7 +45,7 @@ class InsurancePurchasingProcessContainer extends React.Component
             {
                 if (insurancePurchasingInfoListWrapper)
                 {
-                    const insurancePurchasingInfoList = insurancePurchasingInfoListWrapper[NAMESPACE.INSURANCE_PURCHASING_PROCESS.LIST.INSURANCE_PURCHASING_INFO];
+                    const {insurancePurchasingInfoList} = insurancePurchasingInfoListWrapper;
                     this.setState({
                         insurancePurchasingInfoList,
                     });

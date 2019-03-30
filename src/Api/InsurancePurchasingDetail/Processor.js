@@ -1,5 +1,4 @@
 import Function from '../../Function';
-import NAMESPACE from '../../NAMESPACE';
 import {
     GET_ELECTRONIC_INSURANCE_POLICY,
     GET_INSURANCE_PURCHASING_INFO,
@@ -76,7 +75,7 @@ export async function sendGetElectronicInsurancePolicyRequestAsync(insurancePurc
     try
     {
         const {code, data} = await Function.getAsync(GET_ELECTRONIC_INSURANCE_POLICY, false, {
-            [NAMESPACE.INSURANCE_PURCHASING_PROCESS.INSURANCE_PURCHASING_INFO_ID]: insurancePurchasingInfoId,
+            insurancePurchasingInfoId,
         });
         switch (code)
         {
@@ -135,7 +134,7 @@ export async function sendGetMedicalRecordRequestAsync(insurancePurchasingInfoId
     try
     {
         const {code, data} = await Function.getAsync(GET_MEDICAL_RECORD, false, {
-            [NAMESPACE.INSURANCE_PURCHASING_PROCESS.INSURANCE_PURCHASING_INFO_ID]: insurancePurchasingInfoId,
+            insurancePurchasingInfoId,
         });
         switch (code)
         {
@@ -194,8 +193,8 @@ export async function sendPostSubmitInsuranceCompanyVerifyResultRequestAsync(ins
     try
     {
         const {code} = await Function.postAsync(SUBMIT_INSURANCE_COMPANY_VERIFY_RESULT, {
-            [NAMESPACE.INSURANCE_PURCHASING_PROCESS.INSURANCE_PURCHASING_INFO.INSURANCE_PURCHASING_INFO_ID]: insurancePurchasingInfoId,
-            [NAMESPACE.INSURANCE_PURCHASING_DETAIL.INSURANCE_COMPANY_VERIFY.VERIFY_RESULT]: verifyResult,
+            insurancePurchasingInfoId,
+            verifyResult,
         });
 
         switch (code)
@@ -256,7 +255,7 @@ export async function sendPostSubmitPayConfirmationRequestAsync(insurancePurchas
     try
     {
         const {code} = await Function.postAsync(SUBMIT_PAY_CONFIRMATION, {
-            [NAMESPACE.INSURANCE_PURCHASING_PROCESS.INSURANCE_PURCHASING_INFO_ID]: insurancePurchasingInfoId,
+            insurancePurchasingInfoId,
         });
         switch (code)
         {

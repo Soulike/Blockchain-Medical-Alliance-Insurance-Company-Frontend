@@ -1,6 +1,5 @@
 import Function from '../../Function';
 import {GET_VERIFICATION_CODE, LOGIN, SIGN_UP} from './ROUTE';
-import NAMESPACE from '../../NAMESPACE';
 import {STATUS_CODE} from '../../Constant';
 import message from 'antd/lib/message';
 import {Function as AuthProcessorFunction} from '../../Components/AuthProcessor';
@@ -10,8 +9,8 @@ export async function sendPostLoginRequestAsync(username, password)
     try
     {
         const {code} = await Function.postAsync(LOGIN, {
-            [NAMESPACE.ACCOUNT.ACCOUNT.USERNAME]: username,
-            [NAMESPACE.ACCOUNT.ACCOUNT.PASSWORD]: password,
+            username,
+            password,
         });
         switch (code)
         {
@@ -70,7 +69,7 @@ export async function sendGetVerificationCodeRequestAsync(email)
     try
     {
         const {code} = await Function.getAsync(GET_VERIFICATION_CODE, false, {
-            [NAMESPACE.ACCOUNT.PERSONAL_INFO.EMAIL]: email,
+            email,
         });
         switch (code)
         {
@@ -130,13 +129,13 @@ export async function sendPostSignUpRequestAsync(username, password, name, age, 
     try
     {
         const {code} = await Function.postAsync(SIGN_UP, {
-            [NAMESPACE.ACCOUNT.ACCOUNT.USERNAME]: username,
-            [NAMESPACE.ACCOUNT.ACCOUNT.PASSWORD]: password,
-            [NAMESPACE.ACCOUNT.PERSONAL_INFO.NAME]: name,
-            [NAMESPACE.ACCOUNT.PERSONAL_INFO.AGE]: parseInt(age, 10),
-            [NAMESPACE.ACCOUNT.PERSONAL_INFO.ADDRESS]: address,
-            [NAMESPACE.ACCOUNT.PERSONAL_INFO.EMAIL]: email,
-            [NAMESPACE.ACCOUNT.SIGN_UP.VERIFICATION_CODE]: verificationCode,
+            username,
+            password,
+            name,
+            age: parseInt(age, 10),
+            address,
+            email,
+            verificationCode,
         });
 
         switch (code)

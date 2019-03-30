@@ -1,7 +1,6 @@
 import React from 'react';
 import Api from '../../Api';
 import InsuranceList from './View';
-import NAMESPACE from '../../NAMESPACE';
 
 class InsuranceListContainer extends React.Component
 {
@@ -20,7 +19,7 @@ class InsuranceListContainer extends React.Component
             {
                 if (insuranceListWrapper)
                 {
-                    const insuranceList = insuranceListWrapper[NAMESPACE.INSURANCE_LIST.LIST.INSURANCE];
+                    const {insuranceList} = insuranceListWrapper;
                     this.setState({
                         insuranceList,
                     });

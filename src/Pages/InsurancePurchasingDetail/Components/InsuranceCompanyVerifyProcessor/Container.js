@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import {Function as ModalFunction} from '../../../../Components/Modal';
 import {MODAL_ID} from '../../../../Constant';
 import Api from '../../../../Api';
-import NAMESPACE from '../../../../NAMESPACE';
 import {getInsurancePurchasingInfoAction} from '../../Actions/Actions';
 import {connect} from 'react-redux';
 import InsuranceCompanyVerifyProcessor from './View';
@@ -33,8 +32,9 @@ class InsuranceCompanyVerifyProcessorContainer extends React.Component
         const electronicInsurancePolicyWrapper = await Api.sendGetElectronicInsurancePolicyRequestAsync(insurancePurchasingInfoId);
         if (electronicInsurancePolicyWrapper)
         {
+            const {electronicInsurancePolicy} = electronicInsurancePolicyWrapper;
             this.setState({
-                electronicInsurancePolicy: electronicInsurancePolicyWrapper[NAMESPACE.INSURANCE_PURCHASING_DETAIL.INSURANCE_COMPANY_VERIFY.ELECTRONIC_INSURANCE_POLICY],
+                electronicInsurancePolicy,
             }, () =>
             {
                 ModalFunction.showModal(MODAL_ID.ELECTRONIC_INSURANCE_POLICY_MODAL);
@@ -45,11 +45,12 @@ class InsuranceCompanyVerifyProcessorContainer extends React.Component
     onViewMedicalRecordButtonClick = async () =>
     {
         const {insurancePurchasingInfoId} = this.props;
-        const medicalRecord = await Api.sendGetMedicalRecordRequestAsync(insurancePurchasingInfoId);
-        if (medicalRecord)
+        const medicalRecordWrapper = await Api.sendGetMedicalRecordRequestAsync(insurancePurchasingInfoId);
+        if (medicalRecordWrapper)
         {
+            const {medicalRecord} = medicalRecordWrapper;
             this.setState({
-                medicalRecord: medicalRecord[NAMESPACE.INSURANCE_PURCHASING_DETAIL.INSURANCE_COMPANY_VERIFY.MEDICAL_RECORD],
+                medicalRecord,
             }, () =>
             {
                 ModalFunction.showModal(MODAL_ID.MEDICAL_RECORD_MODAL);
