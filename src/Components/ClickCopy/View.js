@@ -41,4 +41,9 @@ ClickCopy.propTypes = {
     onCopyError: PropTypes.func,
 };
 
+ClickCopy.defaultProps = {
+    onCopySuccess: () => null,
+    onCopyError: () => null,
+};
+
 export default ClickCopy;

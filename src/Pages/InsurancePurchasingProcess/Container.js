@@ -3,6 +3,8 @@ import React from 'react';
 import {connect} from 'react-redux';
 import Api from '../../Api';
 import InsurancePurchasingProcess from './View';
+import {browserHistory} from 'react-router';
+import {PAGE_ID_TO_ROUTE, REQUIRE_LOGIN_PAGE_ID} from '../../Config';
 
 class InsurancePurchasingProcessContainer extends React.Component
 {
@@ -23,7 +25,7 @@ class InsurancePurchasingProcessContainer extends React.Component
                 insurancePurchasingInfoId: i + 1,
                 name: '罗小黑',
                 age: Math.round(Math.random() * 80 + 1),
-                isMale: 0,
+                isMale: Math.round(Math.random()),
                 healthState: '健康',
                 publicKey: Function.randomString(52),
                 insuranceType: '少年英才保险',
@@ -53,6 +55,10 @@ class InsurancePurchasingProcessContainer extends React.Component
             });
     }
 
+    onRowClick = (insurancePurchasingInfoId) =>
+    {
+        browserHistory.push(`${PAGE_ID_TO_ROUTE[REQUIRE_LOGIN_PAGE_ID.INSURANCE_COMPANY_INSURANCE_PURCHASING_DETAIL]}?insurancePurchasingInfoId=${insurancePurchasingInfoId}`);
+    };
 
     render()
     {
@@ -60,7 +66,8 @@ class InsurancePurchasingProcessContainer extends React.Component
         const {ageRange, stageId} = this.props;
         return <InsurancePurchasingProcess insurancePurchasingInfoList={insurancePurchasingInfoList}
                                            ageRange={ageRange}
-                                           stageId={stageId} />;
+                                           stageId={stageId}
+                                           onRowClick={this.onRowClick} />;
     }
 }
 

@@ -30,7 +30,7 @@ class Modal extends React.Component
 
 Modal.propTypes = {
     ...OriginalModal.propTypes,
-    modalId: PropTypes.oneOf(MODAL_ID).isRequired,
+    modalId: PropTypes.oneOf(Object.values(MODAL_ID)).isRequired,
 };
 
 const mapStateToProps = state =>
