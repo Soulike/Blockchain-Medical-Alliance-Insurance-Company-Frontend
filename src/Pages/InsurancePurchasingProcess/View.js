@@ -10,7 +10,7 @@ import Tooltip from 'antd/lib/tooltip';
 
 function InsurancePurchasingProcess(props)
 {
-    const {insurancePurchasingInfoList, ageRange: [minAge, maxAge], stageId, onRowClick} = props;
+    const {insurancePurchasingInfoList, ageRange: [minAge, maxAge], stageId, onRowClick, insurancePurchasingInfoId: onlyInsurancePurchasingInfoId} = props;
 
     const columns = [
         {
@@ -124,7 +124,26 @@ function InsurancePurchasingProcess(props)
             responsiblePersonName,
         } = insurancePurchasingInfo;
 
-        if (age >= minAge && age <= maxAge && (insurancePurchasingStage === stageId || stageId === INSURANCE_PURCHASING_STAGE_ID.ALL_STAGES))
+        if (onlyInsurancePurchasingInfoId && insurancePurchasingInfoId === onlyInsurancePurchasingInfoId)
+        {
+            dataSource.push({
+                key: insurancePurchasingInfoId,
+                insurancePurchasingInfoId,
+                name,
+                age,
+                isMale,
+                healthState,
+                publicKey,
+                insuranceType,
+                insurancePurchasingTime,
+                insurancePeriod,
+                insurancePrice,
+                insurancePurchasingStage,
+                responsiblePersonId,
+                responsiblePersonName,
+            });
+        }
+        else if (age >= minAge && age <= maxAge && (insurancePurchasingStage === stageId || stageId === INSURANCE_PURCHASING_STAGE_ID.ALL_STAGES))
         {
             dataSource.push({
                 key: insurancePurchasingInfoId,
@@ -149,7 +168,9 @@ function InsurancePurchasingProcess(props)
 
     return (
         <div className={Style.InsurancePurchasingProcess}>
-            <InsurancePurchasingProcessSelector />
+            {
+                onlyInsurancePurchasingInfoId ? null : <InsurancePurchasingProcessSelector />
+            }
             <div className={Style.tableWrapper}>
                 <Table dataSource={dataSource}
                        columns={columns}
@@ -178,6 +199,7 @@ InsurancePurchasingProcess.propTypes = {
     ageRange: PropTypes.array.isRequired,
     stageId: PropTypes.oneOf(Object.values(INSURANCE_PURCHASING_STAGE_ID)).isRequired,
     onRowClick: PropTypes.func.isRequired,
+    insurancePurchasingInfoId: PropTypes.string,    // 如果这个 Prop 存在，那么只显示这一条信息且隐藏选择器
 };
 
 export default InsurancePurchasingProcess;
