@@ -75,15 +75,10 @@ class DirectPaymentProcessContainer extends React.Component
 
     onDirectPaymentInfoClick = directPaymentInfoId =>
     {
-        return e =>
-        {
-            e.stopPropagation();
-            e.cancelBubble = true;
-            browserHistory.push(`${PAGE_ID_TO_ROUTE[REQUIRE_LOGIN_PAGE_ID.INSURANCE_COMPANY_DIRECT_PAYMENT_DETAIL]}?directPaymentInfoId=${directPaymentInfoId}`);
-        };
+        browserHistory.push(`${PAGE_ID_TO_ROUTE[REQUIRE_LOGIN_PAGE_ID.INSURANCE_COMPANY_DIRECT_PAYMENT_DETAIL]}?directPaymentInfoId=${directPaymentInfoId}`);
     };
 
-    onDiagnosticResultButtonClick = (diagnosticResult) =>
+    onDiagnosticResultButtonClick = diagnosticResult =>
     {
         return e =>
         {
@@ -99,7 +94,7 @@ class DirectPaymentProcessContainer extends React.Component
         };
     };
 
-    onMedicalDescriptionButtonClick = (medicalDescription) =>
+    onMedicalDescriptionButtonClick = medicalDescription =>
     {
         return e =>
         {

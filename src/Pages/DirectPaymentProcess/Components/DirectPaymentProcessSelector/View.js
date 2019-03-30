@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 function DirectPaymentProcessSelector(props)
 {
     const {Series, Item} = SelectorObject;
-    const {ageRange: [minAge, maxAge], stageId: currentSelectedStageId, changeFilterAgeRange, changeFilterInsurancePurchasingStage} = props;
+    const {ageRange: [minAge, maxAge], currentSelectedStageId, changeFilterAgeRange, changeFilterInsurancePurchasingStage} = props;
     const seriesArray = [
         new Series('年龄', [
             new Item('全部', () =>
