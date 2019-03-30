@@ -5,6 +5,7 @@ import {Reducer as InsurancePurchasingProcessReducer} from './Pages/InsurancePur
 import {Reducer as DirectPaymentProcessReducer} from './Pages/DirectPaymentProcess';
 import {Reducer as AuthProcessorReducer} from './Components/AuthProcessor';
 import {Reducer as InsurancePurchasingDetailReducer} from './Pages/InsurancePurchasingDetail';
+import {Reducer as ModalReducer} from './ComponentContainers/Modal';
 import {DIRECT_PAYMENT_STAGE_ID, INSURANCE_PURCHASING_STAGE_ID} from './Constant';
 
 // Store 中的初始值，根据开发需要进行改变
@@ -37,6 +38,9 @@ const initValues = {
             responsiblePersonName: 'String',          // 负责人姓名*/
         },
     },
+    Modal: {
+        currentVisibleModalIdSet: new Set(),
+    },
 };
 
 // 所有中间件放在此处
@@ -52,6 +56,7 @@ const Reducer = combineReducers({
     DirectPaymentProcess: DirectPaymentProcessReducer,
     AuthProcessor: AuthProcessorReducer,
     InsurancePurchasingDetail: InsurancePurchasingDetailReducer,
+    Modal: ModalReducer,
 });
 
 export default createStore(Reducer, initValues, storeEnhancers);

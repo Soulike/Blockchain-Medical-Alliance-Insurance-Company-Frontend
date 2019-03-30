@@ -2,11 +2,11 @@ import React from 'react';
 // import Function from '../../Function';
 import {connect} from 'react-redux';
 import {MODAL_ID} from '../../Constant';
-import {Function as ModalFunction} from '../../Components/Modal';
 import Api from '../../Api';
 import {browserHistory} from 'react-router';
 import {PAGE_ID_TO_ROUTE, REQUIRE_LOGIN_PAGE_ID} from '../../Config/ROUTE';
 import DirectPaymentProcess from './View';
+import {Actions as ModalActions} from '../../ComponentContainers/Modal';
 
 class DirectPaymentProcessContainer extends React.Component
 {
@@ -89,11 +89,12 @@ class DirectPaymentProcessContainer extends React.Component
         {
             e.stopPropagation();
             e.cancelBubble = true;
+            const {showModal} = this.props;
             this.setState({
                 currentActiveDiagnosticResultInModal: diagnosticResult,
             }, () =>
             {
-                ModalFunction.showModal(MODAL_ID.DIAGNOSTIC_RESULT_MODAL);
+                showModal(MODAL_ID.DIAGNOSTIC_RESULT_MODAL);
             });
         };
     };
@@ -104,11 +105,12 @@ class DirectPaymentProcessContainer extends React.Component
         {
             e.stopPropagation();
             e.cancelBubble = true;
+            const {showModal} = this.props;
             this.setState({
                 currentActiveMedicalDescriptionInModal: medicalDescription,
             }, () =>
             {
-                ModalFunction.showModal(MODAL_ID.MEDICAL_DESCRIPTION_MODAL);
+                showModal(MODAL_ID.MEDICAL_DESCRIPTION_MODAL);
             });
         };
     };
@@ -138,4 +140,8 @@ const mapStateToProps = state =>
     };
 };
 
-export default connect(mapStateToProps)(DirectPaymentProcessContainer);
+const mapDispatchToProps = {
+    showModal: ModalActions.showModalAction,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(DirectPaymentProcessContainer);

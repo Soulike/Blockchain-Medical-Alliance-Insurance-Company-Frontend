@@ -1,7 +1,7 @@
 import React from 'react';
 import Style from './Style.module.scss';
 import PropTypes from 'prop-types';
-import {Modal} from '../../../../Components/Modal';
+import Modal from '../../../../ComponentContainers/Modal';
 import {MODAL_ID} from '../../../../Constant';
 import Radio from 'antd/lib/radio';
 import Button from 'antd/lib/button';
@@ -39,12 +39,12 @@ function InsuranceCompanyVerifyProcessor(props)
                 </Button>
             </div>
         </div>,
-        <Modal id={MODAL_ID.ELECTRONIC_INSURANCE_POLICY_MODAL}
+        <Modal modalId={MODAL_ID.ELECTRONIC_INSURANCE_POLICY_MODAL}
                title={'电子保单'}
                key={MODAL_ID.ELECTRONIC_INSURANCE_POLICY_MODAL}>
             {electronicInsurancePolicy}
         </Modal>,
-        <Modal id={MODAL_ID.MEDICAL_RECORD_MODAL} title={'病历'} key={MODAL_ID.MEDICAL_RECORD_MODAL}>
+        <Modal modalId={MODAL_ID.MEDICAL_RECORD_MODAL} title={'病历'} key={MODAL_ID.MEDICAL_RECORD_MODAL}>
             {medicalRecord}
         </Modal>,
     ];

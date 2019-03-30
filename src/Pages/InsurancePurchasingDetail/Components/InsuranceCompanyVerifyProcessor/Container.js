@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Function as ModalFunction} from '../../../../Components/Modal';
 import {MODAL_ID} from '../../../../Constant';
 import Api from '../../../../Api';
 import {getInsurancePurchasingInfoAction} from '../../Actions/Actions';
 import {connect} from 'react-redux';
 import InsuranceCompanyVerifyProcessor from './View';
+import {Actions as ModalActions} from '../../../../ComponentContainers/Modal';
 
 class InsuranceCompanyVerifyProcessorContainer extends React.Component
 {
@@ -28,7 +28,7 @@ class InsuranceCompanyVerifyProcessorContainer extends React.Component
 
     onViewElectronicInsurancePolicyButtonClick = async () =>
     {
-        const {insurancePurchasingInfoId} = this.props;
+        const {insurancePurchasingInfoId, showModal} = this.props;
         const electronicInsurancePolicyWrapper = await Api.sendGetElectronicInsurancePolicyRequestAsync(insurancePurchasingInfoId);
         if (electronicInsurancePolicyWrapper)
         {
@@ -37,14 +37,14 @@ class InsuranceCompanyVerifyProcessorContainer extends React.Component
                 electronicInsurancePolicy,
             }, () =>
             {
-                ModalFunction.showModal(MODAL_ID.ELECTRONIC_INSURANCE_POLICY_MODAL);
+                showModal(MODAL_ID.ELECTRONIC_INSURANCE_POLICY_MODAL);
             });
         }
     };
 
     onViewMedicalRecordButtonClick = async () =>
     {
-        const {insurancePurchasingInfoId} = this.props;
+        const {insurancePurchasingInfoId, showModal} = this.props;
         const medicalRecordWrapper = await Api.sendGetMedicalRecordRequestAsync(insurancePurchasingInfoId);
         if (medicalRecordWrapper)
         {
@@ -53,7 +53,7 @@ class InsuranceCompanyVerifyProcessorContainer extends React.Component
                 medicalRecord,
             }, () =>
             {
-                ModalFunction.showModal(MODAL_ID.MEDICAL_RECORD_MODAL);
+                showModal(MODAL_ID.MEDICAL_RECORD_MODAL);
             });
         }
     };
@@ -87,6 +87,7 @@ InsuranceCompanyVerifyProcessorContainer.propTypes = {
 
 const mapDispatchToProps = {
     getInsurancePurchasingInfo: getInsurancePurchasingInfoAction,
+    showModal: ModalActions.showModalAction,
 };
 
 export default connect(null, mapDispatchToProps)(InsuranceCompanyVerifyProcessorContainer);

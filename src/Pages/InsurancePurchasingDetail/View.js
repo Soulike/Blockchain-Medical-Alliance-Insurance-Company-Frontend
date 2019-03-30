@@ -13,24 +13,24 @@ function InsurancePurchasingDetail(props)
     const {insurancePurchasingInfo} = props;
     const {
         insurancePurchasingInfoId,
-        stageNumber,
+        insurancePurchasingStage,
     } = insurancePurchasingInfo;
     return (
         <div className={Style.InsurancePurchasingDetail}>
             <div className={Style.stageProgressIndicatorWrapper}>
-                <HorizontalStageProgressIndicator currentStageNumber={stageNumber}
+                <HorizontalStageProgressIndicator currentStageNumber={insurancePurchasingStage}
                                                   maxStageNumber={stageTextArray.length - 1} />
             </div>
             <div className={Style.title}>进度详情</div>
             <div className={Style.stageTextIndicatorWrapper}>
-                <StageTextIndicator currentStageNumber={stageNumber}
+                <StageTextIndicator currentStageNumber={insurancePurchasingStage}
                                     stageTextArray={stageTextArray} />
             </div>
             <div className={Style.stageProcessorWrapper}>
                 {
                     (() =>
                     {
-                        switch (stageNumber)
+                        switch (insurancePurchasingStage)
                         {
                             case INSURANCE_PURCHASING_STAGE_ID.INSURANCE_COMPANY_VERIFY:
                             {
