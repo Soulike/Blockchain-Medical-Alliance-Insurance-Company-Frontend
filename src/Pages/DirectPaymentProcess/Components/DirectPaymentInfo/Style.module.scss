@@ -1,5 +1,4 @@
 @import "../../../../Constant/RESIZE";
-@import "../../../../ModuleConfig/Bootstrap/Bootstrap";
 
 .DirectPaymentInfo {
     cursor: pointer;
@@ -12,9 +11,5 @@
         text-overflow: ellipsis;
         font-family: monospace;
         text-decoration: underline dotted;
-    }
-
-    button {
-        @extend .btn, .btn-primary;
     }
 }

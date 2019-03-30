@@ -2,7 +2,8 @@ import Function from '../../Function';
 import {GET_VERIFICATION_CODE, LOGIN, SIGN_UP} from './ROUTE';
 import NAMESPACE from '../../NAMESPACE';
 import {STATUS_CODE} from '../../Constant';
-import {DangerAlert, WarningAlert} from '../../Components/Alerts';
+import message from 'antd/lib/message';
+import {Function as AuthProcessorFunction} from '../../Components/AuthProcessor';
 
 export async function sendPostLoginRequestAsync(username, password)
 {
@@ -18,33 +19,40 @@ export async function sendPostLoginRequestAsync(username, password)
             {
                 return true;
             }
-            case STATUS_CODE.NOT_FOUND:
-            {
-                WarningAlert.pop('用户名或密码错误');
-                return null;
-            }
             case STATUS_CODE.BAD_REQUEST:
             {
-                WarningAlert.pop('参数错误');
-                return null;
-            }
-            case STATUS_CODE.FORBIDDEN:
-            {
-                WarningAlert.pop('用户名或密码错误');
+                message.error('参数错误');
                 return null;
             }
             case STATUS_CODE.UNAUTHORIZED:
             {
+                message.error('未登录操作');
+                AuthProcessorFunction.setLoggedOut();
+                return null;
+            }
+            case STATUS_CODE.FORBIDDEN:
+            {
+                message.error('用户名或密码错误');
+                return null;
+            }
+            case STATUS_CODE.NOT_FOUND:
+            {
+                message.error('用户名或密码错误');
+                return null;
+            }
+            case STATUS_CODE.CONFLICT:
+            {
+                message.error('与服务器资源冲突');
                 return null;
             }
             case STATUS_CODE.INTERNAL_SERVER_ERROR:
             {
-                DangerAlert.pop('服务器错误');
+                message.error('服务器错误');
                 return null;
             }
             default:
             {
-                WarningAlert.pop('登录失败');
+                message.error('未知原因的登录失败');
                 return null;
             }
         }
@@ -52,7 +60,7 @@ export async function sendPostLoginRequestAsync(username, password)
     catch (e)
     {
         console.error(e);
-        WarningAlert.pop('登录失败');
+        message.error('网络异常');
         return null;
     }
 }
@@ -68,21 +76,43 @@ export async function sendGetVerificationCodeRequestAsync(email)
         {
             case STATUS_CODE.OK:
             {
+                message.success('验证码已发送至您的邮箱');
                 return true;
             }
             case STATUS_CODE.BAD_REQUEST:
             {
-                WarningAlert.pop('参数错误');
+                message.error('参数错误');
+                return null;
+            }
+            case STATUS_CODE.UNAUTHORIZED:
+            {
+                message.error('未登录操作');
+                AuthProcessorFunction.setLoggedOut();
+                return null;
+            }
+            case STATUS_CODE.FORBIDDEN:
+            {
+                message.error('获取验证码操作被拒绝');
+                return null;
+            }
+            case STATUS_CODE.NOT_FOUND:
+            {
+                message.error('获取验证码失败');
+                return null;
+            }
+            case STATUS_CODE.CONFLICT:
+            {
+                message.error('与服务器资源冲突');
                 return null;
             }
             case STATUS_CODE.INTERNAL_SERVER_ERROR:
             {
-                DangerAlert.pop('服务器错误');
+                message.error('服务器错误');
                 return null;
             }
             default:
             {
-                WarningAlert.pop('获取验证码失败');
+                message.error('未知原因的获取验证码失败');
                 return null;
             }
         }
@@ -90,7 +120,7 @@ export async function sendGetVerificationCodeRequestAsync(email)
     catch (e)
     {
         console.error(e);
-        WarningAlert.pop('获取验证码失败');
+        message.error('网络异常');
         return null;
     }
 }
@@ -113,40 +143,51 @@ export async function sendPostSignUpRequestAsync(username, password, name, age, 
         {
             case STATUS_CODE.OK:
             {
+                message.success('注册成功');
                 return true;
             }
             case STATUS_CODE.BAD_REQUEST:
             {
-                WarningAlert.pop('参数错误');
+                message.error('参数错误');
+                return null;
+            }
+            case STATUS_CODE.UNAUTHORIZED:
+            {
+                message.error('未登录操作');
+                AuthProcessorFunction.setLoggedOut();
                 return null;
             }
             case STATUS_CODE.FORBIDDEN:
             {
-                WarningAlert.pop('验证码错误');
+                message.error('验证码错误');
+                return null;
+            }
+            case STATUS_CODE.NOT_FOUND:
+            {
+                message.error('注册失败');
                 return null;
             }
             case STATUS_CODE.CONFLICT:
             {
-                WarningAlert.pop('用户名已存在');
+                message.error('用户名已存在');
                 return null;
             }
             case STATUS_CODE.INTERNAL_SERVER_ERROR:
             {
-                DangerAlert.pop('服务器错误');
+                message.error('服务器错误');
                 return null;
             }
             default:
             {
-                WarningAlert.pop('注册失败');
+                message.error('未知原因的注册失败');
                 return null;
             }
         }
-
     }
     catch (e)
     {
         console.error(e);
-        WarningAlert.pop('注册失败');
+        message.error('网络异常');
         return null;
     }
 }

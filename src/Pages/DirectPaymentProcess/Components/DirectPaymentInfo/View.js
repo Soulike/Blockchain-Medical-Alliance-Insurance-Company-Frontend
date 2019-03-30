@@ -1,10 +1,11 @@
 import React from 'react';
 import Style from './Style.module.scss';
 import ClickCopy from '../../../../Components/ClickCopy';
-import {SuccessAlert, WarningAlert} from '../../../../Components/Alerts';
-import ToolTip, {TOOLTIP_POSITION} from '../../../../Components/Tooltip';
 import {DIRECT_PAYMENT_STAGE_ID, DIRECT_PAYMENT_STAGE_ID_TO_TEXT} from '../../../../Constant';
 import PropTypes from 'prop-types';
+import message from 'antd/lib/message';
+import Tooltip from 'antd/lib/tooltip';
+import Button from 'antd/lib/button';
 
 function DirectPaymentInfo(props)
 {
@@ -32,26 +33,26 @@ function DirectPaymentInfo(props)
                 <ClickCopy copyText={publicKey} onCopySuccess={
                     () =>
                     {
-                        SuccessAlert.pop('公钥复制成功');
+                        message.success('公钥复制成功');
                     }} onCopyError={
                     () =>
                     {
-                        WarningAlert.pop('公钥复制失败');
+                        message.warning('公钥复制失败');
                     }}>
-                    <ToolTip placement={TOOLTIP_POSITION.TOP} title={'点击复制公钥'}>
+                    <Tooltip title={'点击复制公钥'}>
                         <div className={Style.publicKey}>{publicKey}</div>
-                    </ToolTip>
+                    </Tooltip>
                 </ClickCopy>
             </td>
             <td>{directPaymentMoneyAmount} 元</td>
             <td>
-                <button onClick={onDiagnosticResultButtonClick}>查看</button>
+                <Button htmlType={'button'} type={'primary'} onClick={onDiagnosticResultButtonClick}>查看</Button>
             </td>
             <td>
-                <button onClick={onMedicalDescriptionButtonClick}>查看</button>
+                <Button htmlType={'button'} type={'primary'} onClick={onMedicalDescriptionButtonClick}>查看</Button>
             </td>
             <td>
-                <button onClick={onInsurancePurchasingInfoButtonClick}>查看</button>
+                <Button htmlType={'button'} type={'primary'} onClick={onInsurancePurchasingInfoButtonClick}>查看</Button>
             </td>
             <td>{DIRECT_PAYMENT_STAGE_ID_TO_TEXT[directPaymentStage]}</td>
         </tr>

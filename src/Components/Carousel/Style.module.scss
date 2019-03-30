@@ -1,15 +1,21 @@
-.Carousel {
-    width: 100%;
+@import "../../Constant/RESIZE";
 
-    .inner {
-        width: 100%;
-        height: 100%;
+.CarouselContainer {
+    position: relative;
 
-        .item {
-            height: 100%;
-            width: 100%;
-            background-size: cover !important;
-            background-position: center !important;
-        }
+    .insurancePublicationButton {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 10%;
+        z-index: 1;
+        font-size: (28rem/$RESIZE_FACTOR);
+        width: (291rem/$RESIZE_FACTOR);
+        height: (80rem/$RESIZE_FACTOR);
+        box-sizing: border-box;
+    }
+
+    .slide {
+        background-size: cover;
     }
 }

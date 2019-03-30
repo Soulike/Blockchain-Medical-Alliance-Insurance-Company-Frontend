@@ -5,6 +5,8 @@ import AccountPageCard from '../../Components/AccountPageCard';
 import {browserHistory, Link} from 'react-router';
 import {NOT_REQUIRE_LOGIN_PAGE_ID, PAGE_ID_TO_ROUTE} from '../../Config/ROUTE';
 import {REGEX_TEXT} from '../../Config';
+import Button from 'antd/lib/button';
+import Input from 'antd/lib/input';
 
 function SignUp(props)
 {
@@ -30,51 +32,59 @@ function SignUp(props)
                     <div className={Style.signUpSuccessPart}>
                         <div className={Style.title}>注册成功</div>
                         <div className={Style.buttonWrapper}>
-                            <button className={Style.toLoginButton} onClick={() =>
+                            <Button htmlType={'button'} className={Style.toLoginButton} onClick={() =>
                             {
                                 browserHistory.push(PAGE_ID_TO_ROUTE[NOT_REQUIRE_LOGIN_PAGE_ID.INSURANCE_COMPANY_LOGIN]);
                             }
                             }>去登录
-                            </button>
+                            </Button>
                         </div>
                     </div> :
                     <div className={Style.signUpPart}>
                         <div className={Style.title}>注册</div>
                         <form className={Style.signUpForm} onSubmit={onSubmit}>
                             <div className={Style.inputWrapper}>
-                                <input type="text"
+                                <Input className={Style.input}
+                                       type="text"
                                        placeholder={`用户名 (${REGEX_TEXT.USERNAME})`}
                                        autoFocus={true}
                                        ref={usernameInputRef} />
-                                <input type="password"
+                                <Input className={Style.input}
+                                       type="password"
                                        placeholder={`密码 (${REGEX_TEXT.PASSWORD})`}
                                        ref={passwordInputRef} />
-                                <input type="password" placeholder={'确认密码'} ref={repeatPasswordInputRef} />
-                                <input type="text" placeholder={'姓名'} ref={nameInputRef} />
-                                <input type="number" placeholder={'年龄'} ref={ageInputRef} />
-                                <input type="text" placeholder={'家庭住址'} ref={addressInputRef} />
-                                <input type="email" placeholder={'邮箱 (接收验证码的邮箱)'} ref={emailInputRef} />
-                                <div className={`input-group ${Style.verificationCodeInputWrapper}`}>
-                                    <input type="text"
-                                           placeholder={'验证码'}
-                                           className={`form-control ${Style.verificationCodeInput}`}
-                                           ref={verificationCodeInputRef} />
-                                    <div className={`input-group-append ${Style.verificationCodeInputLabelWrapper}`}
-                                         onClick={onGetVerificationCodeButtonClick}>
-                                    <span className={`input-group-text ${Style.verificationCodeInputLabel}`}>
-                                        {
-                                            hasSendVerificationCode ? timeToNextSend : '发送'
-                                        }
-                                    </span>
-                                    </div>
-                                </div>
+                                <Input className={Style.input}
+                                       type="password"
+                                       placeholder={'确认密码'}
+                                       ref={repeatPasswordInputRef} />
+                                <Input className={Style.input} type="text" placeholder={'姓名'} ref={nameInputRef} />
+                                <Input className={Style.input} type="number" placeholder={'年龄'} ref={ageInputRef} />
+                                <Input className={Style.input} type="text" placeholder={'家庭住址'} ref={addressInputRef} />
+                                <Input className={Style.input}
+                                       type="email"
+                                       placeholder={'邮箱 (接收验证码的邮箱)'}
+                                       ref={emailInputRef} />
+                                <Input type="text"
+                                       placeholder={'验证码'}
+                                       className={Style.input}
+                                       ref={verificationCodeInputRef}
+                                       addonAfter={
+                                           <span className={Style.verificationCodeInputLabel}
+                                                 onClick={onGetVerificationCodeButtonClick}>
+                                                    {
+                                                        hasSendVerificationCode ? timeToNextSend : '发送'
+                                                    }
+                                               </span>
+                                       } />
                             </div>
                             <div className={Style.linkWrapper}>
                                 <Link onlyActiveOnIndex={false}
                                       to={PAGE_ID_TO_ROUTE[NOT_REQUIRE_LOGIN_PAGE_ID.INSURANCE_COMPANY_LOGIN]}>已有帐号？</Link>
                             </div>
                             <div className={Style.buttonWrapper}>
-                                <button className={Style.submitButton}>确认</button>
+                                <Button htmlType={'button'}
+                                        className={Style.submitButton}
+                                        onClick={onSubmit}>确认</Button>
                             </div>
                         </form>
                     </div>

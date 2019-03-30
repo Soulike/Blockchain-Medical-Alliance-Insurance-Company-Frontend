@@ -1,11 +1,11 @@
 import React from 'react';
 import Login from './View';
 import {PAGE_ID_TO_ROUTE, REGEX, REQUIRE_LOGIN_PAGE_ID} from '../../Config';
-import {WarningAlert} from '../../Components/Alerts';
 import Api from '../../Api';
 import {browserHistory} from 'react-router';
 import {Actions as AuthProcessorActions} from '../../Components/AuthProcessor';
 import {connect} from 'react-redux';
+import message from 'antd/lib/message';
 
 class LoginContainer extends React.Component
 {
@@ -28,15 +28,15 @@ class LoginContainer extends React.Component
     onSubmit = async e =>
     {
         e.preventDefault();
-        const username = this.usernameInputRef.current.value;
-        const password = this.passwordInputRef.current.value;
+        const username = this.usernameInputRef.current.input.value;
+        const password = this.passwordInputRef.current.input.value;
         if (!REGEX.USERNAME.test(username))
         {
-            WarningAlert.pop('用户名不正确');
+            message.warning('用户名不正确');
         }
         else if (!REGEX.PASSWORD.test(password))
         {
-            WarningAlert.pop('密码不正确');
+            message.warning('密码不正确');
         }
         else
         {

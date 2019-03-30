@@ -3,6 +3,7 @@ import Style from './Style.module.scss';
 import Card from '../../Components/Card';
 import companyLogo from '../../Static/PersonalCenter/companyLogo.jpg';
 import certificate from '../../Static/PersonalCenter/certificate.jpg';
+import Button from 'antd/lib/button';
 
 function PersonalCenter()
 {
@@ -35,7 +36,7 @@ function PersonalCenter()
                 </div>
             </div>
             <div className={Style.modifyButtonWrapper}>
-                <button className={Style.modifyButton}>编辑</button>
+                <Button htmlType={'button'} type={'primary'} className={Style.modifyButton}>编辑</Button>
             </div>
         </div>
     );

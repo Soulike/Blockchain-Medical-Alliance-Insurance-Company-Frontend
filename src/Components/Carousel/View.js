@@ -1,49 +1,49 @@
 import React from 'react';
-import Style from './Style.module.scss';
 import PropTypes from 'prop-types';
+import Carousel from 'antd/lib/carousel/index';
+import Style from './Style.module.scss';
+import {Link} from 'react-router';
+import {CAROUSEL_IMAGE, PAGE_ID_TO_ROUTE, REQUIRE_LOGIN_PAGE_ID} from '../../Config';
+import Button from 'antd/lib/button';
 
-class Carousel extends React.Component
+class CarouselContainer extends React.Component
 {
     render()
     {
-        const {className, interval, imageSrcArray} = this.props;
-
+        const {className, shouldShowInsurancePublicationButton} = this.props;
         return (
-            <div className={`carousel slide carousel-fade ${Style.Carousel} ${className}`} data-ride="carousel">
-                <div className={`carousel-inner ${Style.inner}`}>
+            <div className={Style.CarouselContainer}>
+                <Carousel className={className}
+                          autoplay={true}
+                          dots={false}
+                          effect={'fade'}
+                          autoplaySpeed={10 * 1000}
+                          speed={3 * 1000}>
                     {
-                        imageSrcArray.map((imageSrc, i) =>
-                        {
-                            if (i === 0)
-                            {
-                                return (
-                                    <div className={`carousel-item active ${Style.item}`}
-                                         data-interval={interval}
-                                         style={{background: `url('${imageSrc}')`}}
-                                         key={imageSrc} />
-                                );
-                            }
-                            else
-                            {
-                                return (
-                                    <div className={`carousel-item ${Style.item}`}
-                                         data-interval={interval}
-                                         style={{background: `url('${imageSrc}')`}}
-                                         key={imageSrc} />
-                                );
-                            }
-                        })
+                        CAROUSEL_IMAGE.map(imageSrc => (
+                            <div>
+                                <div className={`${className} ${Style.slide}`}
+                                     style={{background: `url("${imageSrc}") no-repeat center`}} />
+                            </div>))
                     }
-                </div>
+                </Carousel>
+                {
+                    shouldShowInsurancePublicationButton ?
+                        <Link onlyActiveOnIndex={false}
+                              to={PAGE_ID_TO_ROUTE[REQUIRE_LOGIN_PAGE_ID.INSURANCE_COMPANY_INSURANCE_PUBLICATION]}>
+                            <Button htmlType={'button'} type={'primary'} className={Style.insurancePublicationButton}>
+                                发布保险
+                            </Button>
+                        </Link> : null
+                }
             </div>
         );
     }
 }
 
-Carousel.propTypes = {
+CarouselContainer.propTypes = {
     className: PropTypes.string,
-    interval: PropTypes.number.isRequired,
-    imageSrcArray: PropTypes.arrayOf(PropTypes.string).isRequired,
+    shouldShowInsurancePublicationButton: PropTypes.bool.isRequired,
 };
 
-export default Carousel;
+export default CarouselContainer;

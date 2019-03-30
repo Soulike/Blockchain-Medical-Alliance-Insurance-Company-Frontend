@@ -1,6 +1,6 @@
 import React from 'react';
 import Style from './Style.module.scss';
-import CarouselContainer from '../../ComponentContainers/CarouselContainer';
+import CarouselContainer from '../../Components/Carousel';
 import InsuranceSelector from './Components/InsuranceSelector';
 import {Link} from 'react-router';
 import {PAGE_ID_TO_ROUTE, REQUIRE_LOGIN_PAGE_ID} from '../../Config/ROUTE';

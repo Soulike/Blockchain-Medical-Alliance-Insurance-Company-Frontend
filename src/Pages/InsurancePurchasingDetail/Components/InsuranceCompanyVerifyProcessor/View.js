@@ -1,9 +1,12 @@
 import React from 'react';
 import Style from './Style.module.scss';
 import PropTypes from 'prop-types';
-import Radio from '../../../../Components/Radio';
 import {Modal} from '../../../../Components/Modal';
 import {MODAL_ID} from '../../../../Constant';
+import Radio from 'antd/lib/radio';
+import Button from 'antd/lib/button';
+
+const RadioGroup = Radio.Group;
 
 function InsuranceCompanyVerifyProcessor(props)
 {
@@ -12,28 +15,28 @@ function InsuranceCompanyVerifyProcessor(props)
         medicalRecord,
         onViewElectronicInsurancePolicyButtonClick,
         onViewMedicalRecordButtonClick,
-        onRadioClick,
-        yesRadioRef,
-        noRadioRef,
+        onRadioChange,
         onConfirmButtonClick,
     } = props;
     return [
         <div className={Style.InsuranceCompanyVerifyProcessor} key={Style.InsuranceCompanyVerifyProcessor}>
             <div className={Style.buttonsWrapper}>
-                <button className={`btn`} onClick={onViewElectronicInsurancePolicyButtonClick}>查看电子保单</button>
-                <button className={`btn`} onClick={onViewMedicalRecordButtonClick}>查看病历</button>
+                <Button htmlType={'button'} onClick={onViewElectronicInsurancePolicyButtonClick}>查看电子保单</Button>
+                <Button htmlType={'button'} onClick={onViewMedicalRecordButtonClick}>查看病历</Button>
             </div>
             <div className={Style.selectorWrapper}>
                 <div className={Style.selectorLabel}>审核通过：</div>
                 <div className={Style.radioWrapper}>
-                    <Radio label={'是'} onClick={onRadioClick(true)} radioRef={yesRadioRef} />
-                    <Radio label={'否'} onClick={onRadioClick(false)} radioRef={noRadioRef} />
+                    <RadioGroup onChange={onRadioChange} defaultValue={false}>
+                        <Radio value={true}>是</Radio>
+                        <Radio value={false}>否</Radio>
+                    </RadioGroup>
                 </div>
             </div>
             <div className={Style.confirmButtonWrapper}>
-                <button className={`btn btn-primary ${Style.confirmButton}`}
+                <Button htmlType={'button'} type={'primary'} className={Style.confirmButton}
                         onClick={onConfirmButtonClick}>确定
-                </button>
+                </Button>
             </div>
         </div>,
         <Modal id={MODAL_ID.ELECTRONIC_INSURANCE_POLICY_MODAL}
@@ -52,9 +55,7 @@ InsuranceCompanyVerifyProcessor.propTypes = {
     medicalRecord: PropTypes.node.isRequired,
     onViewElectronicInsurancePolicyButtonClick: PropTypes.func.isRequired,
     onViewMedicalRecordButtonClick: PropTypes.func.isRequired,
-    onRadioClick: PropTypes.func.isRequired,
-    yesRadioRef: PropTypes.object.isRequired,
-    noRadioRef: PropTypes.object.isRequired,
+    onRadioChange: PropTypes.func.isRequired,
     onConfirmButtonClick: PropTypes.func.isRequired,
 };
 

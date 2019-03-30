@@ -9,7 +9,7 @@ import {
 } from './ROUTE';
 import {STATUS_CODE} from '../../Constant';
 import {Function as AuthProcessorFunction} from '../../Components/AuthProcessor';
-import {DangerAlert, SuccessAlert, WarningAlert} from '../../Components/Alerts';
+import message from 'antd/lib/message';
 
 export async function sendGetInsurancePurchasingInfoRequestAsync(insurancePurchasingInfoId)
 {
@@ -25,33 +25,40 @@ export async function sendGetInsurancePurchasingInfoRequestAsync(insurancePurcha
             {
                 return data;
             }
-            case STATUS_CODE.NOT_FOUND:
-            {
-                WarningAlert.pop('投保信息不存在');
-                return null;
-            }
             case STATUS_CODE.BAD_REQUEST:
             {
-                WarningAlert.pop('参数错误');
-                return null;
-            }
-            case STATUS_CODE.FORBIDDEN:
-            {
+                message.error('参数错误');
                 return null;
             }
             case STATUS_CODE.UNAUTHORIZED:
             {
+                message.error('未登录操作');
                 AuthProcessorFunction.setLoggedOut();
+                return null;
+            }
+            case STATUS_CODE.FORBIDDEN:
+            {
+                message.error('获取投保信息操作被拒绝');
+                return null;
+            }
+            case STATUS_CODE.NOT_FOUND:
+            {
+                message.error('投保信息不存在');
+                return null;
+            }
+            case STATUS_CODE.CONFLICT:
+            {
+                message.error('与服务器资源冲突');
                 return null;
             }
             case STATUS_CODE.INTERNAL_SERVER_ERROR:
             {
-                DangerAlert.pop('服务器错误');
+                message.error('服务器错误');
                 return null;
             }
             default:
             {
-                WarningAlert.pop('获取投保信息失败');
+                message.error('未知原因的获取投保信息失败');
                 return null;
             }
         }
@@ -59,7 +66,7 @@ export async function sendGetInsurancePurchasingInfoRequestAsync(insurancePurcha
     catch (e)
     {
         console.error(e);
-        WarningAlert.pop('获取投保信息失败');
+        message.error('网络异常');
         return null;
     }
 }
@@ -77,33 +84,40 @@ export async function sendGetElectronicInsurancePolicyRequestAsync(insurancePurc
             {
                 return data;
             }
-            case STATUS_CODE.NOT_FOUND:
-            {
-                WarningAlert.pop('电子保单不存在');
-                return null;
-            }
             case STATUS_CODE.BAD_REQUEST:
             {
-                WarningAlert.pop('参数错误');
-                return null;
-            }
-            case STATUS_CODE.FORBIDDEN:
-            {
+                message.error('参数错误');
                 return null;
             }
             case STATUS_CODE.UNAUTHORIZED:
             {
+                message.error('未登录操作');
                 AuthProcessorFunction.setLoggedOut();
+                return null;
+            }
+            case STATUS_CODE.FORBIDDEN:
+            {
+                message.error('获取电子保单操作被拒绝');
+                return null;
+            }
+            case STATUS_CODE.NOT_FOUND:
+            {
+                message.error('电子保单不存在');
+                return null;
+            }
+            case STATUS_CODE.CONFLICT:
+            {
+                message.error('与服务器资源冲突');
                 return null;
             }
             case STATUS_CODE.INTERNAL_SERVER_ERROR:
             {
-                DangerAlert.pop('服务器错误');
+                message.error('服务器错误');
                 return null;
             }
             default:
             {
-                WarningAlert.pop('获取电子保单失败');
+                message.error('未知原因的获取电子保单失败');
                 return null;
             }
         }
@@ -111,7 +125,7 @@ export async function sendGetElectronicInsurancePolicyRequestAsync(insurancePurc
     catch (e)
     {
         console.error(e);
-        WarningAlert.pop('获取电子保单失败');
+        message.error('网络异常');
         return null;
     }
 }
@@ -129,33 +143,40 @@ export async function sendGetMedicalRecordRequestAsync(insurancePurchasingInfoId
             {
                 return data;
             }
-            case STATUS_CODE.NOT_FOUND:
-            {
-                WarningAlert.pop('病历不存在');
-                return null;
-            }
             case STATUS_CODE.BAD_REQUEST:
             {
-                WarningAlert.pop('参数错误');
-                return null;
-            }
-            case STATUS_CODE.FORBIDDEN:
-            {
+                message.error('参数错误');
                 return null;
             }
             case STATUS_CODE.UNAUTHORIZED:
             {
+                message.error('未登录操作');
                 AuthProcessorFunction.setLoggedOut();
+                return null;
+            }
+            case STATUS_CODE.FORBIDDEN:
+            {
+                message.error('获取病历操作被拒绝');
+                return null;
+            }
+            case STATUS_CODE.NOT_FOUND:
+            {
+                message.error('病历不存在');
+                return null;
+            }
+            case STATUS_CODE.CONFLICT:
+            {
+                message.error('与服务器资源冲突');
                 return null;
             }
             case STATUS_CODE.INTERNAL_SERVER_ERROR:
             {
-                DangerAlert.pop('服务器错误');
+                message.error('服务器错误');
                 return null;
             }
             default:
             {
-                WarningAlert.pop('获取病历失败');
+                message.error('未知原因的获取病历失败');
                 return null;
             }
         }
@@ -163,7 +184,7 @@ export async function sendGetMedicalRecordRequestAsync(insurancePurchasingInfoId
     catch (e)
     {
         console.error(e);
-        WarningAlert.pop('获取病历失败');
+        message.error('网络异常');
         return null;
     }
 }
@@ -173,7 +194,7 @@ export async function sendPostSubmitInsuranceCompanyVerifyResultRequestAsync(ins
     try
     {
         const {code} = await Function.postAsync(SUBMIT_INSURANCE_COMPANY_VERIFY_RESULT, {
-            [NAMESPACE.INSURANCE_PURCHASING_PROCESS.INSURANCE_PURCHASING_INFO_ID]: insurancePurchasingInfoId,
+            [NAMESPACE.INSURANCE_PURCHASING_PROCESS.INSURANCE_PURCHASING_INFO.INSURANCE_PURCHASING_INFO_ID]: insurancePurchasingInfoId,
             [NAMESPACE.INSURANCE_PURCHASING_DETAIL.INSURANCE_COMPANY_VERIFY.VERIFY_RESULT]: verifyResult,
         });
 
@@ -181,36 +202,43 @@ export async function sendPostSubmitInsuranceCompanyVerifyResultRequestAsync(ins
         {
             case STATUS_CODE.OK:
             {
-                SuccessAlert.pop('审核结果提交成功');
+                message.success('提交审核结果成功');
                 return true;
-            }
-            case STATUS_CODE.NOT_FOUND:
-            {
-                WarningAlert.pop('投保信息不存在');
-                return null;
             }
             case STATUS_CODE.BAD_REQUEST:
             {
-                WarningAlert.pop('参数错误');
-                return null;
-            }
-            case STATUS_CODE.FORBIDDEN:
-            {
+                message.error('参数错误');
                 return null;
             }
             case STATUS_CODE.UNAUTHORIZED:
             {
+                message.error('未登录操作');
                 AuthProcessorFunction.setLoggedOut();
+                return null;
+            }
+            case STATUS_CODE.FORBIDDEN:
+            {
+                message.error('提交审核结果操作被拒绝');
+                return null;
+            }
+            case STATUS_CODE.NOT_FOUND:
+            {
+                message.error('投保信息不存在');
+                return null;
+            }
+            case STATUS_CODE.CONFLICT:
+            {
+                message.error('与服务器资源冲突');
                 return null;
             }
             case STATUS_CODE.INTERNAL_SERVER_ERROR:
             {
-                DangerAlert.pop('服务器错误');
+                message.error('服务器错误');
                 return null;
             }
             default:
             {
-                WarningAlert.pop('提交审核结果失败');
+                message.error('未知原因的提交审核结果失败');
                 return null;
             }
         }
@@ -218,7 +246,7 @@ export async function sendPostSubmitInsuranceCompanyVerifyResultRequestAsync(ins
     catch (e)
     {
         console.error(e);
-        WarningAlert.pop('提交审核结果失败');
+        message.error('网络异常');
         return null;
     }
 }
@@ -234,36 +262,43 @@ export async function sendPostSubmitPayConfirmationRequestAsync(insurancePurchas
         {
             case STATUS_CODE.OK:
             {
-                SuccessAlert.pop('投保人缴费确认成功');
+                message.success('投保人缴费确认成功');
                 return true;
-            }
-            case STATUS_CODE.NOT_FOUND:
-            {
-                WarningAlert.pop('投保信息不存在');
-                return null;
             }
             case STATUS_CODE.BAD_REQUEST:
             {
-                WarningAlert.pop('参数错误');
-                return null;
-            }
-            case STATUS_CODE.FORBIDDEN:
-            {
+                message.error('参数错误');
                 return null;
             }
             case STATUS_CODE.UNAUTHORIZED:
             {
+                message.error('未登录操作');
                 AuthProcessorFunction.setLoggedOut();
+                return null;
+            }
+            case STATUS_CODE.FORBIDDEN:
+            {
+                message.error('投保人缴费确认操作被拒绝');
+                return null;
+            }
+            case STATUS_CODE.NOT_FOUND:
+            {
+                message.error('投保信息不存在');
+                return null;
+            }
+            case STATUS_CODE.CONFLICT:
+            {
+                message.error('与服务器资源冲突');
                 return null;
             }
             case STATUS_CODE.INTERNAL_SERVER_ERROR:
             {
-                DangerAlert.pop('服务器错误');
+                message.error('服务器错误');
                 return null;
             }
             default:
             {
-                WarningAlert.pop('投保人缴费确认失败');
+                message.error('未知原因的投保人缴费确认失败');
                 return null;
             }
         }
@@ -271,7 +306,7 @@ export async function sendPostSubmitPayConfirmationRequestAsync(insurancePurchas
     catch (e)
     {
         console.error(e);
-        WarningAlert.pop('投保人缴费确认失败');
+        message.error('网络异常');
         return null;
     }
 }

@@ -1,5 +1,4 @@
 @import "../../Constant/RESIZE";
-@import "../../ModuleConfig/Bootstrap/Bootstrap";
 @import "../../Constant/COLOR";
 
 .SignUp {
@@ -17,10 +16,9 @@
 
             .inputWrapper {
 
-                input:not(.verificationCodeInput) {
-                    @extend .form-control;
+                .input {
                     font-size: (20rem/$RESIZE_FACTOR);
-                    margin: (14rem/$RESIZE_FACTOR) 0;
+                    margin-bottom: (14rem/$RESIZE_FACTOR);
 
                     &:first-child {
                         margin-top: 0;
@@ -29,22 +27,10 @@
                     &:last-child {
                         margin-bottom: 0;
                     }
-
-                    &:invalid {
-                        @extend .is-invalid;
-                    }
                 }
 
-                .verificationCodeInputWrapper {
-                    margin: (14rem/$RESIZE_FACTOR) 0;
-
-                    .verificationCodeInput, .verificationCodeInputLabel {
-                        font-size: (20rem/$RESIZE_FACTOR);
-                    }
-
-                    .verificationCodeInputLabelWrapper {
-                        cursor: pointer;
-                    }
+                .verificationCodeInputLabel {
+                    cursor: pointer;
                 }
             }
 
@@ -67,7 +53,6 @@
                 margin-top: (19rem/$RESIZE_FACTOR);
 
                 .submitButton {
-                    @extend .btn;
                     color: $WHITE;
                     width: (254rem/$RESIZE_FACTOR);
                     height: (80rem/$RESIZE_FACTOR);
@@ -91,7 +76,6 @@
             margin-top: (19rem/$RESIZE_FACTOR);
 
             .toLoginButton {
-                @extend .btn;
                 color: $WHITE;
                 width: (254rem/$RESIZE_FACTOR);
                 height: (80rem/$RESIZE_FACTOR);
