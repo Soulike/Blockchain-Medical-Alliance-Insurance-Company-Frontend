@@ -57,7 +57,7 @@ class InsurancePurchasingProcessContainer extends React.Component
 
     onRowClick = (insurancePurchasingInfoId) =>
     {
-        browserHistory.push(`${PAGE_ID_TO_ROUTE[REQUIRE_LOGIN_PAGE_ID.INSURANCE_COMPANY_INSURANCE_DETAIL]}?insurancePurchasingInfoId=${insurancePurchasingInfoId}`);
+        browserHistory.push(`${PAGE_ID_TO_ROUTE[REQUIRE_LOGIN_PAGE_ID.INSURANCE_COMPANY_INSURANCE_PURCHASING_DETAIL]}?insurancePurchasingInfoId=${insurancePurchasingInfoId}`);
     };
 
     render()

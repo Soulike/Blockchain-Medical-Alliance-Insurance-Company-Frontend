@@ -6,6 +6,7 @@ import {INSURANCE_PURCHASING_STAGE_ID, INSURANCE_PURCHASING_STAGE_ID_TO_TEXT} fr
 import Table from 'antd/lib/table';
 import ClickCopy from '../../Components/ClickCopy';
 import message from 'antd/lib/message';
+import Tooltip from 'antd/lib/tooltip';
 
 function InsurancePurchasingProcess(props)
 {
@@ -44,12 +45,10 @@ function InsurancePurchasingProcess(props)
             title: '公钥',
             dataIndex: 'publicKey',
             key: 'publicKey',
-            className: Style.publicKey,
             align: 'center',
             render: text =>
                 <ClickCopy
                     copyText={text}
-                    className={Style.publicKey}
                     onCopySuccess={() =>
                     {
                         message.success('复制公钥成功');
@@ -57,8 +56,11 @@ function InsurancePurchasingProcess(props)
                     onCopyError={() =>
                     {
                         message.error('复制公钥失败');
-                    }}><code>{text}</code></ClickCopy>,
-
+                    }}>
+                    <Tooltip title={'点击复制公钥'}>
+                        <div className={Style.publicKey}>{text}</div>
+                    </Tooltip>
+                </ClickCopy>,
         },
         {
             title: '保险类型',

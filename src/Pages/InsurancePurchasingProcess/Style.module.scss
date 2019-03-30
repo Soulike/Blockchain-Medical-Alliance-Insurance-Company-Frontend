@@ -17,10 +17,12 @@
             }
 
             .publicKey {
-                max-width: 6rem;
+                width: 6rem;
+                margin: 0 auto;
                 overflow: hidden;
                 text-overflow: ellipsis;
                 cursor: pointer;
+                font-family: monospace;
             }
         }
     }
