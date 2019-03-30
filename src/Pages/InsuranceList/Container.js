@@ -1,6 +1,7 @@
 import React from 'react';
 import Api from '../../Api';
 import InsuranceList from './View';
+import NAMESPACE from '../../NAMESPACE';
 
 class InsuranceListContainer extends React.Component
 {
