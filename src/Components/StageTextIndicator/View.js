@@ -23,4 +23,9 @@ StageTextIndicator.propTypes = {
     stageTextArray: PropTypes.arrayOf(PropTypes.string).isRequired, // 所有状态的名称数组，和编号对应
 };
 
+StageTextIndicator.defaultProps = {
+    currentStageNumber: 0,
+    stageTextArray: [],
+};
+
 export default StageTextIndicator;

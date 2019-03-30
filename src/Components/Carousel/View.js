@@ -21,7 +21,7 @@ class CarouselContainer extends React.Component
                           speed={3 * 1000}>
                     {
                         CAROUSEL_IMAGE.map(imageSrc => (
-                            <div>
+                            <div key={imageSrc}>
                                 <div className={`${className} ${Style.slide}`}
                                      style={{background: `url("${imageSrc}") no-repeat center`}} />
                             </div>))

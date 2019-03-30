@@ -15,8 +15,8 @@ export async function sendGetInsurancePurchasingInfoRequestAsync(insurancePurcha
 {
     try
     {
-        const {code, data} = Function.getAsync(GET_INSURANCE_PURCHASING_INFO, false, {
-            [NAMESPACE.INSURANCE_PURCHASING_PROCESS.INSURANCE_PURCHASING_INFO_ID]: insurancePurchasingInfoId,
+        const {code, data} = await Function.getAsync(GET_INSURANCE_PURCHASING_INFO, false, {
+            insurancePurchasingInfoId,
         });
 
         switch (code)

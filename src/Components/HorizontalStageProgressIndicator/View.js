@@ -52,4 +52,9 @@ HorizontalStageProgressIndicator.propTypes = {
     maxStageNumber: PropTypes.number.isRequired,            // 从 0 开始数，最后状态的编号
 };
 
+HorizontalStageProgressIndicator.defaultProps = {
+    currentStageNumber: 0,
+    maxStageNumber: 0,
+};
+
 export default HorizontalStageProgressIndicator;
