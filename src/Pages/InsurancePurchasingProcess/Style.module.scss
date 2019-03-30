@@ -1,4 +1,3 @@
-@import "../../ModuleConfig/Bootstrap/Bootstrap";
 @import "../../Constant/RESIZE";
 
 .InsurancePurchasingProcess {
@@ -8,16 +7,20 @@
 
     .tableWrapper {
         margin: (51rem/$RESIZE_FACTOR) 0;
-        background-color: #FFF;
 
         .processTable {
-            @extend .table, .table-hover, .table-striped;
             font-size: (28rem/$RESIZE_FACTOR);
-            text-align: center;
+            background-color: #FFF;
 
-            td, th {
-                padding: (29rem/$RESIZE_FACTOR) (28rem/$RESIZE_FACTOR);
-                vertical-align: middle;
+            .row {
+                cursor: pointer;
+            }
+
+            .publicKey {
+                max-width: 6rem;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                cursor: pointer;
             }
         }
     }
