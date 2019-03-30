@@ -4,6 +4,11 @@ import Title from './Components/Title';
 import Card from '../../Components/Card';
 import {PAGE_ID_TO_ROUTE, REQUIRE_LOGIN_PAGE_ID} from '../../Config';
 import {browserHistory} from 'react-router';
+import Button from 'antd/lib/button';
+import Input from 'antd/lib/input';
+
+const TextArea = Input.TextArea;
+const ButtonGroup = Button.Group;
 
 function InsurancePublication()
 {
@@ -15,38 +20,38 @@ function InsurancePublication()
                 <div className={Style.formWrapper}>
                     <label className={Style.inputWrapper}>
                         <span className={Style.label}>保险名称：</span>
-                        <input type="text" />
+                        <Input className={Style.input} type="text" />
                     </label>
                     <label className={Style.inputWrapper}>
                         <span className={Style.label}>保额：</span>
-                        <input type="text" />
+                        <Input className={Style.input} type="text" />
                     </label>
                     <label className={Style.inputWrapper}>
                         <span className={Style.label}>承保年龄：</span>
-                        <input type="text" />
+                        <Input className={Style.input} type="text" />
                     </label>
                     <label className={Style.inputWrapper}>
                         <span className={Style.label}>保障期限：</span>
-                        <input type="text" />
+                        <Input className={Style.input} type="text" />
                     </label>
                     <label className={Style.inputWrapper}>
                         <span className={Style.label}>保费价格：</span>
-                        <input type="text" />
+                        <Input className={Style.input} type="text" />
                     </label>
                     <label className={Style.inputWrapper}>
                         <span className={Style.label}>保险详情：</span>
-                        <textarea className={Style.insuranceDetailTextArea} />
+                        <TextArea className={`${Style.textarea} ${Style.insuranceDetailTextArea}`} />
                     </label>
                 </div>
             </Card>
-            <div className={Style.buttonGroup} role="group">
-                <button type="button" className={Style.cancelButton} onClick={() =>
+            <ButtonGroup className={Style.buttonGroup}>
+                <Button htmlType="button" className={Style.cancelButton} onClick={() =>
                 {
                     browserHistory.push(PAGE_ID_TO_ROUTE[REQUIRE_LOGIN_PAGE_ID.INSURANCE_COMPANY_INSURANCE_LIST]);
                 }}>取消
-                </button>
-                <button type="button" className={Style.publishButton}>发布</button>
-            </div>
+                </Button>
+                <Button htmlType="button" className={Style.publishButton} type={'primary'}>发布</Button>
+            </ButtonGroup>
         </div>
     );
 }

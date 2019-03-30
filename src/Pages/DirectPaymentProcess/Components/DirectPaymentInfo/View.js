@@ -5,6 +5,7 @@ import {DIRECT_PAYMENT_STAGE_ID, DIRECT_PAYMENT_STAGE_ID_TO_TEXT} from '../../..
 import PropTypes from 'prop-types';
 import message from 'antd/lib/message';
 import Tooltip from 'antd/lib/tooltip';
+import Button from 'antd/lib/button';
 
 function DirectPaymentInfo(props)
 {
@@ -45,13 +46,13 @@ function DirectPaymentInfo(props)
             </td>
             <td>{directPaymentMoneyAmount} 元</td>
             <td>
-                <button onClick={onDiagnosticResultButtonClick}>查看</button>
+                <Button htmlType={'button'} type={'primary'} onClick={onDiagnosticResultButtonClick}>查看</Button>
             </td>
             <td>
-                <button onClick={onMedicalDescriptionButtonClick}>查看</button>
+                <Button htmlType={'button'} type={'primary'} onClick={onMedicalDescriptionButtonClick}>查看</Button>
             </td>
             <td>
-                <button onClick={onInsurancePurchasingInfoButtonClick}>查看</button>
+                <Button htmlType={'button'} type={'primary'} onClick={onInsurancePurchasingInfoButtonClick}>查看</Button>
             </td>
             <td>{DIRECT_PAYMENT_STAGE_ID_TO_TEXT[directPaymentStage]}</td>
         </tr>

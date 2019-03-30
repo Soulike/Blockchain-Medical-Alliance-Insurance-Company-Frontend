@@ -31,7 +31,7 @@ class SignUpContainer extends React.Component
         const {hasSendVerificationCode} = this.state;
         if (!hasSendVerificationCode)
         {
-            const email = this.emailInputRef.current.value;
+            const email = this.emailInputRef.current.input.value;
             if (!REGEX.EMAIL.test(email))
             {
                 message.warning('请输入有效的邮箱');
@@ -70,14 +70,14 @@ class SignUpContainer extends React.Component
     onSubmit = async e =>
     {
         e.preventDefault();
-        const username = this.usernameInputRef.current.value;
-        const password = this.passwordInputRef.current.value;
-        const repeatPassword = this.repeatPasswordInputRef.current.value;
-        const name = this.nameInputRef.current.value;
-        const age = this.ageInputRef.current.value;
-        const address = this.addressInputRef.current.value;
-        const email = this.emailInputRef.current.value;
-        const verificationCode = this.verificationCodeInputRef.current.value;
+        const username = this.usernameInputRef.current.input.value;
+        const password = this.passwordInputRef.current.input.value;
+        const repeatPassword = this.repeatPasswordInputRef.current.input.value;
+        const name = this.nameInputRef.current.input.value;
+        const age = this.ageInputRef.current.input.value;
+        const address = this.addressInputRef.current.input.value;
+        const email = this.emailInputRef.current.input.value;
+        const verificationCode = this.verificationCodeInputRef.current.input.value;
 
         if (!REGEX.USERNAME.test(username))
         {

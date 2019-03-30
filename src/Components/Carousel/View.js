@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Carousel from 'antd/lib/carousel';
+import Carousel from 'antd/lib/carousel/index';
 import Style from './Style.module.scss';
 import {Link} from 'react-router';
 import {CAROUSEL_IMAGE, PAGE_ID_TO_ROUTE, REQUIRE_LOGIN_PAGE_ID} from '../../Config';
+import Button from 'antd/lib/button';
 
 class CarouselContainer extends React.Component
 {
@@ -30,9 +31,9 @@ class CarouselContainer extends React.Component
                     shouldShowInsurancePublicationButton ?
                         <Link onlyActiveOnIndex={false}
                               to={PAGE_ID_TO_ROUTE[REQUIRE_LOGIN_PAGE_ID.INSURANCE_COMPANY_INSURANCE_PUBLICATION]}>
-                            <button className={Style.insurancePublicationButton}>
+                            <Button htmlType={'button'} type={'primary'} className={Style.insurancePublicationButton}>
                                 发布保险
-                            </button>
+                            </Button>
                         </Link> : null
                 }
             </div>

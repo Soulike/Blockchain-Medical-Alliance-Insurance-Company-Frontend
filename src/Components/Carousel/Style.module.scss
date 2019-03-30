@@ -1,11 +1,9 @@
-@import "../../ModuleConfig/Bootstrap/Bootstrap";
 @import "../../Constant/RESIZE";
 
 .CarouselContainer {
     position: relative;
 
     .insurancePublicationButton {
-        @extend .btn, .btn-primary;
         position: absolute;
         left: 50%;
         transform: translateX(-50%);

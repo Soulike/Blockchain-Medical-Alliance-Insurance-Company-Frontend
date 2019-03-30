@@ -1,4 +1,3 @@
-@import "../../ModuleConfig/Bootstrap/Bootstrap";
 @import "../../Constant/RESIZE";
 
 .PersonalCenter {
@@ -80,7 +79,6 @@
         margin-top: (32rem/$RESIZE_FACTOR);
 
         .modifyButton {
-            @extend .btn, .btn-primary;
             width: (180rem/$RESIZE_FACTOR);
             height: (60rem/$RESIZE_FACTOR);
             font-size: (20rem/$RESIZE_FACTOR);

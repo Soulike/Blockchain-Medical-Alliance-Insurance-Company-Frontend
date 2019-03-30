@@ -28,8 +28,8 @@ class LoginContainer extends React.Component
     onSubmit = async e =>
     {
         e.preventDefault();
-        const username = this.usernameInputRef.current.value;
-        const password = this.passwordInputRef.current.value;
+        const username = this.usernameInputRef.current.input.value;
+        const password = this.passwordInputRef.current.input.value;
         if (!REGEX.USERNAME.test(username))
         {
             message.warning('用户名不正确');

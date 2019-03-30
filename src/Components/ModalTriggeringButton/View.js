@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import Style from './Style.module.scss';
+import Button from 'antd/lib/button';
 
 class ModalTriggerButton extends Component
 {
@@ -8,11 +9,11 @@ class ModalTriggerButton extends Component
     {
         const {children, modalId, className} = this.props;
         return (
-            <button className={`${Style.ModalTriggeringButton} ${className}`}
+            <Button htmlType={'button'} className={`${Style.ModalTriggeringButton} ${className}`}
                     data-toggle="modal"
                     data-target={`#${modalId}`}>
                 {children}
-            </button>
+            </Button>
         );
     }
 }
