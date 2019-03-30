@@ -194,7 +194,7 @@ export async function sendPostSubmitInsuranceCompanyVerifyResultRequestAsync(ins
     try
     {
         const {code} = await Function.postAsync(SUBMIT_INSURANCE_COMPANY_VERIFY_RESULT, {
-            [NAMESPACE.INSURANCE_PURCHASING_PROCESS.INSURANCE_PURCHASING_INFO_ID]: insurancePurchasingInfoId,
+            [NAMESPACE.INSURANCE_PURCHASING_PROCESS.INSURANCE_PURCHASING_INFO.INSURANCE_PURCHASING_INFO_ID]: insurancePurchasingInfoId,
             [NAMESPACE.INSURANCE_PURCHASING_DETAIL.INSURANCE_COMPANY_VERIFY.VERIFY_RESULT]: verifyResult,
         });
 

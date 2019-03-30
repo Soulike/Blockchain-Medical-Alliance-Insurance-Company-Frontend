@@ -1,9 +1,11 @@
 import React from 'react';
 import Style from './Style.module.scss';
 import PropTypes from 'prop-types';
-import Radio from '../../../../Components/Radio';
 import {Modal} from '../../../../Components/Modal';
 import {MODAL_ID} from '../../../../Constant';
+import Radio from 'antd/lib/radio';
+
+const RadioGroup = Radio.Group;
 
 function InsuranceCompanyVerifyProcessor(props)
 {
@@ -12,9 +14,7 @@ function InsuranceCompanyVerifyProcessor(props)
         medicalRecord,
         onViewElectronicInsurancePolicyButtonClick,
         onViewMedicalRecordButtonClick,
-        onRadioClick,
-        yesRadioRef,
-        noRadioRef,
+        onRadioChange,
         onConfirmButtonClick,
     } = props;
     return [
@@ -26,8 +26,10 @@ function InsuranceCompanyVerifyProcessor(props)
             <div className={Style.selectorWrapper}>
                 <div className={Style.selectorLabel}>审核通过：</div>
                 <div className={Style.radioWrapper}>
-                    <Radio label={'是'} onClick={onRadioClick(true)} radioRef={yesRadioRef} />
-                    <Radio label={'否'} onClick={onRadioClick(false)} radioRef={noRadioRef} />
+                    <RadioGroup onChange={onRadioChange} defaultValue={false}>
+                        <Radio value={true}>是</Radio>
+                        <Radio value={false}>否</Radio>
+                    </RadioGroup>
                 </div>
             </div>
             <div className={Style.confirmButtonWrapper}>
@@ -52,9 +54,7 @@ InsuranceCompanyVerifyProcessor.propTypes = {
     medicalRecord: PropTypes.node.isRequired,
     onViewElectronicInsurancePolicyButtonClick: PropTypes.func.isRequired,
     onViewMedicalRecordButtonClick: PropTypes.func.isRequired,
-    onRadioClick: PropTypes.func.isRequired,
-    yesRadioRef: PropTypes.object.isRequired,
-    noRadioRef: PropTypes.object.isRequired,
+    onRadioChange: PropTypes.func.isRequired,
     onConfirmButtonClick: PropTypes.func.isRequired,
 };
 

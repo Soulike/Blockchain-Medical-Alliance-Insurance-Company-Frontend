@@ -2,9 +2,9 @@ import React from 'react';
 import Style from './Style.module.scss';
 import PropTypes from 'prop-types';
 import ClickCopy from '../../../../Components/ClickCopy';
-import {SuccessAlert, WarningAlert} from '../../../../Components/Alerts';
-import ToolTip, {TOOLTIP_POSITION} from '../../../../Components/Tooltip';
+import Tooltip from 'antd/lib/tooltip';
 import {INSURANCE_PURCHASING_STAGE_ID, INSURANCE_PURCHASING_STAGE_ID_TO_TEXT} from '../../../../Constant';
+import message from 'antd/lib/message';
 
 function InsurancePurchasingInfo(props)
 {
@@ -35,15 +35,15 @@ function InsurancePurchasingInfo(props)
                 <ClickCopy copyText={publicKey} onCopySuccess={
                     () =>
                     {
-                        SuccessAlert.pop('公钥复制成功');
+                        message.success('公钥复制成功');
                     }} onCopyError={
                     () =>
                     {
-                        WarningAlert.pop('公钥复制失败');
+                        message.warning('公钥复制失败');
                     }}>
-                    <ToolTip placement={TOOLTIP_POSITION.TOP} title={'点击复制公钥'}>
+                    <Tooltip title={'点击复制公钥'}>
                         <div className={Style.publicKey}>{publicKey}</div>
-                    </ToolTip>
+                    </Tooltip>
                 </ClickCopy>
             </td>
             <td>{insuranceType}</td>

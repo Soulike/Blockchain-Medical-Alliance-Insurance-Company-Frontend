@@ -18,42 +18,13 @@ class InsuranceCompanyVerifyProcessorContainer extends React.Component
             electronicInsurancePolicy: '',
             medicalRecord: '',
         };
-        this.yesRadioRef = React.createRef();
-        this.noRadioRef = React.createRef();
     }
 
-    componentDidMount()
+    onRadioChange = e =>
     {
-        this.yesRadioRef.current.checked = false;
-        this.noRadioRef.current.checked = true;
-    }
-
-    componentDidUpdate(prevProps, prevState, snapshot)
-    {
-        const {currentSelectedRadio} = this.state;
-        if (prevState.currentSelectedRadio !== currentSelectedRadio)
-        {
-            if (currentSelectedRadio === true)
-            {
-                this.yesRadioRef.current.checked = true;
-                this.noRadioRef.current.checked = false;
-            }
-            else
-            {
-                this.yesRadioRef.current.checked = false;
-                this.noRadioRef.current.checked = true;
-            }
-        }
-    }
-
-    onRadioClick = isYes =>
-    {
-        return () =>
-        {
-            this.setState({
-                currentSelectedRadio: isYes,
-            });
-        };
+        this.setState({
+            currentSelectedRadio: e.target.value,
+        });
     };
 
     onViewElectronicInsurancePolicyButtonClick = async () =>
@@ -104,9 +75,7 @@ class InsuranceCompanyVerifyProcessorContainer extends React.Component
                                                 medicalRecord={medicalRecord}
                                                 onViewElectronicInsurancePolicyButtonClick={this.onViewElectronicInsurancePolicyButtonClick}
                                                 onViewMedicalRecordButtonClick={this.onViewMedicalRecordButtonClick}
-                                                onRadioClick={this.onRadioClick}
-                                                yesRadioRef={this.yesRadioRef}
-                                                noRadioRef={this.noRadioRef}
+                                                onRadioChange={this.onRadioChange}
                                                 onConfirmButtonClick={this.onConfirmButtonClick} />;
     }
 }

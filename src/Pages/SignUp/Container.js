@@ -1,8 +1,8 @@
 import React from 'react';
 import {REGEX} from '../../Config';
 import Api from '../../Api';
-import {WarningAlert} from '../../Components/Alerts';
 import SignUp from './View';
+import message from 'antd/lib/message';
 
 class SignUpContainer extends React.Component
 {
@@ -34,7 +34,7 @@ class SignUpContainer extends React.Component
             const email = this.emailInputRef.current.value;
             if (!REGEX.EMAIL.test(email))
             {
-                WarningAlert.pop('请输入有效的邮箱');
+                message.warning('请输入有效的邮箱');
             }
             else
             {
@@ -81,35 +81,35 @@ class SignUpContainer extends React.Component
 
         if (!REGEX.USERNAME.test(username))
         {
-            WarningAlert.pop('请输入有效的用户名');
+            message.warning('请输入有效的用户名');
         }
         else if (!REGEX.PASSWORD.test(password))
         {
-            WarningAlert.pop('请输入有效的密码');
+            message.warning('请输入有效的密码');
         }
         else if (password !== repeatPassword)
         {
-            WarningAlert.pop('两次输入密码不一致');
+            message.warning('两次输入密码不一致');
         }
         else if (!REGEX.NAME.test(name))
         {
-            WarningAlert.pop('请输入有效的姓名');
+            message.warning('请输入有效的姓名');
         }
         else if (!REGEX.AGE.test(age))
         {
-            WarningAlert.pop('请输入有效的年龄');
+            message.warning('请输入有效的年龄');
         }
         else if (!REGEX.ADDRESS.test(address))
         {
-            WarningAlert.pop('请输入有效的家庭住址');
+            message.warning('请输入有效的家庭住址');
         }
         else if (!REGEX.EMAIL.test(email))
         {
-            WarningAlert.pop('请输入有效的邮箱');
+            message.warning('请输入有效的邮箱');
         }
         else if (!REGEX.VERIFICATION_CODE.test(verificationCode))
         {
-            WarningAlert.pop('请输入有效的验证码');
+            message.warning('请输入有效的验证码');
         }
         else
         {
