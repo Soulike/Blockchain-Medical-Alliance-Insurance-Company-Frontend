@@ -1,24 +1,21 @@
-@import "../../Constant/RESIZE";
-@import "../../Constant/COLOR";
-
 .SignUp {
-    width: (473rem/$RESIZE_FACTOR);
+    width: (473rem/24);
 
     .title {
-        font-size: (48rem/$RESIZE_FACTOR);
+        font-size: (48rem/24);
         font-weight: bold;
         text-align: center;
     }
 
     .signUpPart {
         .signUpForm {
-            margin-top: (9rem/$RESIZE_FACTOR);
+            margin-top: (9rem/24);
 
             .inputWrapper {
 
                 .input {
-                    font-size: (20rem/$RESIZE_FACTOR);
-                    margin-bottom: (14rem/$RESIZE_FACTOR);
+                    font-size: (20rem/24);
+                    margin-bottom: (14rem/24);
 
                     &:first-child {
                         margin-top: 0;
@@ -35,33 +32,33 @@
             }
 
             .linkWrapper {
-                margin-top: (17rem/$RESIZE_FACTOR);
+                margin-top: (17rem/24);
                 display: flex;
                 justify-content: flex-end;
                 align-items: center;
-                font-size: (28rem/$RESIZE_FACTOR);
+                font-size: (28rem/24);
 
 
                 a {
-                    color: $BLUE;
+                    color: #17C0EF;
                 }
             }
 
             .buttonWrapper {
                 display: flex;
                 justify-content: center;
-                margin-top: (19rem/$RESIZE_FACTOR);
+                margin-top: (19rem/24);
 
                 .submitButton {
-                    color: $WHITE;
-                    width: (254rem/$RESIZE_FACTOR);
-                    height: (80rem/$RESIZE_FACTOR);
-                    border-radius: (40rem/$RESIZE_FACTOR);
-                    font-size: (36rem/$RESIZE_FACTOR);
-                    background-color: $BLUE;
+                    color: #FFF;
+                    width: (254rem/24);
+                    height: (80rem/24);
+                    border-radius: (40rem/24);
+                    font-size: (36rem/24);
+                    background-color: #17C0EF;
 
                     &:hover {
-                        color: $WHITE;
+                        color: #FFF;
                     }
                 }
             }
@@ -73,18 +70,18 @@
         .buttonWrapper {
             display: flex;
             justify-content: center;
-            margin-top: (19rem/$RESIZE_FACTOR);
+            margin-top: (19rem/24);
 
             .toLoginButton {
-                color: $WHITE;
-                width: (254rem/$RESIZE_FACTOR);
-                height: (80rem/$RESIZE_FACTOR);
-                border-radius: (40rem/$RESIZE_FACTOR);
-                font-size: (36rem/$RESIZE_FACTOR);
-                background-color: $BLUE;
+                color: #FFF;
+                width: (254rem/24);
+                height: (80rem/24);
+                border-radius: (40rem/24);
+                font-size: (36rem/24);
+                background-color: #17C0EF;
 
                 &:hover {
-                    color: $WHITE;
+                    color: #FFF;
                 }
             }
         }

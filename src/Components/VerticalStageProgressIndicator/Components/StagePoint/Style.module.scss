@@ -1,4 +1,3 @@
-@import "../../../../Constant/RESIZE";
 @import "../../Style.module";
 
 .StagePoint {
@@ -20,7 +19,7 @@
     }
 
     .label {
-        margin-left: (28rem/$RESIZE_FACTOR);
-        font-size: (42rem/$RESIZE_FACTOR);
+        margin-left: (28rem/24);
+        font-size: (42rem/24);
     }
 }

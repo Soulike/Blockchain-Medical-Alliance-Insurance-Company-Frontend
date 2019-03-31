@@ -1,30 +1,28 @@
-@import "../../Constant/RESIZE";
-
 .InsurancePublication {
 
-    padding: (82rem/$RESIZE_FACTOR) (329rem/$RESIZE_FACTOR);
+    padding: (82rem/24) (329rem/24);
 
     .contentWrapper {
-        padding: (58rem/$RESIZE_FACTOR) (119rem/$RESIZE_FACTOR);
+        padding: (58rem/24) (119rem/24);
         margin: 0 auto;
 
         .formWrapper {
-            margin-top: (64rem/$RESIZE_FACTOR);
+            margin-top: (64rem/24);
 
             .inputWrapper {
                 width: 100%;
-                margin: (28rem/$RESIZE_FACTOR) 0;
+                margin: (28rem/24) 0;
 
                 .label {
-                    font-size: (28rem/$RESIZE_FACTOR);
-                    margin-bottom: (19rem/$RESIZE_FACTOR);
+                    font-size: (28rem/24);
+                    margin-bottom: (19rem/24);
                     display: inline-block;
                 }
 
                 .input, .textarea {
                     display: block;
-                    height: (57rem/$RESIZE_FACTOR);
-                    font-size: (25rem/$RESIZE_FACTOR);
+                    height: (57rem/24);
+                    font-size: (25rem/24);
 
                     &, &:focus {
                         background-color: #ECF0F7;
@@ -32,7 +30,7 @@
                 }
 
                 .insuranceDetailTextArea {
-                    height: (200rem/$RESIZE_FACTOR);
+                    height: (200rem/24);
                     resize: none;
                 }
             }
@@ -40,7 +38,7 @@
     }
 
     .contentWrapper, .buttonGroup {
-        width: (1223rem/$RESIZE_FACTOR);
+        width: (1223rem/24);
         box-sizing: border-box;
     }
 
@@ -50,8 +48,8 @@
 
         .cancelButton, .publishButton {
             width: 50%;
-            height: (87rem/$RESIZE_FACTOR);
-            font-size: (28rem/$RESIZE_FACTOR);
+            height: (87rem/24);
+            font-size: (28rem/24);
             line-height: 1em;
         }
     }

@@ -1,8 +1,5 @@
-@import "../../../../Constant/COLOR";
-@import "../../../../Constant/RESIZE";
-
 .Title {
     text-align: center;
-    font-size: (36rem/$RESIZE_FACTOR);
-    color: $BLUE;
+    font-size: (36rem/24);
+    color: #17C0EF;
 }

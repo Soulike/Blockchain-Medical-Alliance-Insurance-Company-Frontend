@@ -1,8 +1,6 @@
-@import "../../Constant/RESIZE";
-
 .InsurancePurchasingDetail {
-    width: (1576rem/$RESIZE_FACTOR);
-    margin: (150rem/$RESIZE_FACTOR) auto;
+    width: (1576rem/24);
+    margin: (150rem/24) auto;
 
     .stageProgressIndicatorWrapper {
         margin: 0 auto;
@@ -11,9 +9,9 @@
     }
 
     .title {
-        font-size: (48rem/$RESIZE_FACTOR);
+        font-size: (48rem/24);
         text-align: center;
-        margin: (110rem/$RESIZE_FACTOR);
+        margin: (110rem/24);
 
         .name {
             font-weight: bold;
@@ -25,6 +23,6 @@
     }
 
     .stageProcessorWrapper {
-        margin-top: (75rem/$RESIZE_FACTOR);
+        margin-top: (75rem/24);
     }
 }

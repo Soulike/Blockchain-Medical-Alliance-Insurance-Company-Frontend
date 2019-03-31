@@ -1,9 +1,7 @@
-@import "../../Constant/RESIZE";
-
 .StageTextIndicator {
     width: 100%;
-    height: (70rem/$RESIZE_FACTOR);
-    font-size: (36rem/$RESIZE_FACTOR);
+    height: (70rem/24);
+    font-size: (36rem/24);
     display: flex;
     justify-content: space-around;
     align-items: center;

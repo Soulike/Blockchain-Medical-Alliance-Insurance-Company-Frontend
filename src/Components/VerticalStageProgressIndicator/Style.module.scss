@@ -1,6 +1,4 @@
-@import "../../Constant/RESIZE";
-
-$RADIUS: (40rem/$RESIZE_FACTOR);
+$RADIUS: (40rem/24);
 
 .VerticalStageProgressIndicator {
 
