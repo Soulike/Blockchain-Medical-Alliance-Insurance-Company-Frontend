@@ -20,7 +20,7 @@ export function getInsurancePurchasingInfoAction(insurancePurchasingInfoId)
 function getInsurancePurchasingInfoSuccessfulAction(insurancePurchasingInfo)
 {
     return {
-        type: ACTION_TYPE.GET_INSURANCE_PURCHASING_INFO_SUCCEEFUL,
+        type: ACTION_TYPE.GET_INSURANCE_PURCHASING_INFO_SUCCESSFUL,
         insurancePurchasingInfo,
     };
 }
