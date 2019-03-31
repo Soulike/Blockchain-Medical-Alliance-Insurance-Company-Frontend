@@ -8,7 +8,7 @@ import Button from 'antd/lib/button';
 
 const RadioGroup = Radio.Group;
 
-function InsuranceCompanyVerifyProcessor(props)
+function InsuranceCompanyVerificationProcessor(props)
 {
     const {
         electronicInsurancePolicy,
@@ -19,7 +19,7 @@ function InsuranceCompanyVerifyProcessor(props)
         onConfirmButtonClick,
     } = props;
     return [
-        <div className={Style.InsuranceCompanyVerifyProcessor} key={Style.InsuranceCompanyVerifyProcessor}>
+        <div className={Style.InsuranceCompanyVerificationProcessor} key={Style.InsuranceCompanyVerificationProcessor}>
             <div className={Style.buttonsWrapper}>
                 <Button htmlType={'button'} onClick={onViewElectronicInsurancePolicyButtonClick}>查看电子保单</Button>
                 <Button htmlType={'button'} onClick={onViewMedicalRecordButtonClick}>查看病历</Button>
@@ -50,7 +50,7 @@ function InsuranceCompanyVerifyProcessor(props)
     ];
 }
 
-InsuranceCompanyVerifyProcessor.propTypes = {
+InsuranceCompanyVerificationProcessor.propTypes = {
     electronicInsurancePolicy: PropTypes.node.isRequired,
     medicalRecord: PropTypes.node.isRequired,
     onViewElectronicInsurancePolicyButtonClick: PropTypes.func.isRequired,
@@ -59,4 +59,4 @@ InsuranceCompanyVerifyProcessor.propTypes = {
     onConfirmButtonClick: PropTypes.func.isRequired,
 };
 
-export default InsuranceCompanyVerifyProcessor;
+export default InsuranceCompanyVerificationProcessor;

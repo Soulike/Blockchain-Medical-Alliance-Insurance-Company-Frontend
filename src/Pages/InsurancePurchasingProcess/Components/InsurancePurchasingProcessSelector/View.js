@@ -32,7 +32,7 @@ function InsurancePurchasingProcessSelector(props)
             }, minAge === 81 && maxAge === Number.MAX_VALUE),
         ]),
         new Series('状态',
-            Object.values(INSURANCE_PURCHASING_STAGE_ID).map(stageId => new Item(INSURANCE_PURCHASING_STAGE_ID_TO_TEXT[stageId],
+            Object.values(INSURANCE_PURCHASING_STAGE_ID.NORMAL).map(stageId => new Item(INSURANCE_PURCHASING_STAGE_ID_TO_TEXT[stageId],
                 () =>
                 {
                     changeFilterInsurancePurchasingStage(stageId);
@@ -44,7 +44,7 @@ function InsurancePurchasingProcessSelector(props)
 
 InsurancePurchasingProcessSelector.propTypes = {
     ageRange: PropTypes.array.isRequired,
-    currentActiveStageId: PropTypes.oneOf(Object.values(INSURANCE_PURCHASING_STAGE_ID)).isRequired,
+    currentActiveStageId: PropTypes.oneOf([...Object.values(INSURANCE_PURCHASING_STAGE_ID.NORMAL), ...Object.values(INSURANCE_PURCHASING_STAGE_ID.DECLINE), ...Object.values(INSURANCE_PURCHASING_STAGE_ID.DEVELOPMENT)]).isRequired,
     changeFilterAgeRange: PropTypes.func.isRequired,
     changeFilterInsurancePurchasingStage: PropTypes.func.isRequired,
 };

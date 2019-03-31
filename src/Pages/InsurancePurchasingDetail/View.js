@@ -4,8 +4,10 @@ import PropTypes from 'prop-types';
 import {INSURANCE_PURCHASING_STAGE_ID, INSURANCE_PURCHASING_STAGE_ID_TO_TEXT} from '../../Constant';
 import HorizontalStageProgressIndicator from '../../Components/HorizontalStageProgressIndicator';
 import StageTextIndicator from '../../Components/StageTextIndicator';
-import InsuranceCompanyVerifyProcessor from './Components/InsuranceCompanyVerifyProcessor';
+import InsuranceCompanyVerificationProcessor from './Components/InsuranceCompanyVerificationProcessor';
 import PayConfirmProcessor from './Components/PayConfirmProcessor';
+import InsuranceCompanyVerificationDeclinedView from './Components/InsuranceCompanyVerificationDeclinedView';
+import CompleteView from './Components/CompleteView';
 
 function InsurancePurchasingDetail(props)
 {
@@ -13,17 +15,18 @@ function InsurancePurchasingDetail(props)
     const {insurancePurchasingInfo} = props;
     const {
         insurancePurchasingInfoId,
+        name,
         insurancePurchasingStage,
     } = insurancePurchasingInfo;
     return (
         <div className={Style.InsurancePurchasingDetail}>
             <div className={Style.stageProgressIndicatorWrapper}>
-                <HorizontalStageProgressIndicator currentStageNumber={insurancePurchasingStage}
+                <HorizontalStageProgressIndicator currentStageNumber={Math.abs(insurancePurchasingStage)}
                                                   maxStageNumber={stageTextArray.length - 1} />
             </div>
-            <div className={Style.title}>进度详情</div>
+            <div className={Style.title}><span className={Style.name}>{name}</span>投保进度详情</div>
             <div className={Style.stageTextIndicatorWrapper}>
-                <StageTextIndicator currentStageNumber={insurancePurchasingStage}
+                <StageTextIndicator currentStageNumber={Math.abs(insurancePurchasingStage)}
                                     stageTextArray={stageTextArray} />
             </div>
             <div className={Style.stageProcessorWrapper}>
@@ -32,13 +35,21 @@ function InsurancePurchasingDetail(props)
                     {
                         switch (insurancePurchasingStage)
                         {
-                            case INSURANCE_PURCHASING_STAGE_ID.INSURANCE_COMPANY_VERIFY:
+                            case INSURANCE_PURCHASING_STAGE_ID.NORMAL.INSURANCE_COMPANY_VERIFY:
                             {
-                                return <InsuranceCompanyVerifyProcessor insurancePurchasingInfoId={insurancePurchasingInfoId} />;
+                                return <InsuranceCompanyVerificationProcessor insurancePurchasingInfoId={insurancePurchasingInfoId} />;
                             }
-                            case INSURANCE_PURCHASING_STAGE_ID.PAY:
+                            case INSURANCE_PURCHASING_STAGE_ID.DECLINE.INSURANCE_COMPANY_VERIFY_DECLINED:
+                            {
+                                return <InsuranceCompanyVerificationDeclinedView />;
+                            }
+                            case INSURANCE_PURCHASING_STAGE_ID.NORMAL.PAY:
                             {
                                 return <PayConfirmProcessor insurancePurchasingInfo={insurancePurchasingInfo} />;
+                            }
+                            case INSURANCE_PURCHASING_STAGE_ID.NORMAL.COMPLETE:
+                            {
+                                return <CompleteView />;
                             }
                             default:
                             {

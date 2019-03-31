@@ -4,10 +4,10 @@ import {MODAL_ID} from '../../../../Constant';
 import Api from '../../../../Api';
 import {getInsurancePurchasingInfoAction} from '../../Actions/Actions';
 import {connect} from 'react-redux';
-import InsuranceCompanyVerifyProcessor from './View';
+import InsuranceCompanyVerificationProcessor from './View';
 import {Actions as ModalActions} from '../../../../ComponentContainers/Modal';
 
-class InsuranceCompanyVerifyProcessorContainer extends React.Component
+class InsuranceCompanyVerificationProcessorContainer extends React.Component
 {
     constructor(props)
     {
@@ -72,16 +72,16 @@ class InsuranceCompanyVerifyProcessorContainer extends React.Component
     render()
     {
         const {electronicInsurancePolicy, medicalRecord} = this.state;
-        return <InsuranceCompanyVerifyProcessor electronicInsurancePolicy={electronicInsurancePolicy}
-                                                medicalRecord={medicalRecord}
-                                                onViewElectronicInsurancePolicyButtonClick={this.onViewElectronicInsurancePolicyButtonClick}
-                                                onViewMedicalRecordButtonClick={this.onViewMedicalRecordButtonClick}
-                                                onRadioChange={this.onRadioChange}
-                                                onConfirmButtonClick={this.onConfirmButtonClick} />;
+        return <InsuranceCompanyVerificationProcessor electronicInsurancePolicy={electronicInsurancePolicy}
+                                                      medicalRecord={medicalRecord}
+                                                      onViewElectronicInsurancePolicyButtonClick={this.onViewElectronicInsurancePolicyButtonClick}
+                                                      onViewMedicalRecordButtonClick={this.onViewMedicalRecordButtonClick}
+                                                      onRadioChange={this.onRadioChange}
+                                                      onConfirmButtonClick={this.onConfirmButtonClick} />;
     }
 }
 
-InsuranceCompanyVerifyProcessorContainer.propTypes = {
+InsuranceCompanyVerificationProcessorContainer.propTypes = {
     insurancePurchasingInfoId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
 };
 
@@ -90,4 +90,4 @@ const mapDispatchToProps = {
     showModal: ModalActions.showModalAction,
 };
 
-export default connect(null, mapDispatchToProps)(InsuranceCompanyVerifyProcessorContainer);
+export default connect(null, mapDispatchToProps)(InsuranceCompanyVerificationProcessorContainer);

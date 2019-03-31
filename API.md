@@ -88,12 +88,19 @@
 - 其他说明
   - 投保阶段枚举值
 ```js
-{
-    ALL_STAGES: -1, // 所有状态，开发用
-    APPLICATION: 0, // 投保人申请
-    INSURANCE_COMPANY_VERIFY: 1,      // 保险公司审核
-    PAY: 2,         // 投保人缴费，保险公司确认并发布保单
-    COMPLETE: 3,    // 完成
+export const INSURANCE_PURCHASING_STAGE_ID = {
+    DEVELOPMENT: {
+        ALL_STAGES: Symbol('allStages'), // 所有状态，开发用
+    },
+    NORMAL: {   // 正常步骤
+        APPLICATION: 0, // 投保人申请
+        INSURANCE_COMPANY_VERIFY: 1,      // 保险公司审核
+        PAY: 2,         // 投保人缴费，保险公司确认并发布保单
+        COMPLETE: 3,    // 完成
+    },
+    DECLINE: {  // 被拒绝步骤，正常步骤取负值
+        INSURANCE_COMPANY_VERIFY_DECLINED: -1,
+    },
 };
 ```
 
