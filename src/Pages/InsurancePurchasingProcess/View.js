@@ -143,7 +143,7 @@ function InsurancePurchasingProcess(props)
                 responsiblePersonName,
             });
         }
-        else if (age >= minAge && age <= maxAge && (insurancePurchasingStage === stageId || stageId === INSURANCE_PURCHASING_STAGE_ID.ALL_STAGES))
+        else if (age >= minAge && age <= maxAge && (insurancePurchasingStage === stageId || stageId === INSURANCE_PURCHASING_STAGE_ID.DEVELOPMENT.ALL_STAGES))
         {
             dataSource.push({
                 key: insurancePurchasingInfoId,
@@ -197,7 +197,7 @@ function InsurancePurchasingProcess(props)
 InsurancePurchasingProcess.propTypes = {
     insurancePurchasingInfoList: PropTypes.array.isRequired,
     ageRange: PropTypes.array.isRequired,
-    stageId: PropTypes.oneOf(Object.values(INSURANCE_PURCHASING_STAGE_ID)).isRequired,
+    stageId: PropTypes.oneOf([...Object.values(INSURANCE_PURCHASING_STAGE_ID.NORMAL), ...Object.values(INSURANCE_PURCHASING_STAGE_ID.DECLINE), ...Object.values(INSURANCE_PURCHASING_STAGE_ID.DEVELOPMENT)]).isRequired,
     onRowClick: PropTypes.func.isRequired,
     insurancePurchasingInfoId: PropTypes.string,    // 如果这个 Prop 存在，那么只显示这一条信息且隐藏选择器
 };

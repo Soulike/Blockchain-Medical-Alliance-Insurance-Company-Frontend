@@ -12,7 +12,7 @@ import {DIRECT_PAYMENT_STAGE_ID, INSURANCE_PURCHASING_STAGE_ID} from './Constant
 const initValues = {
     InsurancePurchasingProcess: {
         ageRange: [Number.MIN_VALUE, Number.MAX_VALUE],     // 筛选器年龄范围
-        stageId: INSURANCE_PURCHASING_STAGE_ID.ALL_STAGES,  // 筛选器阶段
+        stageId: INSURANCE_PURCHASING_STAGE_ID.DEVELOPMENT.ALL_STAGES,  // 筛选器阶段
     },
     DirectPaymentProcess: {
         ageRange: [Number.MIN_VALUE, Number.MAX_VALUE],     // 筛选器年龄范围
@@ -33,7 +33,7 @@ const initValues = {
             insurancePurchasingTime: 'String',        // 投保时间
             insurancePeriod: 'String',                // 保险时长
             insurancePrice: 'Number',                 // 保金，单位人民币元
-            insurancePurchasingStage: INSURANCE_PURCHASING_STAGE_ID.INSURANCE_COMPANY_VERIFY,  // 投保阶段，枚举值
+            insurancePurchasingStage: INSURANCE_PURCHASING_STAGE_ID.NORMAL.INSURANCE_COMPANY_VERIFY,  // 投保阶段，枚举值
             responsiblePersonId: 1,            // 负责人 ID，用于获取负责人信息
             responsiblePersonName: 'String',          // 负责人姓名*/
         },
