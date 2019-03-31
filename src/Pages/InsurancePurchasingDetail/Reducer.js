@@ -5,7 +5,7 @@ export default (state = {}, action) =>
     const {type} = action;
     switch (type)
     {
-        case ACTION_TYPE.GET_INSURANCE_PURCHASING_INFO_SUCCEEFUL:
+        case ACTION_TYPE.GET_INSURANCE_PURCHASING_INFO_SUCCESSFUL:
         {
             const {insurancePurchasingInfo} = action;
             return {
