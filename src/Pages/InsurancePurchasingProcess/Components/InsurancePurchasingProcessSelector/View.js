@@ -32,7 +32,7 @@ function InsurancePurchasingProcessSelector(props)
             }, minAge === 81 && maxAge === Number.MAX_VALUE),
         ]),
         new Series('状态',
-            Object.values(INSURANCE_PURCHASING_STAGE_ID.NORMAL).map(stageId => new Item(INSURANCE_PURCHASING_STAGE_ID_TO_TEXT[stageId],
+            Object.values({...INSURANCE_PURCHASING_STAGE_ID.DEVELOPMENT, ...INSURANCE_PURCHASING_STAGE_ID.NORMAL}).map(stageId => new Item(INSURANCE_PURCHASING_STAGE_ID_TO_TEXT[stageId],
                 () =>
                 {
                     changeFilterInsurancePurchasingStage(stageId);
