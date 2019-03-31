@@ -31,7 +31,7 @@ function DirectPaymentProcessSelector(props)
                 changeFilterAgeRange(81);
             }, minAge === 81 && maxAge === Number.MAX_VALUE),
         ]),
-        new Series('状态', Object.values(DIRECT_PAYMENT_STAGE_ID).map(stageId => new Item(DIRECT_PAYMENT_STAGE_ID_TO_TEXT[stageId],
+        new Series('状态', Object.values(DIRECT_PAYMENT_STAGE_ID.NORMAL).map(stageId => new Item(DIRECT_PAYMENT_STAGE_ID_TO_TEXT[stageId],
             () =>
             {
                 changeFilterInsurancePurchasingStage(stageId);
@@ -42,7 +42,7 @@ function DirectPaymentProcessSelector(props)
 
 DirectPaymentProcessSelector.propTypes = {
     ageRange: PropTypes.arrayOf(PropTypes.number).isRequired,
-    currentSelectedStageId: PropTypes.oneOf(Object.values(DIRECT_PAYMENT_STAGE_ID)).isRequired,
+    currentSelectedStageId: PropTypes.oneOf([...Object.values(DIRECT_PAYMENT_STAGE_ID.DEVELOPMENT), ...Object.values(DIRECT_PAYMENT_STAGE_ID.NORMAL), ...Object.values(DIRECT_PAYMENT_STAGE_ID.DECLINE)]).isRequired,
     changeFilterAgeRange: PropTypes.func.isRequired,
     changeFilterInsurancePurchasingStage: PropTypes.func.isRequired,
 };
