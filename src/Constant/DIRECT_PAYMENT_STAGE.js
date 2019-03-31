@@ -26,7 +26,7 @@ export const DIRECT_PAYMENT_STAGE_ID_TO_TEXT = {
     // 为了进度组件取 Label 方便，增加迭代器跳过 -1
     [Symbol.iterator]: function* ()
     {
-        for (let i = 0; i < Object.keys(DIRECT_PAYMENT_STAGE_ID).length - 1; i++)
+        for (let i = 0; i < Object.keys(DIRECT_PAYMENT_STAGE_ID.NORMAL).length; i++)
         {
             yield this[i];
         }
