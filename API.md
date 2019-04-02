@@ -338,3 +338,17 @@ export const DIRECT_PAYMENT_STAGE_ID = {
 }
 ```
 - 其他说明：无
+
+#### `/submitInsuranceCompanyVerifyAndPayResult`
+
+- 功能说明：提交保险公司直付审核结果
+- 请求方法：POST
+- 请求体：
+```js
+{
+    directPaymentInfoId: String,  // 被审核投保信息
+    verifyResult: Boolean,  // 是否审核通过
+}
+```
+- 响应体：无
+- 其他说明：无

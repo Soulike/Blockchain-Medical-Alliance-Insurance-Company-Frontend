@@ -61,11 +61,11 @@ class InsuranceCompanyVerifyAndPayProcessorContainer extends React.Component
     onConfirmButtonClick = async () =>
     {
         const {currentSelectedRadio} = this.state;
-        const {insurancePurchasingInfoId, getDirectPaymentInfo} = this.props;
-        const requestIsSuccessful = await Api.sendPostSubmitInsuranceCompanyVerifyResultRequestAsync(insurancePurchasingInfoId, currentSelectedRadio);
+        const {directPaymentInfoId, getDirectPaymentInfo} = this.props;
+        const requestIsSuccessful = await Api.sendPostSubmitInsuranceCompanyVerifyAndPayResultRequestAsync(directPaymentInfoId, currentSelectedRadio);
         if (requestIsSuccessful)
         {
-            getDirectPaymentInfo(insurancePurchasingInfoId);
+            getDirectPaymentInfo(directPaymentInfoId);
         }
     };
 
@@ -83,6 +83,7 @@ class InsuranceCompanyVerifyAndPayProcessorContainer extends React.Component
 
 InsuranceCompanyVerifyAndPayProcessorContainer.propTypes = {
     insurancePurchasingInfoId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+    directPaymentInfoId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
 };
 
 const mapDispatchToProps = {
