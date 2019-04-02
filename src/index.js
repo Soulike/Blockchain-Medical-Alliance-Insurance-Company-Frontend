@@ -1,12 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import 'normalize.css';
 import './index.scss';
 import {Provider} from 'react-redux';
 import Store from './Store';
 import Router from './Router';
-import 'antd/dist/antd.min.css';
 import * as serviceWorker from './serviceWorker';
+import './ModuleConfig';
 
 ReactDOM.render(
     <Provider store={Store}>
