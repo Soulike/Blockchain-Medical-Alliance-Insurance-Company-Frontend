@@ -6,11 +6,16 @@ import Store from './Store';
 import Router from './Router';
 import * as serviceWorker from './serviceWorker';
 import './ModuleConfig';
+import zhCN from 'antd/lib/locale-provider/zh_CN';
+import LocaleProvider from 'antd/lib/locale-provider';
+
 
 ReactDOM.render(
-    <Provider store={Store}>
-        <Router />
-    </Provider>,
+    <LocaleProvider locale={zhCN}>
+        <Provider store={Store}>
+            <Router />
+        </Provider>
+    </LocaleProvider>,
     document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
