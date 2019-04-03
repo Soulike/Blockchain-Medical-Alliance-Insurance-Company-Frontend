@@ -139,7 +139,7 @@ function DirectPaymentProcess(props)
             insurancePurchasingInfoId,
         } = directPaymentInfo;
 
-        if (age >= minAge && age <= maxAge && (directPaymentStage === stageId || stageId === DIRECT_PAYMENT_STAGE_ID.ALL_STAGES))
+        if (age >= minAge && age <= maxAge && (directPaymentStage === stageId || stageId === DIRECT_PAYMENT_STAGE_ID.DEVELOPMENT.ALL_STAGES))
         {
             dataSource.push({
                 key: directPaymentInfoId,
@@ -189,7 +189,7 @@ function DirectPaymentProcess(props)
 
 DirectPaymentProcess.propTypes = {
     ageRange: PropTypes.arrayOf(PropTypes.number).isRequired,
-    stageId: PropTypes.oneOf(Object.values(DIRECT_PAYMENT_STAGE_ID)).isRequired,
+    stageId: PropTypes.oneOf([...Object.values(DIRECT_PAYMENT_STAGE_ID.DEVELOPMENT), ...Object.values(DIRECT_PAYMENT_STAGE_ID.NORMAL), ...Object.values(DIRECT_PAYMENT_STAGE_ID.DECLINE)]).isRequired,
     directPaymentInfoList: PropTypes.array.isRequired,
     currentActiveDiagnosticResultInModal: PropTypes.node.isRequired,
     currentActiveMedicalDescriptionInModal: PropTypes.node.isRequired,

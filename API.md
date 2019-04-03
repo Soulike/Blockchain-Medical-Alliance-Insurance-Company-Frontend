@@ -136,13 +136,21 @@ export const INSURANCE_PURCHASING_STAGE_ID = {
 - 其他说明
   - 直付阶段枚举值
 ```js
-{
-    ALL_STAGES: -1,                         // 所有状态，开发用
-    APPLICATION: 0,                         // 投保人申请
-    HOSPITAL_CONFIRM_PAYABLE: 1,            // 待医院确认是否可以直付
-    INSURANCE_COMPANY_VERIFY_AND_PAY: 2,    // 待保险公司审核及支付
-    HOSPITAL_CONFIRM_PAYMENT: 3,            // 医院已确认收款
-    COMPLETE: 4,                            // 完成
+export const DIRECT_PAYMENT_STAGE_ID = {
+    DEVELOPMENT: {
+        ALL_STAGES: Symbol('allStages'),                         // 所有状态，开发用
+    },
+    NORMAL: {
+        APPLICATION: 0,                         // 投保人申请
+        HOSPITAL_CONFIRM_PAYABLE: 1,            // 待医院确认是否可以直付
+        INSURANCE_COMPANY_VERIFY_AND_PAY: 2,    // 待保险公司审核及支付
+        HOSPITAL_CONFIRM_PAYMENT: 3,            // 医院已确认收款
+        COMPLETE: 4,                            // 完成
+    },
+    DECLINE: {
+        HOSPITAL_CONFIRM_PAYABLE_DECLINED: -1,            // 医院确认不可直付
+        INSURANCE_COMPANY_VERIFY_AND_PAY_DECLINED: -2,    // 保险公司审核不通过
+    },
 };
 ```
 
@@ -296,6 +304,50 @@ export const INSURANCE_PURCHASING_STAGE_ID = {
 ```js
 {
     insurancePurchasingInfoId: String,
+}
+```
+- 响应体：无
+- 其他说明：无
+
+### 直付详情部分（请求前缀为 `/directPaymentDetail`）
+
+#### `/getDirectPaymentInfo`
+
+- 功能说明：获取直付详细信息
+- 请求方法：GET
+- 请求体：
+```js
+{
+    directPaymentInfoId: String,    // 直付信息 ID
+}
+```
+- 响应体：
+```js
+{
+    directPaymentInfoId: String,            // 这条直付信息的唯一识别 ID
+    name: String,                           // 投保人姓名
+    age: Number,                            // 投保人年龄
+    isMale: Number,                         // 投保人是不是男性，0为女，1为男
+    healthState: String,                    // 投保人健康状况
+    publicKey: String,                      // 投保人公钥
+    directPaymentMoneyAmount: Number,       // 直付金额，单位是人民币元
+    diagnosticResult: String,               // 诊断结果
+    medicalDescription: String,             // 医疗说明
+    insurancePurchasingInfoId: String,      // 对应保险投保信息的 ID
+    directPaymentStage: ENUM_NUMBER,        // 枚举值，直付阶段
+}
+```
+- 其他说明：无
+
+#### `/submitInsuranceCompanyVerifyAndPayResult`
+
+- 功能说明：提交保险公司直付审核结果
+- 请求方法：POST
+- 请求体：
+```js
+{
+    directPaymentInfoId: String,  // 被审核投保信息
+    verifyResult: Boolean,  // 是否审核通过
 }
 ```
 - 响应体：无
