@@ -21,7 +21,7 @@ function InsurancePublication()
                 <div className={Style.formWrapper}>
                     <label className={Style.inputWrapper}>
                         <span className={Style.label}>保险名称：</span>
-                        <Input className={Style.input} type="text" />
+                        <Input className={Style.input} type="text" autoFocus={true} />
                     </label>
                     <div className={Style.inputWrapper}>
                         <span className={Style.label}>特需医疗：</span>
@@ -38,8 +38,8 @@ function InsurancePublication()
                         </Radio.Group>
                     </div>
                     <label className={Style.inputWrapper}>
-                        <span className={Style.label}>保额：</span>
-                        <Input className={Style.input} type="text" />
+                        <span className={Style.label}>保额（人民币元）：</span>
+                        <Input className={Style.input} type={'number'} step={0.01} defaultValue={0} min={0} />
                     </label>
                     <label className={Style.inputWrapper}>
                         <span className={Style.label}>保障期限：</span>
@@ -58,8 +58,8 @@ function InsurancePublication()
                         <Input className={Style.input} type="text" />
                     </label>
                     <label className={Style.inputWrapper}>
-                        <span className={Style.label}>保费价格：</span>
-                        <Input className={Style.input} type="text" />
+                        <span className={Style.label}>保费价格（人民币元）：</span>
+                        <Input className={Style.input} type="number" step={0.01} defaultValue={0} min={0} />
                     </label>
                     {/*<label className={Style.inputWrapper}>
                         <span className={Style.label}>保险详情：</span>
