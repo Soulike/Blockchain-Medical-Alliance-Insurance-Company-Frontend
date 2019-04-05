@@ -381,3 +381,26 @@ export const DIRECT_PAYMENT_STAGE_ID = {
 }
 ```
 - 其他说明：无
+
+#### 新建保险部分（请求前缀为 `/insurancePublication`）
+
+#### `/submitNewInsurance`
+
+- 功能说明：新建保险
+- 请求方法：POST
+- 请求体：
+```js
+{
+    insuranceName: String,          // 保险的名字
+    isSpecialMedicalCare: Number,   // 是否是特殊医疗，0 或 1
+    hasSocialSecurity: Number,      // 有无社保，0 或 1
+    insuranceAmount: Number,        // 保额，单位是人民币元
+    insurancePeriod: String,        // 保险期限
+    insuranceDiseaseType: String,   // 保险病种
+    coveringAge: String,            // 承保年龄
+    salesArea: String,              // 销售区域
+    insurancePrice: Number,         // 保费价格，单位是人民币元
+}
+```
+- 响应体：无
+- 其他说明：无
