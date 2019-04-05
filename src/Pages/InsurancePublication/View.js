@@ -6,8 +6,9 @@ import {PAGE_ID_TO_ROUTE, REQUIRE_LOGIN_PAGE_ID} from '../../Config';
 import {browserHistory} from 'react-router';
 import Button from 'antd/lib/button';
 import Input from 'antd/lib/input';
+import Radio from 'antd/lib/radio';
 
-const TextArea = Input.TextArea;
+// const TextArea = Input.TextArea;
 const ButtonGroup = Button.Group;
 
 function InsurancePublication()
@@ -22,12 +23,22 @@ function InsurancePublication()
                         <span className={Style.label}>保险名称：</span>
                         <Input className={Style.input} type="text" />
                     </label>
+                    <div className={Style.inputWrapper}>
+                        <span className={Style.label}>特需医疗：</span>
+                        <Radio.Group defaultValue={false}>
+                            <Radio value={true}>包含</Radio>
+                            <Radio value={false}>不包含</Radio>
+                        </Radio.Group>
+                    </div>
+                    <div className={Style.inputWrapper}>
+                        <span className={Style.label}>有无社保：</span>
+                        <Radio.Group defaultValue={false}>
+                            <Radio value={true}>有</Radio>
+                            <Radio value={false}>无</Radio>
+                        </Radio.Group>
+                    </div>
                     <label className={Style.inputWrapper}>
                         <span className={Style.label}>保额：</span>
-                        <Input className={Style.input} type="text" />
-                    </label>
-                    <label className={Style.inputWrapper}>
-                        <span className={Style.label}>承保年龄：</span>
                         <Input className={Style.input} type="text" />
                     </label>
                     <label className={Style.inputWrapper}>
@@ -35,13 +46,25 @@ function InsurancePublication()
                         <Input className={Style.input} type="text" />
                     </label>
                     <label className={Style.inputWrapper}>
-                        <span className={Style.label}>保费价格：</span>
+                        <span className={Style.label}>保险病种：</span>
                         <Input className={Style.input} type="text" />
                     </label>
                     <label className={Style.inputWrapper}>
+                        <span className={Style.label}>承保年龄：</span>
+                        <Input className={Style.input} type="text" />
+                    </label>
+                    <label className={Style.inputWrapper}>
+                        <span className={Style.label}>销售区域：</span>
+                        <Input className={Style.input} type="text" />
+                    </label>
+                    <label className={Style.inputWrapper}>
+                        <span className={Style.label}>保费价格：</span>
+                        <Input className={Style.input} type="text" />
+                    </label>
+                    {/*<label className={Style.inputWrapper}>
                         <span className={Style.label}>保险详情：</span>
                         <TextArea className={`${Style.textarea} ${Style.insuranceDetailTextArea}`} />
-                    </label>
+                    </label>*/}
                 </div>
             </Card>
             <ButtonGroup className={Style.buttonGroup}>
