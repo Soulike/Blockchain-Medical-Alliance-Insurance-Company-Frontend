@@ -61,7 +61,7 @@ function InsuranceDetail(props)
                             </div>
                         </div>
                         <div className={Style.itemWrapper}>
-                            <div className={Style.label}>承包年龄</div>
+                            <div className={Style.label}>承保年龄</div>
                             <div className={Style.itemContent}>
                                 出生满 90 天至 60 周岁人群
                             </div>
