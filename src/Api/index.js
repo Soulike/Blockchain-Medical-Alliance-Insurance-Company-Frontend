@@ -4,6 +4,7 @@ import DirectPaymentProcess from './DirectPaymentProcess';
 import Account from './Account';
 import InsurancePurchasingDetail from './InsurancePurchasingDetail';
 import DirectPaymentDetail from './DirectPaymentDetail';
+import InsuranceDetail from './InsuranceDetail';
 
 export default {
     ...InsuranceListProcessor,
@@ -12,4 +13,5 @@ export default {
     ...Account,
     ...InsurancePurchasingDetail,
     ...DirectPaymentDetail,
+    ...InsuranceDetail,
 };
