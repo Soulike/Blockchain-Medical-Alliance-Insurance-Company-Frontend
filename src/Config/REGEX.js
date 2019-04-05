@@ -6,6 +6,15 @@ export const REGEX = {
     ADDRESS: /^.+$/,
     EMAIL: /^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/,
     VERIFICATION_CODE: /^[A-z0-9]+$/,
+
+
+    INSURANCE_NAME: /^.+$/,
+    INSURANCE_AMOUNT: /^\d+(?:.\d{0,2})?$/,
+    INSURANCE_PERIOD: /^.+$/,
+    INSURANCE_DISEASE_TYPE: /^.+$/,
+    COVERING_AGE: /^.+$/,
+    SALES_AREA: /^.+$/,
+    INSURANCE_PRICE: /^\d+(?:.\d{0,2})?$/,
 };
 
 export const REGEX_TEXT = {
