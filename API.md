@@ -88,19 +88,12 @@
 - 其他说明
   - 投保阶段枚举值
 ```js
-export const INSURANCE_PURCHASING_STAGE_ID = {
-    DEVELOPMENT: {
-        ALL_STAGES: Symbol('allStages'), // 所有状态，开发用
-    },
-    NORMAL: {   // 正常步骤
-        APPLICATION: 0, // 投保人申请
-        INSURANCE_COMPANY_VERIFY: 1,      // 保险公司审核
-        PAY: 2,         // 投保人缴费，保险公司确认并发布保单
-        COMPLETE: 3,    // 完成
-    },
-    DECLINE: {  // 被拒绝步骤，正常步骤取负值
-        INSURANCE_COMPANY_VERIFY_DECLINED: -1,
-    },
+{
+    APPLICATION: 0, // 投保人申请
+    INSURANCE_COMPANY_VERIFY: 1,      // 保险公司审核
+    PAY: 2,         // 投保人缴费，保险公司确认并发布保单
+    COMPLETE: 3,    // 完成
+    INSURANCE_COMPANY_VERIFY_DECLINED: -1,  // 保险公司审核未通过
 };
 ```
 
@@ -136,21 +129,14 @@ export const INSURANCE_PURCHASING_STAGE_ID = {
 - 其他说明
   - 直付阶段枚举值
 ```js
-export const DIRECT_PAYMENT_STAGE_ID = {
-    DEVELOPMENT: {
-        ALL_STAGES: Symbol('allStages'),                         // 所有状态，开发用
-    },
-    NORMAL: {
-        APPLICATION: 0,                         // 投保人申请
-        HOSPITAL_CONFIRM_PAYABLE: 1,            // 待医院确认是否可以直付
-        INSURANCE_COMPANY_VERIFY_AND_PAY: 2,    // 待保险公司审核及支付
-        HOSPITAL_CONFIRM_PAYMENT: 3,            // 医院已确认收款
-        COMPLETE: 4,                            // 完成
-    },
-    DECLINE: {
-        HOSPITAL_CONFIRM_PAYABLE_DECLINED: -1,            // 医院确认不可直付
-        INSURANCE_COMPANY_VERIFY_AND_PAY_DECLINED: -2,    // 保险公司审核不通过
-    },
+{
+    APPLICATION: 0,                         // 投保人申请
+    HOSPITAL_CONFIRM_PAYABLE: 1,            // 待医院确认是否可以直付
+    INSURANCE_COMPANY_VERIFY_AND_PAY: 2,    // 待保险公司审核及支付
+    HOSPITAL_CONFIRM_PAYMENT: 3,            // 等待医院确认收款
+    COMPLETE: 4,                            // 完成
+    HOSPITAL_CONFIRM_PAYABLE_DECLINED: -1,            // 医院确认不可直付
+    INSURANCE_COMPANY_VERIFY_AND_PAY_DECLINED: -2,    // 保险公司审核不通过
 };
 ```
 
