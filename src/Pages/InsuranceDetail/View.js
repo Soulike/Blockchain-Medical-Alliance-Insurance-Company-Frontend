@@ -27,7 +27,7 @@ function InsuranceDetail(props)
                         <div className={Style.itemWrapper}>
                             <div className={Style.label}>特需医疗</div>
                             <div className={Style.itemContent}>
-                                <Radio.Group defaultValue={false}>
+                                <Radio.Group defaultValue={false} disabled={true}>
                                     <Radio value={true}>包含</Radio>
                                     <Radio value={false}>不包含</Radio>
                                 </Radio.Group>
@@ -36,7 +36,7 @@ function InsuranceDetail(props)
                         <div className={Style.itemWrapper}>
                             <div className={Style.label}>有无社保</div>
                             <div className={Style.itemContent}>
-                                <Radio.Group defaultValue={false}>
+                                <Radio.Group defaultValue={false} disabled={true}>
                                     <Radio value={true}>有</Radio>
                                     <Radio value={false}>无</Radio>
                                 </Radio.Group>
