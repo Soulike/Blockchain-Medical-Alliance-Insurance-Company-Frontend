@@ -8,6 +8,7 @@ import InsuranceCompanyVerificationProcessor from './Components/InsuranceCompany
 import PayConfirmProcessor from './Components/PayConfirmProcessor';
 import InsuranceCompanyVerificationDeclinedView from './Components/InsuranceCompanyVerificationDeclinedView';
 import CompleteView from './Components/CompleteView';
+import Spin from 'antd/lib/spin';
 
 function InsurancePurchasingDetail(props)
 {
@@ -20,45 +21,47 @@ function InsurancePurchasingDetail(props)
     } = insurancePurchasingInfo;
     return (
         <div className={Style.InsurancePurchasingDetail}>
-            <div className={Style.stageProgressIndicatorWrapper}>
-                <HorizontalStageProgressIndicator currentStageNumber={Math.abs(insurancePurchasingStage)}
-                                                  maxStageNumber={stageTextArray.length - 1} />
-            </div>
-            <div className={Style.title}><span className={Style.name}>{name}</span>投保进度详情</div>
-            <div className={Style.stageTextIndicatorWrapper}>
-                <StageTextIndicator currentStageNumber={Math.abs(insurancePurchasingStage)}
-                                    stageTextArray={stageTextArray} />
-            </div>
-            <div className={Style.stageProcessorWrapper}>
-                {
-                    (() =>
+            <Spin spinning={Object.keys(insurancePurchasingInfo).length === 0}>
+                <div className={Style.stageProgressIndicatorWrapper}>
+                    <HorizontalStageProgressIndicator currentStageNumber={Math.abs(insurancePurchasingStage)}
+                                                      maxStageNumber={stageTextArray.length - 1} />
+                </div>
+                <div className={Style.title}><span className={Style.name}>{name}</span>投保进度详情</div>
+                <div className={Style.stageTextIndicatorWrapper}>
+                    <StageTextIndicator currentStageNumber={Math.abs(insurancePurchasingStage)}
+                                        stageTextArray={stageTextArray} />
+                </div>
+                <div className={Style.stageProcessorWrapper}>
                     {
-                        switch (insurancePurchasingStage)
+                        (() =>
                         {
-                            case INSURANCE_PURCHASING_STAGE_ID.NORMAL.INSURANCE_COMPANY_VERIFY:
+                            switch (insurancePurchasingStage)
                             {
-                                return <InsuranceCompanyVerificationProcessor insurancePurchasingInfoId={insurancePurchasingInfoId} />;
+                                case INSURANCE_PURCHASING_STAGE_ID.NORMAL.INSURANCE_COMPANY_VERIFY:
+                                {
+                                    return <InsuranceCompanyVerificationProcessor insurancePurchasingInfoId={insurancePurchasingInfoId} />;
+                                }
+                                case INSURANCE_PURCHASING_STAGE_ID.DECLINE.INSURANCE_COMPANY_VERIFY_DECLINED:
+                                {
+                                    return <InsuranceCompanyVerificationDeclinedView />;
+                                }
+                                case INSURANCE_PURCHASING_STAGE_ID.NORMAL.PAY:
+                                {
+                                    return <PayConfirmProcessor insurancePurchasingInfo={insurancePurchasingInfo} />;
+                                }
+                                case INSURANCE_PURCHASING_STAGE_ID.NORMAL.COMPLETE:
+                                {
+                                    return <CompleteView />;
+                                }
+                                default:
+                                {
+                                    return null;
+                                }
                             }
-                            case INSURANCE_PURCHASING_STAGE_ID.DECLINE.INSURANCE_COMPANY_VERIFY_DECLINED:
-                            {
-                                return <InsuranceCompanyVerificationDeclinedView />;
-                            }
-                            case INSURANCE_PURCHASING_STAGE_ID.NORMAL.PAY:
-                            {
-                                return <PayConfirmProcessor insurancePurchasingInfo={insurancePurchasingInfo} />;
-                            }
-                            case INSURANCE_PURCHASING_STAGE_ID.NORMAL.COMPLETE:
-                            {
-                                return <CompleteView />;
-                            }
-                            default:
-                            {
-                                return null;
-                            }
-                        }
-                    })()
-                }
-            </div>
+                        })()
+                    }
+                </div>
+            </Spin>
         </div>
     );
 }

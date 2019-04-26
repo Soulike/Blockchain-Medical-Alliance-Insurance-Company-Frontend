@@ -21,6 +21,13 @@ class DirectPaymentDetailContainer extends React.Component
         }
     }
 
+    componentWillUnmount()
+    {
+        const {clearDirectPaymentInfo} = this.props;
+        clearDirectPaymentInfo();
+    }
+
+
     render()
     {
         const {directPaymentInfo} = this.props;
@@ -40,6 +47,7 @@ const mapStateToProps = state =>
 
 const mapDispatchToProps = {
     getDirectPaymentInfo: Actions.getDirectPaymentInfoAction,
+    clearDirectPaymentInfo: Actions.clearDirectPaymentInfo,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(DirectPaymentDetailContainer);

@@ -23,6 +23,7 @@ function DirectPaymentProcess(props)
         onDirectPaymentInfoClick,
         onInsurancePurchasingInfoButtonClick,
         onMedicalDescriptionButtonClick,
+        hasGotData,
     } = props;
 
     const columns = [
@@ -167,6 +168,7 @@ function DirectPaymentProcess(props)
                        columns={columns}
                        className={Style.processTable}
                        rowClassName={Style.row}
+                       loading={!hasGotData}
                        onRow={record =>
                        {
                            return {
@@ -197,6 +199,11 @@ DirectPaymentProcess.propTypes = {
     onDirectPaymentInfoClick: PropTypes.func.isRequired,
     onInsurancePurchasingInfoButtonClick: PropTypes.func.isRequired,
     onMedicalDescriptionButtonClick: PropTypes.func.isRequired,
+    hasGotData: PropTypes.bool.isRequired,
+};
+
+DirectPaymentProcess.defaultProps = {
+    hasGotData: true,
 };
 
 export default DirectPaymentProcess;
