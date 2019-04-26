@@ -32,7 +32,7 @@ function getDirectPaymentInfoFailedAction()
     };
 }
 
-export function clearDirectPaymentInfo()
+export function clearDirectPaymentInfoAction()
 {
     return {
         type: ACTION_TYPE.CLEAR_DICRECT_PAYMENT_INFO,

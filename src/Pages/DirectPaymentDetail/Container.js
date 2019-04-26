@@ -47,7 +47,7 @@ const mapStateToProps = state =>
 
 const mapDispatchToProps = {
     getDirectPaymentInfo: Actions.getDirectPaymentInfoAction,
-    clearDirectPaymentInfo: Actions.clearDirectPaymentInfo,
+    clearDirectPaymentInfo: Actions.clearDirectPaymentInfoAction,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(DirectPaymentDetailContainer);
