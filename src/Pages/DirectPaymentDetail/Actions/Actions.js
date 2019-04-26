@@ -31,3 +31,10 @@ function getDirectPaymentInfoFailedAction()
         type: ACTION_TYPE.GET_DIRECT_PAYMENT_INFO_FAILED,
     };
 }
+
+export function clearDirectPaymentInfoAction()
+{
+    return {
+        type: ACTION_TYPE.CLEAR_DICRECT_PAYMENT_INFO,
+    };
+}

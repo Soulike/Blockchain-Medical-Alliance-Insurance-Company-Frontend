@@ -13,6 +13,13 @@ export default (state = {}, action) =>
                 directPaymentInfo,
             };
         }
+        case ACTION_TYPE.CLEAR_DICRECT_PAYMENT_INFO:
+        {
+            return {
+                ...state,
+                directPaymentInfo: {},
+            };
+        }
         case ACTION_TYPE.GET_DIRECT_PAYMENT_INFO_FAILED:
         default:
         {
