@@ -7,7 +7,7 @@ import PersonalCenter from '../Pages/PersonalCenter';
 import InsurancePurchasingProcess from '../Pages/InsurancePurchasingProcess';
 import DirectPaymentProcess from '../Pages/DirectPaymentProcess';
 import Login from '../Pages/Login';
-import SignUp from '../Pages/SignUp';
+// import SignUp from '../Pages/SignUp';
 import InsurancePurchasingDetail from '../Pages/InsurancePurchasingDetail';
 import DirectPaymentDetail from '../Pages/DirectPaymentDetail';
 import InsuranceDetail from '../Pages/InsuranceDetail';
@@ -23,5 +23,5 @@ export default {
     [REQUIRE_LOGIN_PAGE_ID.INSURANCE_COMPANY_PERSONAL_CENTER]: PersonalCenter,
     [REQUIRE_LOGIN_PAGE_ID.INSURANCE_COMPANY_INSURANCE_DETAIL]: InsuranceDetail,
     [NOT_REQUIRE_LOGIN_PAGE_ID.INSURANCE_COMPANY_LOGIN]: Login,
-    [NOT_REQUIRE_LOGIN_PAGE_ID.INSURANCE_COMPANY_SIGN_UP]: SignUp,
+    [NOT_REQUIRE_LOGIN_PAGE_ID.INSURANCE_COMPANY_SIGN_UP]: null,
 };

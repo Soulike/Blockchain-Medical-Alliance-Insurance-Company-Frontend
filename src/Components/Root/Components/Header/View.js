@@ -14,7 +14,7 @@ class Header extends Component
             insurancePurchasingUrl,
             directPaymentUrl,
             personalCenterUrl,
-            signUpUrl,
+            // signUpUrl,
             loginUrl,
             insuranceLinkIsActive,
             insurancePurchasingLinkIsActive,
@@ -46,7 +46,7 @@ class Header extends Component
                                 ? <Link onlyActiveOnIndex={false}
                                         className={`${Style.link} ${personalCenterLinkIsActive ? Style.active : null}`}
                                         to={personalCenterUrl}>个人中心</Link>
-                                : [
+                                : /*[
                                     <Link onlyActiveOnIndex={false}
                                           className={Style.link}
                                           to={signUpUrl}
@@ -55,7 +55,11 @@ class Header extends Component
                                           className={Style.link}
                                           to={loginUrl}
                                           key={'登录'}>登录</Link>,
-                                ]
+                                ]*/
+                                <Link onlyActiveOnIndex={false}
+                                      className={Style.link}
+                                      to={loginUrl}
+                                      key={'登录'}>登录</Link>
                         }
                     </div>
                 </div>
